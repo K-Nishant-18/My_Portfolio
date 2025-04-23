@@ -24,8 +24,6 @@ export default function Home() {
         { id: 3, name: 'Emma Wilson', message: 'The attention to detail in your projects is remarkable.', date: '2023-07-10' }
     ])
     const [newEntry, setNewEntry] = useState({ name: '', message: '' })
-    const [cursorText, setCursorText] = useState('')
-    const [cursorVariant, setCursorVariant] = useState('default')
     // Use state for githubStats to ensure updates trigger re-render
     const [githubStats, setGithubStats] = useState({
         repos: 24,
@@ -36,9 +34,6 @@ export default function Home() {
 
     // Refs
     const appRef = useRef()
-    const cursorRef = useRef(null)
-    const cursorTextRef = useRef(null)
-    const followerRef = useRef(null)
     const navRef = useRef(null)
     const heroRef = useRef(null)
     const titleRef = useRef(null)
@@ -267,34 +262,6 @@ function getGridSpan(index) {
         { type: 'square', size: 90, x: 15, y: 50, color: 'secondary' },
         { type: 'triangle', size: 70, x: 80, y: 80, color: 'accent' }
     ]
-
-    // Cursor variants
-    const cursorVariants = {
-        default: {
-            scale: 1,
-            opacity: 1,
-            backgroundColor: theme === 'dark' ? 'rgba(255,255,255,1)' : 'rgba(0,0,0,1)',
-            mixBlendMode: 'difference'
-        },
-        text: {
-            scale: 5,
-            opacity: 0.5,
-            backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)',
-            mixBlendMode: 'difference'
-        },
-        link: {
-            scale: 1.5,
-            opacity: 0.8,
-            backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.8)',
-            mixBlendMode: 'difference'
-        },
-        project: {
-            scale: 3,
-            opacity: 0.3,
-            backgroundColor: theme === 'dark' ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.3)',
-            mixBlendMode: 'difference'
-        }
-    }
 
     // Initialize animations
     useEffect(() => {
@@ -541,74 +508,8 @@ function getGridSpan(index) {
             })
         })
 
-        // Custom cursor
-        const cursor = cursorRef.current
-        const cursorText = cursorTextRef.current
-        const follower = followerRef.current
-
-        const moveCursor = (e) => {
-            gsap.to(cursor, {
-                x: e.clientX,
-                y: e.clientY,
-                duration: 0.1,
-            })
-            gsap.to(follower, {
-                x: e.clientX,
-                y: e.clientY,
-                duration: 0.3,
-            })
-            if (cursorText) {
-                gsap.to(cursorText, {
-                    x: e.clientX,
-                    y: e.clientY,
-                    duration: 0.3,
-                })
-            }
-        }
-
-        // Cursor hover effects
-        const textHoverElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li, .text-hover')
-        const linkHoverElements = document.querySelectorAll('a, button, .link-hover')
-        const projectHoverElements = document.querySelectorAll('.project-hover')
-
-        textHoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                setCursorVariant('text')
-                setCursorText('')
-            })
-            el.addEventListener('mouseleave', () => {
-                setCursorVariant('default')
-                setCursorText('')
-            })
-        })
-
-        linkHoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                setCursorVariant('link')
-                setCursorText('→')
-            })
-            el.addEventListener('mouseleave', () => {
-                setCursorVariant('default')
-                setCursorText('')
-            })
-        })
-
-        projectHoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                setCursorVariant('project')
-                setCursorText('👁️')
-            })
-            el.addEventListener('mouseleave', () => {
-                setCursorVariant('default')
-                setCursorText('')
-            })
-        })
-
-        window.addEventListener('mousemove', moveCursor)
-
         return () => {
             lenis.destroy()
-            window.removeEventListener('mousemove', moveCursor)
         }
     }, [theme])
 
@@ -705,31 +606,6 @@ function getGridSpan(index) {
                 />
             ))}
 
-            {/* Custom Cursor */}
-            <div
-                ref={cursorRef}
-                className={`fixed w-4 h-4 rounded-full pointer-events-none z-50 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center transition-all duration-300 ease-out`}
-                style={{
-                    scale: cursorVariants[cursorVariant].scale,
-                    opacity: cursorVariants[cursorVariant].opacity,
-                    backgroundColor: cursorVariants[cursorVariant].backgroundColor,
-                    mixBlendMode: cursorVariants[cursorVariant].mixBlendMode
-                }}
-            >
-                {cursorText && (
-                    <span
-                        ref={cursorTextRef}
-                        className="absolute text-xs font-bold"
-                    >
-                        {cursorText}
-                    </span>
-                )}
-            </div>
-            <div
-                ref={followerRef}
-                className={`fixed w-8 h-8 rounded-full border-2 pointer-events-none z-40 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-out ${theme === 'dark' ? 'border-white/20' : 'border-black/20'}`}
-            />
-
             {/* Navigation */}
             <nav
                 ref={navRef}
@@ -745,7 +621,7 @@ function getGridSpan(index) {
                             <li key={item} className="nav-item">
                                 <a
                                     href={`#${item.toLowerCase()}`}
-                                    className="text-xs uppercase tracking-wider hover:opacity-80 transition-opacity duration-300 text-hover"
+                                    className="text-xs uppercase tracking-wider hover:opacity-80 transition-opacity duration-300"
                                 >
                                     {item}
                                 </a>
@@ -780,7 +656,7 @@ function getGridSpan(index) {
                         <div>
                             <h1
                                 ref={titleRef}
-                                className="text-6xl md:text-[9rem] lg:text-[19rem] font-[700] leading-none mb-6 text-hover"
+                                className="text-6xl md:text-[9rem] lg:text-[19rem] font-[700] leading-none mb-6"
                             >
                                 <span className={` ${theme === 'dark' ? 'text-white' : 'text-black'} text-6xl md:text-[8rem] lg:text-[15rem] tracking-[-0.08em]`}>K</span><span className={` ${theme === 'dark' ? 'text-white' : 'text-black'} text-6xl md:text-[6rem] lg:text-[15rem] tracking-[-0.08em]`}>umar</span>
                                 <span className={`block ${theme === 'dark' ? 'text-white' : 'text-black'} text-6xl md:text-[8rem] lg:text-[16rem] tracking-[-0.08em] leading-[0.60] pb-14`}>Nishant`</span>
@@ -841,23 +717,23 @@ function getGridSpan(index) {
                     ref={aboutContentRef}
                     className="w-full"
                 >
-                    <h2 className="text-6xl md:text-5xl font-bold mb-8 text-hover">
+                    <h2 className="text-6xl md:text-5xl font-bold mb-8">
                         About <span className={accentClass}>Me</span>
                     </h2>
 
-                    <p className="text-lg mb-6 opacity-90 text-hover">
+                    <p className="text-lg mb-6 opacity-90">
                         I'm K. Nishant, a passionate full-stack developer with expertise in <span className="font-medium">Java Spring Boot</span> and <span className="font-medium">React.js</span>.
                         My journey in web development focuses on building scalable applications with clean architecture and optimized performance.
                     </p>
 
-                    <p className="text-lg mb-8 opacity-90 text-hover">
+                    <p className="text-lg mb-8 opacity-90">
                         Through my projects, I've achieved up to <span className="font-medium">40% performance gains</span> and <span className="font-medium">50% security improvements</span>.
                         I'm constantly exploring modern tools like Vite, Tailwind CSS, and AI platforms to create innovative solutions.
                     </p>
 
                     <a
                         href="#contact"
-                        className={`inline-block px-6 py-3 border-2 ${theme === 'dark' ? 'border-white hover:bg-white hover:text-black' : 'border-black hover:bg-black hover:text-white'} rounded-full transition-colors duration-300 link-hover`}
+                        className={`inline-block px-6 py-3 border-2 ${theme === 'dark' ? 'border-white hover:bg-white hover:text-black' : 'border-black hover:bg-black hover:text-white'} rounded-full transition-colors duration-300`}
                     >
                         Let's Connect
                     </a>
@@ -875,7 +751,7 @@ function getGridSpan(index) {
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-22 relative text-right">
                         <h2 className={`text-4xl md:text-5xl font-bold uppercase tracking-[-0.08em] ${theme === 'dark' ? 'text-white/10' : 'text-black/10'}`}>
-                            Technical <span className={`text-lg lg:text-8xl font-[700] leading-none mb-6 text-hover ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Skills</span>
+                            Technical <span className={`text-lg lg:text-8xl font-[700] leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Skills</span>
                         </h2>
                         <p className={`text-right text-base md:text-lg mt-2 w-full opacity-70 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
                             Frontend, backend, databases, and DevOps expertise.
@@ -947,7 +823,7 @@ function getGridSpan(index) {
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-12 relative pb-24">
                         <h2 className={`text-4xl md:text-5xl font-bold uppercase tracking-[-0.08em] ${theme === 'dark' ? 'text-white/10' : 'text-black/10'}`}>
-                            <span className={`text-lg lg:text-8xl font-[700] leading-none mb-6 text-hover ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Development</span> Stats
+                            <span className={`text-lg lg:text-8xl font-[700] leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Development</span> Stats
                         </h2>
                         <p className={`text-base md:text-lg mt-2 w-2/3 opacity-70 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
                             My coding journey in numbers.
@@ -1054,10 +930,10 @@ function getGridSpan(index) {
             >
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-12">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-hover">
+                        <h2 className="text-4xl md:text-5xl font-bold mb-4">
                             Featured <span className={accentClass}>Projects</span>
                         </h2>
-                        <p className="text-lg max-w-2xl opacity-90 text-hover">
+                        <p className="text-lg max-w-2xl opacity-90">
                             A selection of my recent work showcasing full-stack development expertise.
                         </p>
                     </div>
@@ -1065,7 +941,7 @@ function getGridSpan(index) {
                     <div className="mb-12 flex flex-wrap gap-2">
                         <button
                             onClick={() => setActiveTab('all')}
-                            className={`px-4 py-2 rounded-full text-sm ${activeTab === 'all' ? (theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white') : (theme === 'dark' ? 'bg-white/10' : 'bg-black/10')} link-hover`}
+                            className={`px-4 py-2 rounded-full text-sm ${activeTab === 'all' ? (theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white') : (theme === 'dark' ? 'bg-white/10' : 'bg-black/10')}`}
                         >
                             All Projects
                         </button>
@@ -1073,7 +949,7 @@ function getGridSpan(index) {
                             <button
                                 key={category}
                                 onClick={() => setActiveTab(category)}
-                                className={`px-4 py-2 rounded-full text-sm capitalize ${activeTab === category ? (theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white') : (theme === 'dark' ? 'bg-white/10' : 'bg-black/10')} link-hover`}
+                                className={`px-4 py-2 rounded-full text-sm capitalize ${activeTab === category ? (theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white') : (theme === 'dark' ? 'bg-white/10' : 'bg-black/10')}`}
                             >
                                 {category}
                             </button>
@@ -1085,7 +961,7 @@ function getGridSpan(index) {
                             <div
                                 key={index}
                                 ref={addProjectToRefs}
-                                className={`group relative overflow-hidden rounded-2xl hover-scale transition-transform duration-500 project-hover ${cardBgClass} border ${borderClass}`}
+                                className={`group relative overflow-hidden rounded-2xl hover-scale transition-transform duration-500 ${cardBgClass} border ${borderClass}`}
                             >
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                                     <div className="relative h-64 lg:h-auto overflow-hidden">
@@ -1100,11 +976,11 @@ function getGridSpan(index) {
 
                                     <div className="p-8 flex flex-col justify-between">
                                         <div>
-                                            <h3 className="text-2xl font-bold mb-4 text-hover">{project.title}</h3>
-                                            <p className="mb-4 opacity-90 text-hover">{project.description}</p>
+                                            <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
+                                            <p className="mb-4 opacity-90">{project.description}</p>
                                             <div className="mb-6">
-                                                <h4 className="font-medium mb-2 text-hover">Impact:</h4>
-                                                <p className="text-sm opacity-80 text-hover">{project.impact}</p>
+                                                <h4 className="font-medium mb-2">Impact:</h4>
+                                                <p className="text-sm opacity-80">{project.impact}</p>
                                             </div>
                                         </div>
 
@@ -1121,7 +997,7 @@ function getGridSpan(index) {
                                                 href={project.link}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className={`inline-flex items-center px-4 py-2 ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'} rounded-full text-sm transition-colors duration-300 link-hover`}
+                                                className={`inline-flex items-center px-4 py-2 ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'} rounded-full text-sm transition-colors duration-300`}
                                             >
                                                 View Project <FiExternalLink className="ml-2" />
                                             </a>
@@ -1142,10 +1018,10 @@ function getGridSpan(index) {
             >
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-20">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-hover">
+                        <h2 className="text-4xl md:text-5xl font-bold mb-4">
                             Career <span className={accentClass}>Timeline</span>
                         </h2>
-                        <p className="text-lg max-w-2xl opacity-80 text-hover">
+                        <p className="text-lg max-w-2xl opacity-80">
                             My professional journey and key milestones.
                         </p>
                     </div>
@@ -1165,8 +1041,8 @@ function getGridSpan(index) {
                                     </div>
                                     <div className={`p-6 ${cardBgClass} rounded-lg border ${borderClass}`}>
                                         <div className={`text-sm font-medium mb-1 ${theme === 'dark' ? 'text-white/80' : 'text-black/80'}`}>{item.year}</div>
-                                        <h3 className="text-xl font-bold mb-2 text-hover">{item.title}</h3>
-                                        <p className="opacity-90 text-hover">{item.description}</p>
+                                        <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                                        <p className="opacity-90">{item.description}</p>
                                     </div>
                                 </div>
                             ))}
@@ -1183,10 +1059,10 @@ function getGridSpan(index) {
             >
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-20">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-hover">
+                        <h2 className="text-4xl md:text-5xl font-bold mb-4">
                             Latest <span className={accentClass}>Articles</span>
                         </h2>
-                        <p className="text-lg max-w-2xl opacity-80 text-hover">
+                        <p className="text-lg max-w-2xl opacity-80">
                             Thoughts on development, design, and technology.
                         </p>
                     </div>
@@ -1205,11 +1081,11 @@ function getGridSpan(index) {
                                         <span className={`text-xs ${theme === 'dark' ? 'text-white/80' : 'text-black/80'}`}>{post.date}</span>
                                         <span className={`text-xs ${theme === 'dark' ? 'bg-white/10' : 'bg-black/10'} px-2 py-1 rounded-full`}>{post.readTime} read</span>
                                     </div>
-                                    <h3 className="text-xl font-bold mb-3 text-hover">{post.title}</h3>
-                                    <p className="mb-4 opacity-90 text-hover">{post.excerpt}</p>
+                                    <h3 className="text-xl font-bold mb-3">{post.title}</h3>
+                                    <p className="mb-4 opacity-90">{post.excerpt}</p>
                                     <a
                                         href={post.link}
-                                        className={`inline-flex items-center text-sm ${theme === 'dark' ? 'text-white hover:text-white/80' : 'text-black hover:text-black/80'} transition-colors duration-300 link-hover`}
+                                        className={`inline-flex items-center text-sm ${theme === 'dark' ? 'text-white hover:text-white/80' : 'text-black hover:text-black/80'} transition-colors duration-300`}
                                     >
                                         Read more <FiArrowRight className="ml-1" />
                                     </a>
@@ -1263,10 +1139,10 @@ function getGridSpan(index) {
             >
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-20">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-hover">
+                        <h2 className="text-4xl md:text-5xl font-bold mb-4">
                             Visitor <span className={accentClass}>Guestbook</span>
                         </h2>
-                        <p className="text-lg max-w-2xl opacity-80 text-hover">
+                        <p className="text-lg max-w-2xl opacity-80">
                             Leave a message or feedback. I'd love to hear from you!
                         </p>
                     </div>
@@ -1275,7 +1151,7 @@ function getGridSpan(index) {
                         <div>
                             <form onSubmit={handleGuestbookSubmit} className="space-y-6">
                                 <div>
-                                    <label htmlFor="name" className="block mb-2 font-medium text-hover">Name</label>
+                                    <label htmlFor="name" className="block mb-2 font-medium">Name</label>
                                     <input
                                         type="text"
                                         id="name"
@@ -1287,7 +1163,7 @@ function getGridSpan(index) {
                                 </div>
 
                                 <div>
-                                    <label htmlFor="message" className="block mb-2 font-medium text-hover">Message</label>
+                                    <label htmlFor="message" className="block mb-2 font-medium">Message</label>
                                     <textarea
                                         id="message"
                                         rows="5"
@@ -1300,7 +1176,7 @@ function getGridSpan(index) {
 
                                 <button
                                     type="submit"
-                                    className={`px-6 py-3 ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'} rounded-full transition-colors duration-300 link-hover`}
+                                    className={`px-6 py-3 ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'} rounded-full transition-colors duration-300`}
                                 >
                                     Submit Message
                                 </button>
@@ -1308,7 +1184,7 @@ function getGridSpan(index) {
                         </div>
 
                         <div className="space-y-6">
-                            <h3 className="text-xl font-bold text-hover">Recent Messages</h3>
+                            <h3 className="text-xl font-bold">Recent Messages</h3>
                             <div className="space-y-4">
                                 {guestbookEntries.map((entry) => (
                                     <div
@@ -1317,10 +1193,10 @@ function getGridSpan(index) {
                                         className={`guestbook-entry p-4 ${theme === 'dark' ? 'bg-white/5' : 'bg-black/5'} rounded-lg border ${borderClass}`}
                                     >
                                         <div className="flex justify-between items-start mb-2">
-                                            <h4 className="font-medium text-hover">{entry.name}</h4>
+                                            <h4 className="font-medium">{entry.name}</h4>
                                             <span className={`text-xs ${theme === 'dark' ? 'text-white/60' : 'text-black/60'}`}>{entry.date}</span>
                                         </div>
-                                        <p className="text-sm opacity-90 text-hover">{entry.message}</p>
+                                        <p className="text-sm opacity-90">{entry.message}</p>
                                     </div>
                                 ))}
                             </div>
@@ -1338,16 +1214,16 @@ function getGridSpan(index) {
                 <div className="max-w-3xl mx-auto">
                     <h2
                         ref={titleRef}
-                        className="text-5xl md:text-6xl font-bold mb-6 text-hover"
+                        className="text-5xl md:text-6xl font-bold mb-6"
                     >
                         Let's <span className={accentClass}>Collaborate</span>
                     </h2>
-                    <p className="text-xl mb-8 opacity-90 text-hover">
+                    <p className="text-xl mb-8 opacity-90">
                         Interested in collaborating on a project? I'm available for freelance work and open to new opportunities.
                     </p>
                     <a
                         href="#contact"
-                        className={`inline-block px-8 py-4 ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'} rounded-full font-medium transition-colors duration-300 link-hover`}
+                        className={`inline-block px-8 py-4 ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'} rounded-full font-medium transition-colors duration-300`}
                     >
                         Get In Touch
                     </a>
@@ -1362,10 +1238,10 @@ function getGridSpan(index) {
             >
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-20">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-hover">
+                        <h2 className="text-4xl md:text-5xl font-bold mb-4">
                             Get In <span className={accentClass}>Touch</span>
                         </h2>
-                        <p className="text-lg max-w-2xl opacity-90 text-hover">
+                        <p className="text-lg max-w-2xl opacity-90">
                             Have a project in mind or want to discuss potential opportunities?
                             I'd love to hear from you.
                         </p>
@@ -1375,7 +1251,7 @@ function getGridSpan(index) {
                         <div ref={formRef} className={`p-8 ${theme === 'dark' ? 'bg-white/5' : 'bg-black/5'} rounded-xl border ${borderClass}`}>
                             <form className="space-y-6">
                                 <div>
-                                    <label htmlFor="name" className="block mb-2 font-medium text-hover">Name</label>
+                                    <label htmlFor="name" className="block mb-2 font-medium">Name</label>
                                     <input
                                         type="text"
                                         id="name"
@@ -1384,7 +1260,7 @@ function getGridSpan(index) {
                                 </div>
 
                                 <div>
-                                    <label htmlFor="email" className="block mb-2 font-medium text-hover">Email</label>
+                                    <label htmlFor="email" className="block mb-2 font-medium">Email</label>
                                     <input
                                         type="email"
                                         id="email"
@@ -1393,7 +1269,7 @@ function getGridSpan(index) {
                                 </div>
 
                                 <div>
-                                    <label htmlFor="message" className="block mb-2 font-medium text-hover">Message</label>
+                                    <label htmlFor="message" className="block mb-2 font-medium">Message</label>
                                     <textarea
                                         id="message"
                                         rows="5"
@@ -1403,7 +1279,7 @@ function getGridSpan(index) {
 
                                 <button
                                     type="submit"
-                                    className={`px-8 py-4 ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'} rounded-full transition-colors duration-300 link-hover`}
+                                    className={`px-8 py-4 ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'} rounded-full transition-colors duration-300`}
                                 >
                                     Send Message
                                 </button>
@@ -1412,8 +1288,8 @@ function getGridSpan(index) {
 
                         <div ref={infoRef} className="space-y-8">
                             <div>
-                                <h3 className="text-xl font-bold mb-4 text-hover">Contact Information</h3>
-                                <p className="mb-6 opacity-90 text-hover">Feel free to reach out through any of these channels:</p>
+                                <h3 className="text-xl font-bold mb-4">Contact Information</h3>
+                                <p className="mb-6 opacity-90">Feel free to reach out through any of these channels:</p>
 
                                 <div className="space-y-4">
                                     <div className="flex items-start">
@@ -1421,8 +1297,8 @@ function getGridSpan(index) {
                                             <FiMail className={`w-5 h-5 ${theme === 'dark' ? 'text-white' : 'text-black'}`} />
                                         </div>
                                         <div>
-                                            <h4 className="font-medium text-hover">Email</h4>
-                                            <p className="text-sm opacity-80 text-hover">me.knishant@gmail.com</p>
+                                            <h4 className="font-medium">Email</h4>
+                                            <p className="text-sm opacity-80">me.knishant@gmail.com</p>
                                         </div>
                                     </div>
 
@@ -1431,8 +1307,8 @@ function getGridSpan(index) {
                                             <FiPhone className={`w-5 h-5 ${theme === 'dark' ? 'text-white' : 'text-black'}`} />
                                         </div>
                                         <div>
-                                            <h4 className="font-medium text-hover">Phone</h4>
-                                            <p className="text-sm opacity-80 text-hover">+91 8986412823</p>
+                                            <h4 className="font-medium">Phone</h4>
+                                            <p className="text-sm opacity-80">+91 8986412823</p>
                                         </div>
                                     </div>
 
@@ -1441,40 +1317,40 @@ function getGridSpan(index) {
                                             <FiMapPin className={`w-5 h-5 ${theme === 'dark' ? 'text-white' : 'text-black'}`} />
                                         </div>
                                         <div>
-                                            <h4 className="font-medium text-hover">Location</h4>
-                                            <p className="text-sm opacity-80 text-hover">Bhagalpur, Bihar, India</p>
+                                            <h4 className="font-medium">Location</h4>
+                                            <p className="text-sm opacity-80">Bhagalpur, Bihar, India</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div>
-                                <h3 className="text-xl font-bold mb-4 text-hover">Connect With Me</h3>
+                                <h3 className="text-xl font-bold mb-4">Connect With Me</h3>
                                 <div className="flex space-x-4">
                                     <a
                                         href="#"
-                                        className={`w-12 h-12 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white hover:text-black' : 'bg-black/10 hover:bg-black hover:text-white'} flex items-center justify-center transition-colors duration-300 link-hover`}
+                                        className={`w-12 h-12 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white hover:text-black' : 'bg-black/10 hover:bg-black hover:text-white'} flex items-center justify-center transition-colors duration-300`}
                                     >
                                         <FiGithub className="w-5 h-5" />
                                         <span className="sr-only">GitHub</span>
                                     </a>
                                     <a
                                         href="#"
-                                        className={`w-12 h-12 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white hover:text-black' : 'bg-black/10 hover:bg-black hover:text-white'} flex items-center justify-center transition-colors duration-300 link-hover`}
+                                        className={`w-12 h-12 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white hover:text-black' : 'bg-black/10 hover:bg-black hover:text-white'} flex items-center justify-center transition-colors duration-300`}
                                     >
                                         <FiTwitter className="w-5 h-5" />
                                         <span className="sr-only">Twitter</span>
                                     </a>
                                     <a
                                         href="#"
-                                        className={`w-12 h-12 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white hover:text-black' : 'bg-black/10 hover:bg-black hover:text-white'} flex items-center justify-center transition-colors duration-300 link-hover`}
+                                        className={`w-12 h-12 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white hover:text-black' : 'bg-black/10 hover:bg-black hover:text-white'} flex items-center justify-center transition-colors duration-300`}
                                     >
                                         <FiLinkedin className="w-5 h-5" />
                                         <span className="sr-only">LinkedIn</span>
                                     </a>
                                     <a
                                         href="#"
-                                        className={`w-12 h-12 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white hover:text-black' : 'bg-black/10 hover:bg-black hover:text-white'} flex items-center justify-center transition-colors duration-300 link-hover`}
+                                        className={`w-12 h-12 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white hover:text-black' : 'bg-black/10 hover:bg-black hover:text-white'} flex items-center justify-center transition-colors duration-300`}
                                     >
                                         <FiDribbble className="w-5 h-5" />
                                         <span className="sr-only">Dribbble</span>
@@ -1497,7 +1373,7 @@ function getGridSpan(index) {
                             <div className="text-xl font-bold tracking-tight">
                                 <span className={accentClass}>K.</span>NISHANT
                             </div>
-                            <p className="mt-2 text-sm opacity-80 text-hover">
+                            <p className="mt-2 text-sm opacity-80">
                                 Full-Stack Developer specializing in Java Spring Boot and React.js
                             </p>
                         </div>
@@ -1507,7 +1383,7 @@ function getGridSpan(index) {
                                 <a
                                     key={index}
                                     href={`#${item.toLowerCase()}`}
-                                    className="text-xs hover:opacity-80 transition-opacity duration-300 link-hover"
+                                    className="text-xs hover:opacity-80 transition-opacity duration-300"
                                 >
                                     {item}
                                 </a>
@@ -1516,13 +1392,13 @@ function getGridSpan(index) {
                     </div>
 
                     <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                        <p className="text-sm opacity-80 mb-4 md:mb-0 text-hover">
+                        <p className="text-sm opacity-80 mb-4 md:mb-0">
                             © <span ref={yearRef}>2023</span> K. Nishant. All Rights Reserved.
                         </p>
 
                         <div className="flex space-x-4">
-                            <a href="#" className="text-xs hover:opacity-80 transition-opacity duration-300 link-hover">Privacy Policy</a>
-                            <a href="#" className="text-xs hover:opacity-80 transition-opacity duration-300 link-hover">Terms of Service</a>
+                            <a href="#" className="text-xs hover:opacity-80 transition-opacity duration-300">Privacy Policy</a>
+                            <a href="#" className="text-xs hover:opacity-80 transition-opacity duration-300">Terms of Service</a>
                         </div>
                     </div>
                 </div>
