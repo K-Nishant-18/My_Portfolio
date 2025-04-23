@@ -708,37 +708,37 @@ function getGridSpan(index) {
             </section>
 
             {/* About Section */}
-            <section
-                ref={aboutRef}
-                id="about"
-                className={`min-h-screen py-20 px-8 md:px-16 lg:px-24 flex flex-col md:flex-row items-center justify-center gap-16 ${bgClass}`}
-            >
-                <div
-                    ref={aboutContentRef}
-                    className="w-full"
-                >
-                    <h2 className="text-6xl md:text-5xl font-bold mb-8">
-                        About <span className={accentClass}>Me</span>
-                    </h2>
+<section
+    ref={aboutRef}
+    id="about"
+    className={`min-h-screen py-20 px-8 md:px-16 lg:px-24 flex flex-col items-center justify-center ${bgClass}`}
+>
+    <div
+        ref={aboutContentRef}
+        className="max-w-3xl mx-auto text-center"
+    >
+        <h2 className="text-6xl md:text-5xl font-bold mb-8">
+            About <span className={accentClass}>Me</span>
+        </h2>
 
-                    <p className="text-lg mb-6 opacity-90">
-                        I'm K. Nishant, a passionate full-stack developer with expertise in <span className="font-medium">Java Spring Boot</span> and <span className="font-medium">React.js</span>.
-                        My journey in web development focuses on building scalable applications with clean architecture and optimized performance.
-                    </p>
+        <p className="text-lg mb-6 opacity-90">
+            I'm K. Nishant, a passionate full-stack developer with expertise in <span className="font-medium">Java Spring Boot</span> and <span className="font-medium">React.js</span>.
+            My journey in web development focuses on building scalable applications with clean architecture and optimized performance.
+        </p>
 
-                    <p className="text-lg mb-8 opacity-90">
-                        Through my projects, I've achieved up to <span className="font-medium">40% performance gains</span> and <span className="font-medium">50% security improvements</span>.
-                        I'm constantly exploring modern tools like Vite, Tailwind CSS, and AI platforms to create innovative solutions.
-                    </p>
+        <p className="text-lg mb-8 opacity-90">
+            Through my projects, I've achieved up to <span className="font-medium">40% performance gains</span> and <span className="font-medium">50% security improvements</span>.
+            I'm constantly exploring modern tools like Vite, Tailwind CSS, and AI platforms to create innovative solutions.
+        </p>
 
-                    <a
-                        href="#contact"
-                        className={`inline-block px-6 py-3 border-2 ${theme === 'dark' ? 'border-white hover:bg-white hover:text-black' : 'border-black hover:bg-black hover:text-white'} rounded-full transition-colors duration-300`}
-                    >
-                        Let's Connect
-                    </a>
-                </div>
-            </section>
+        <a
+            href="#contact"
+            className={`inline-block px-6 py-3 border-2 ${theme === 'dark' ? 'border-white hover:bg-white hover:text-black' : 'border-black hover:bg-black hover:text-white'} rounded-full transition-colors duration-300`}
+        >
+            Let's Connect
+        </a>
+    </div>
+</section>
 
             {/* Skills Section */}
             <section
