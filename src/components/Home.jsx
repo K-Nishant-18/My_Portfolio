@@ -27,6 +27,8 @@ export default function Home() {
     ])
 
 
+
+    
     // Helper function to add refs to the arrays
     const addToContactItemsRef = (el, index) => {
         if (el && !contactItemsRef.current[index]) {
@@ -326,28 +328,16 @@ export default function Home() {
     ]
 
 
-    // Helper function to assign asymmetric grid spans for visual interest
-    function getGridSpan(index) {
-        const pattern = [
-            'col-span-2 row-span-2', // Larger item
-            'col-span-1 row-span-1', // Smaller item
-            'col-span-1 row-span-1', // Smaller item
-            'col-span-2 row-span-1', // Medium item
-            'col-span-1 row-span-2', // Tall item
-            'col-span-1 row-span-1'  // Smaller item
-        ];
-        return pattern[index % pattern.length];
-    }
+ // Gallery images
+const galleryImages = [
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+]
 
-    // Gallery images
-    const galleryImages = [
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-        "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
-        "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-        "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80",
-        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-    ]
 
     // Timeline items - based on your resume
     const timelineItems = [
@@ -660,6 +650,99 @@ export default function Home() {
                 });
             }
         });
+
+        gsap.registerPlugin(ScrollTrigger)
+
+    const scrollEl = document.querySelector('[data-scroll-container]')
+    if (!scrollEl) {
+        console.error('Data-scroll-container not found. Please add [data-scroll-container] to your root div.')
+        return
+    }
+
+    const scroll = new LocomotiveScroll({
+        el: scrollEl,
+        smooth: true,
+        multiplier: 0.7
+    })
+
+    scroll.on('scroll', () => {
+        ScrollTrigger.update()
+    })
+
+    ScrollTrigger.scrollerProxy(scrollEl, {
+        scrollTop(value) {
+            return arguments.length ? scroll.scrollTo(value, 0, 0) : scroll.scroll.instance.scroll.y
+        },
+        getBoundingClientRect() {
+            return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight }
+        },
+        pinType: scrollEl.style.transform ? 'transform' : 'fixed'
+    })
+
+    // GSAP Animations for Images
+    const images = ['pic1', 'pic2', 'pic3', 'pic4', 'pic5', 'pic6']
+    images.forEach((id) => {
+        const el = window[id]
+        if (el) {
+            gsap.fromTo(
+                el,
+                { scale: 0.7, opacity: 0, rotation: -5, y: 100 },
+                {
+                    scale: 1,
+                    opacity: 1,
+                    rotation: 0,
+                    y: 0,
+                    duration: 1.5,
+                    ease: 'elastic.out(1, 0.5)',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 90%',
+                        end: 'bottom 50%',
+                        scrub: 0.5
+                    }
+                }
+            )
+        }
+    })
+
+    // Advanced Hover Effect (3D Tilt)
+    images.forEach((id) => {
+        const el = window[id]
+        if (el) {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect()
+                const mouseX = e.clientX - rect.left
+                const mouseY = e.clientY - rect.top
+                const centerX = rect.width / 2
+                const centerY = rect.height / 2
+                const rotateX = (mouseY - centerY) / 20
+                const rotateY = (centerX - mouseX) / 20
+
+                gsap.to(el, {
+                    rotationX: rotateX,
+                    rotationY: rotateY,
+                    scale: 1.1,
+                    boxShadow: '0 10px 20px rgba(0,0,0,0.3)',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                })
+            })
+
+            el.addEventListener('mouseleave', () => {
+                gsap.to(el, {
+                    rotationX: 0,
+                    rotationY: 0,
+                    scale: 1,
+                    boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
+                    duration: 0.5,
+                    ease: 'power2.out'
+                })
+            })
+        }
+    })
+
+    ScrollTrigger.addEventListener('refresh', () => scroll.update())
+    ScrollTrigger.refresh()
 
         return () => {
             lenis.destroy()
@@ -1227,38 +1310,101 @@ export default function Home() {
 
             {/* Gallery Section */}
             <section
-                ref={galleryRef}
-                id="gallery"
-                className={`py-16 px-6 md:px-12 lg:px-16 ${theme === 'dark' ? 'bg-neutral-900' : 'bg-white'}`}
-            >
-                <div className="max-w-[1200px] mx-auto">
-                    {/* Header */}
-                    <div className="mb-12">
-                        <h2 className={`text-4xl md:text-5xl font-extrabold tracking-tight font-sans ${theme === 'dark' ? 'text-white' : 'text-black'} mb-3`}>
-                            Design <span className={accentClass}>Gallery</span>
-                        </h2>
-                        <p className={`text-base font-light tracking-wide font-sans max-w-xl ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'}`}>
-                            Visual inspiration and design explorations.
-                        </p>
-                    </div>
+    ref={galleryRef}
+    id="gallery"
+    className={`py-20 px-6 md:px-12 lg:px-20 ${theme === 'dark' ? 'bg-neutral-900' : 'bg-gray-100'} relative overflow-hidden`}
+    data-scroll-section
+>
+    <div className="max-w-8xl mx-auto relative z-10">
+        {/* Heading and Tagline */}
+        <div
+            className={`absolute bottom-10 left-10 w-[35%] md:w-[25%] lg:w-[20%] p-6 ${theme === 'dark' ? 'bg-white/15' : 'bg-black/15'} rounded-xl shadow-lg transform -translate-y-8 translate-x-8 z-30`}
+            data-scroll
+            data-scroll-speed="0.6"
+        >
+            <h2 className={`text-3xl md:text-4xl font-sans font-bold uppercase tracking-widest ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+                Visionary <span className={accentClass}>Gallery</span>
+            </h2>
+            <p className={`mt-2 text-sm font-sans ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'}`}>
+                Unleash Creative Inspiration
+            </p>
+        </div>
 
-                    {/* Gallery Grid */}
-                    <div className="grid grid-cols-4 gap-4">
-                        {galleryImages.map((image, index) => (
-                            <div
-                                key={index}
-                                className={`gallery-item overflow-hidden ${getGridSpan(index)}`}
-                            >
-                                <img
-                                    src={image}
-                                    alt={`Gallery image ${index + 1}`}
-                                    className={`w-full h-full object-cover transition-transform duration-300 hover:scale-105 ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'} border`}
-                                />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+        {/* Images Layout */}
+        <div className="relative h-[600px] md:h-[700px] lg:h-[800px]">
+            {/* Pic-1 (Top Left, Small) */}
+            <div
+                ref={el => (window['pic1'] = el)}
+                className={`absolute top-20 left-10 w-[18%] md:w-[14%] lg:w-[12%] z-20 ${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-md`}
+                data-scroll
+                data-scroll-speed="1.2"
+            >
+                <img src={galleryImages[0]} alt="Pic-1" className="w-full h-full object-cover" />
+            </div>
+
+            {/* Pic-2 (Top Center, Medium) */}
+            <div
+                ref={el => (window['pic2'] = el)}
+                className={`absolute top-10 left-[25%] md:left-[20%] lg:left-[18%] w-[25%] md:w-[20%] lg:w-[18%] z-25 ${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-md`}
+                data-scroll
+                data-scroll-speed="0.9"
+            >
+                <img src={galleryImages[1]} alt="Pic-2" className="w-full h-full object-cover" />
+            </div>
+
+            {/* Pic-3 (Top Right, Large) */}
+            <div
+                ref={el => (window['pic3'] = el)}
+                className={`absolute top-5 right-10 w-[35%] md:w-[30%] lg:w-[25%] z-15 ${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-md`}
+                data-scroll
+                data-scroll-speed="1.4"
+            >
+                <img src={galleryImages[2]} alt="Pic-3" className="w-full h-full object-cover" />
+            </div>
+
+            {/* Pic-4 (Bottom Left, Medium) */}
+            <div
+                ref={el => (window['pic4'] = el)}
+                className={`absolute bottom-20 left-20 w-[30%] md:w-[25%] lg:w-[20%] z-30 ${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-md`}
+                data-scroll
+                data-scroll-speed="1.1"
+            >
+                <img src={galleryImages[3]} alt="Pic-4" className="w-full h-full object-cover" />
+            </div>
+
+            {/* Pic-5 (Bottom Right, Small) */}
+            <div
+                ref={el => (window['pic5'] = el)}
+                className={`absolute bottom-10 right-20 w-[20%] md:w-[15%] lg:w-[12%] z-35 ${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-md`}
+                data-scroll
+                data-scroll-speed="1.3"
+            >
+                <img src={galleryImages[4]} alt="Pic-5" className="w-full h-full object-cover" />
+            </div>
+
+            {/* Pic-6 (Top Far Left, Tiny) */}
+            <div
+                ref={el => (window['pic6'] = el)}
+                className={`absolute top-5 left-5 w-[12%] md:w-[10%] lg:w-[8%] z-10 ${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-md`}
+                data-scroll
+                data-scroll-speed="1.5"
+            >
+                <img src={galleryImages[5]} alt="Pic-6" className="w-full h-full object-cover" />
+            </div>
+
+            {/* Parallax Background */}
+            <div
+                className={`absolute inset-0 z-0 ${theme === 'dark' ? 'bg-gradient-to-br from-neutral-900/50 to-gray-950/70' : 'bg-gradient-to-br from-gray-100/50 to-white/70'}`}
+                data-scroll
+                data-scroll-speed="-0.5"
+            ></div>
+            {/* Decorative Accent */}
+            <div
+                className={`absolute -top-20 -left-20 w-48 h-48 rounded-full ${theme === 'dark' ? 'bg-white/15' : 'bg-black/15'} animate-pulse-slow`}
+            ></div>
+        </div>
+    </div>
+</section>
 
             {/* Testimonial Section */}
 
@@ -1343,7 +1489,7 @@ export default function Home() {
                             href="#contact"
                             className={`text-right inline-block px-8 py-4 ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'} rounded-full font-medium transition-colors duration-300`}
                         >
-                            Get In Touch
+                            Contact me
                         </a>
                     </div>
                 </div>
