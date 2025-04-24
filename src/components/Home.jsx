@@ -963,7 +963,7 @@ export default function Home() {
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-22 relative text-right">
                         <h2 className={`text-4xl  md:text-6xl font-bold  tracking-[-0.08em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
-                           <span className='caveat-bold'> Technical </span><span className={`text-lg lg:text-8xl font-[700] uppercase leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Skills</span>
+                            <span className='caveat-bold'> Technical </span><span className={`text-lg lg:text-8xl font-[700] uppercase leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Skills</span>
                         </h2>
                         <p className={`text-right text-base md:text-lg mt-2 w-full opacity-70 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
                             Frontend, backend, databases, and DevOps expertise.
@@ -1035,7 +1035,7 @@ export default function Home() {
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-12 relative pb-24">
                         <h2 className={`text-4xl md:text-6xl font-bold  tracking-[-0.1em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
-                            <span className={`text-lg lg:text-8xl uppercase font-[700] leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Development</span> <span className='caveat-bold'>Numbers</span> 
+                            <span className={`text-lg lg:text-8xl uppercase font-[700] leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Development</span> <span className='caveat-bold'>Numbers</span>
                         </h2>
                         <p className={`text-base md:text-lg mt-2 w-2/3 opacity-70 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
                             My coding journey in numbers.
@@ -1140,28 +1140,45 @@ export default function Home() {
                 id="projects"
                 className={`py-20 px-8 md:px-16 lg:px-24 ${bgClass}`}
             >
-                <div className="max-w-6xl mx-auto">
-                    <div className="mb-12">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                            Featured <span className={accentClass}>Projects</span>
+                <div className="max-w-6xl ml-auto">
+                    <div className="mb-12 text-right">
+                        <h2
+                            className={`text-lg lg:text-[12rem] font-[700] tracking-[-0.08em] ${theme === "dark" ? "text-white" : "text-black"
+                                }`}
+                        >
+                            Projects
                         </h2>
-                        <p className="text-lg max-w-2xl opacity-90">
-                            A selection of my recent work showcasing full-stack development expertise.
+                        <p className={`text-lg max-w-2xl opacity-90 ml-auto `} style={{ transform: 'translateY(-160%)' }}>
+                            A selection of my recent work.
                         </p>
                     </div>
 
-                    <div className="mb-12 flex flex-wrap gap-2">
+                    <div className="mb-12 flex flex-wrap gap-2 justify-end">
                         <button
-                            onClick={() => setActiveTab('all')}
-                            className={`px-4 py-2 rounded-full text-sm ${activeTab === 'all' ? (theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white') : (theme === 'dark' ? 'bg-white/10' : 'bg-black/10')}`}
+                            onClick={() => setActiveTab("all")}
+                            className={`px-4 py-2 rounded-full text-sm ${activeTab === "all"
+                                    ? theme === "dark"
+                                        ? "bg-white text-black"
+                                        : "bg-black text-white"
+                                    : theme === "dark"
+                                        ? "bg-white/10"
+                                        : "bg-black/10"
+                                }`}
                         >
                             All Projects
                         </button>
-                        {['web', 'ai'].map((category) => (
+                        {["web", "ai"].map((category) => (
                             <button
                                 key={category}
                                 onClick={() => setActiveTab(category)}
-                                className={`px-4 py-2 rounded-full text-sm capitalize ${activeTab === category ? (theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white') : (theme === 'dark' ? 'bg-white/10' : 'bg-black/10')}`}
+                                className={`px-4 py-2 rounded-full text-sm capitalize ${activeTab === category
+                                        ? theme === "dark"
+                                            ? "bg-white text-black"
+                                            : "bg-black text-white"
+                                        : theme === "dark"
+                                            ? "bg-white/10"
+                                            : "bg-black/10"
+                                    }`}
                             >
                                 {category}
                             </button>
@@ -1183,7 +1200,10 @@ export default function Home() {
                                             alt={project.title}
                                             className="w-full h-full object-cover absolute inset-0"
                                         />
-                                        <div className={`absolute inset-0 ${theme === 'dark' ? 'bg-black/30' : 'bg-white/30'} transition-opacity duration-300 group-hover:opacity-0`}></div>
+                                        <div
+                                            className={`absolute inset-0 ${theme === "dark" ? "bg-black/30" : "bg-white/30"
+                                                } transition-opacity duration-300 group-hover:opacity-0`}
+                                        ></div>
                                     </div>
 
                                     <div className="p-8 flex flex-col justify-between">
@@ -1199,7 +1219,11 @@ export default function Home() {
                                         <div>
                                             <div className="flex flex-wrap gap-2 mb-6">
                                                 {project.tags.map((tag, i) => (
-                                                    <span key={i} className={`px-3 py-1.5 ${theme === 'dark' ? 'bg-white/10' : 'bg-black/10'} rounded-full text-xs`}>
+                                                    <span
+                                                        key={i}
+                                                        className={`px-3 py-1.5 ${theme === "dark" ? "bg-white/10" : "bg-black/10"
+                                                            } rounded-full text-xs`}
+                                                    >
                                                         {tag}
                                                     </span>
                                                 ))}
@@ -1209,7 +1233,10 @@ export default function Home() {
                                                 href={project.link}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className={`inline-flex items-center px-4 py-2 ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'} rounded-full text-sm transition-colors duration-300`}
+                                                className={`inline-flex items-center px-4 py-2 ${theme === "dark"
+                                                        ? "bg-white text-black hover:bg-gray-200"
+                                                        : "bg-black text-white hover:bg-gray-800"
+                                                    } rounded-full text-sm transition-colors duration-300`}
                                             >
                                                 View Project <FiExternalLink className="ml-2" />
                                             </a>
@@ -1229,13 +1256,11 @@ export default function Home() {
                 className={`py-20 px-8 md:px-16 lg:px-24 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'}`}
             >
                 <div className="max-w-6xl mx-auto">
-                    <div className="mb-20">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                            Career <span className={accentClass}>Timeline</span>
+                <div className="mb-0 text-left">
+                        <h2 className={`text-lg lg:text-8xl font-[700]  ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
+                            <span className='tracking-[-0.08em]'>PROFESSIONAL</span> <span className={`block caveat-bold pl-50 text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>Journey</span>
                         </h2>
-                        <p className="text-lg max-w-2xl opacity-80">
-                            My professional journey and key milestones.
-                        </p>
+                    
                     </div>
 
                     <div className="relative">
@@ -1270,12 +1295,12 @@ export default function Home() {
                 className={`py-20 px-8 md:px-16 lg:px-24 ${bgClass}`}
             >
                 <div className="max-w-6xl mx-auto">
-                    <div className="mb-20">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                            Latest <span className={accentClass}>Articles</span>
+                <div className="mb-0 text-right">
+                        <h2 className={`text-lg lg:text-8xl font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
+                            WEB <span className={`block caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>Journals</span>
                         </h2>
-                        <p className="text-lg max-w-2xl opacity-80">
-                            Thoughts on development, design, and technology.
+                        <p className={`pb-[-50px] mt-2 text-sm md:text-base font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} style={{ transform: 'translateY(-250%)' }}>
+                        Thoughts on development, design, and technology.
                         </p>
                     </div>
 
@@ -1628,7 +1653,7 @@ export default function Home() {
             <section
                 ref={collaborateRef}
                 id="collaborate"
-                className={`py-20 px-8 md:px-16 lg:px-24 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} `}
+                className={`py-20 px-8 pb-0 md:px-16 lg:px-24 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} `}
             >
                 <div className="w-full mx-auto">
                     <h1
