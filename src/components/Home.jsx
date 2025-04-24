@@ -28,7 +28,7 @@ export default function Home() {
 
 
 
-    
+
     // Helper function to add refs to the arrays
     const addToContactItemsRef = (el, index) => {
         if (el && !contactItemsRef.current[index]) {
@@ -328,15 +328,15 @@ export default function Home() {
     ]
 
 
- // Gallery images
-const galleryImages = [
-    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-]
+    // Gallery images
+    const galleryImages = [
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+    ]
 
 
     // Timeline items - based on your resume
@@ -653,96 +653,96 @@ const galleryImages = [
 
         gsap.registerPlugin(ScrollTrigger)
 
-    const scrollEl = document.querySelector('[data-scroll-container]')
-    if (!scrollEl) {
-        console.error('Data-scroll-container not found. Please add [data-scroll-container] to your root div.')
-        return
-    }
+        const scrollEl = document.querySelector('[data-scroll-container]')
+        if (!scrollEl) {
+            console.error('Data-scroll-container not found. Please add [data-scroll-container] to your root div.')
+            return
+        }
 
-    const scroll = new LocomotiveScroll({
-        el: scrollEl,
-        smooth: true,
-        multiplier: 0.7
-    })
+        const scroll = new LocomotiveScroll({
+            el: scrollEl,
+            smooth: true,
+            multiplier: 0.7
+        })
 
-    scroll.on('scroll', () => {
-        ScrollTrigger.update()
-    })
+        scroll.on('scroll', () => {
+            ScrollTrigger.update()
+        })
 
-    ScrollTrigger.scrollerProxy(scrollEl, {
-        scrollTop(value) {
-            return arguments.length ? scroll.scrollTo(value, 0, 0) : scroll.scroll.instance.scroll.y
-        },
-        getBoundingClientRect() {
-            return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight }
-        },
-        pinType: scrollEl.style.transform ? 'transform' : 'fixed'
-    })
+        ScrollTrigger.scrollerProxy(scrollEl, {
+            scrollTop(value) {
+                return arguments.length ? scroll.scrollTo(value, 0, 0) : scroll.scroll.instance.scroll.y
+            },
+            getBoundingClientRect() {
+                return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight }
+            },
+            pinType: scrollEl.style.transform ? 'transform' : 'fixed'
+        })
 
-    // GSAP Animations for Images
-    const images = ['pic1', 'pic2', 'pic3', 'pic4', 'pic5', 'pic6']
-    images.forEach((id) => {
-        const el = window[id]
-        if (el) {
-            gsap.fromTo(
-                el,
-                { scale: 0.7, opacity: 0, rotation: -5, y: 100 },
-                {
-                    scale: 1,
-                    opacity: 1,
-                    rotation: 0,
-                    y: 0,
-                    duration: 1.5,
-                    ease: 'elastic.out(1, 0.5)',
-                    scrollTrigger: {
-                        trigger: el,
-                        start: 'top 90%',
-                        end: 'bottom 50%',
-                        scrub: 0.5
+        // GSAP Animations for Images
+        const images = ['pic1', 'pic2', 'pic3', 'pic4', 'pic5', 'pic6']
+        images.forEach((id) => {
+            const el = window[id]
+            if (el) {
+                gsap.fromTo(
+                    el,
+                    { scale: 0.7, opacity: 0, rotation: -5, y: 100 },
+                    {
+                        scale: 1,
+                        opacity: 1,
+                        rotation: 0,
+                        y: 0,
+                        duration: 1.5,
+                        ease: 'elastic.out(1, 0.5)',
+                        scrollTrigger: {
+                            trigger: el,
+                            start: 'top 90%',
+                            end: 'bottom 50%',
+                            scrub: 0.5
+                        }
                     }
-                }
-            )
-        }
-    })
+                )
+            }
+        })
 
-    // Advanced Hover Effect (3D Tilt)
-    images.forEach((id) => {
-        const el = window[id]
-        if (el) {
-            el.addEventListener('mousemove', (e) => {
-                const rect = el.getBoundingClientRect()
-                const mouseX = e.clientX - rect.left
-                const mouseY = e.clientY - rect.top
-                const centerX = rect.width / 2
-                const centerY = rect.height / 2
-                const rotateX = (mouseY - centerY) / 20
-                const rotateY = (centerX - mouseX) / 20
+        // Advanced Hover Effect (3D Tilt)
+        images.forEach((id) => {
+            const el = window[id]
+            if (el) {
+                el.addEventListener('mousemove', (e) => {
+                    const rect = el.getBoundingClientRect()
+                    const mouseX = e.clientX - rect.left
+                    const mouseY = e.clientY - rect.top
+                    const centerX = rect.width / 2
+                    const centerY = rect.height / 2
+                    const rotateX = (mouseY - centerY) / 20
+                    const rotateY = (centerX - mouseX) / 20
 
-                gsap.to(el, {
-                    rotationX: rotateX,
-                    rotationY: rotateY,
-                    scale: 1.1,
-                    boxShadow: '0 10px 20px rgba(0,0,0,0.3)',
-                    duration: 0.3,
-                    ease: 'power2.out'
+                    gsap.to(el, {
+                        rotationX: rotateX,
+                        rotationY: rotateY,
+                        scale: 1.1,
+                        boxShadow: '0 10px 20px rgba(0,0,0,0.3)',
+                        duration: 0.3,
+                        ease: 'power2.out'
+                    })
                 })
-            })
 
-            el.addEventListener('mouseleave', () => {
-                gsap.to(el, {
-                    rotationX: 0,
-                    rotationY: 0,
-                    scale: 1,
-                    boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
-                    duration: 0.5,
-                    ease: 'power2.out'
+                el.addEventListener('mouseleave', () => {
+                    gsap.to(el, {
+                        rotationX: 0,
+                        rotationY: 0,
+                        scale: 1,
+                        boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
+                        duration: 0.5,
+                        ease: 'power2.out'
+                    })
                 })
-            })
-        }
-    })
+            }
+        })
 
-    ScrollTrigger.addEventListener('refresh', () => scroll.update())
-    ScrollTrigger.refresh()
+        ScrollTrigger.addEventListener('refresh', () => scroll.update())
+        ScrollTrigger.refresh()
 
         return () => {
             lenis.destroy()
@@ -1312,98 +1312,253 @@ const galleryImages = [
             <section
     ref={galleryRef}
     id="gallery"
-    className={`py-20 px-6 md:px-12 lg:px-20 ${theme === 'dark' ? 'bg-neutral-900' : 'bg-gray-100'} relative overflow-hidden`}
+    className={`py-20 px-6 md:px-12 lg:px-20 ${bgClass} relative overflow-hidden`}
     data-scroll-section
 >
     <div className="max-w-8xl mx-auto relative z-10">
         {/* Heading and Tagline */}
         <div
-            className={`absolute bottom-10 left-10 w-[35%] md:w-[25%] lg:w-[20%] p-6 ${theme === 'dark' ? 'bg-white/15' : 'bg-black/15'} rounded-xl shadow-lg transform -translate-y-8 translate-x-8 z-30`}
+            className={`absolute bottom-10 left-0 w-[35%] md:w-[30%] lg:w-[40%] p-6 transform -translate-y-8 translate-x-8 z-50`}
             data-scroll
             data-scroll-speed="0.6"
         >
-            <h2 className={`text-3xl md:text-4xl font-sans font-bold uppercase tracking-widest ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
-                Visionary <span className={accentClass}>Gallery</span>
+            <h2 className={`text-lg lg:text-9xl font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
+                Gallery <span className={`block caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>___My Goofy Pics___</span>
             </h2>
-            <p className={`mt-2 text-sm font-sans ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'}`}>
-                Unleash Creative Inspiration
-            </p>
         </div>
 
         {/* Images Layout */}
         <div className="relative h-[600px] md:h-[700px] lg:h-[800px]">
+            {/* All images follow this pattern - I'll show one example, apply similarly to others */}
             {/* Pic-1 (Top Left, Small) */}
             <div
                 ref={el => (window['pic1'] = el)}
-                className={`absolute top-20 left-10 w-[18%] md:w-[14%] lg:w-[12%] z-20 ${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-md`}
+                className="magic-hover-container absolute top-27 left-27 w-[18%] md:w-[14%] lg:w-[25%] z-20 group"
                 data-scroll
                 data-scroll-speed="1.2"
             >
-                <img src={galleryImages[0]} alt="Pic-1" className="w-full h-full object-cover" />
+                <div className={`${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-xl magic-hover-wrapper transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
+                    <div className="magic-hover-inner overflow-hidden">
+                        <img 
+                            src={galleryImages[0]} 
+                            alt="Pic-1" 
+                            className="w-full h-full object-cover magic-hover-img transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" 
+                        />
+                        <div className="magic-hover-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-500"></div>
+                    </div>
+                </div>
             </div>
 
             {/* Pic-2 (Top Center, Medium) */}
             <div
                 ref={el => (window['pic2'] = el)}
-                className={`absolute top-10 left-[25%] md:left-[20%] lg:left-[18%] w-[25%] md:w-[20%] lg:w-[18%] z-25 ${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-md`}
+                className="magic-hover-container absolute top-0 left-[25%] md:left-[20%] lg:left-[23%] w-[25%] md:w-[20%] lg:w-[22%] z-25 group"
                 data-scroll
                 data-scroll-speed="0.9"
             >
-                <img src={galleryImages[1]} alt="Pic-2" className="w-full h-full object-cover" />
+                <div className={`${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-xl magic-hover-wrapper transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
+                    <div className="magic-hover-inner overflow-hidden">
+                        <img 
+                            src={galleryImages[1]} 
+                            alt="Pic-2" 
+                            className="w-full h-full object-cover magic-hover-img transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" 
+                        />
+                        <div className="magic-hover-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-500"></div>
+                    </div>
+                </div>
             </div>
 
             {/* Pic-3 (Top Right, Large) */}
             <div
                 ref={el => (window['pic3'] = el)}
-                className={`absolute top-5 right-10 w-[35%] md:w-[30%] lg:w-[25%] z-15 ${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-md`}
+                className="magic-hover-container absolute top-25 right-25 w-[35%] md:w-[30%] lg:w-[40%] z-15 group"
                 data-scroll
                 data-scroll-speed="1.4"
             >
-                <img src={galleryImages[2]} alt="Pic-3" className="w-full h-full object-cover" />
+                <div className={`${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-xl magic-hover-wrapper transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
+                    <div className="magic-hover-inner overflow-hidden">
+                        <img 
+                            src={galleryImages[2]} 
+                            alt="Pic-3" 
+                            className="w-full h-full object-cover magic-hover-img transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" 
+                        />
+                        <div className="magic-hover-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-500"></div>
+                    </div>
+                </div>
             </div>
 
             {/* Pic-4 (Bottom Left, Medium) */}
             <div
                 ref={el => (window['pic4'] = el)}
-                className={`absolute bottom-20 left-20 w-[30%] md:w-[25%] lg:w-[20%] z-30 ${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-md`}
+                className="magic-hover-container absolute bottom-0 left-130 w-[30%] md:w-[25%] lg:w-[35%] z-35 group"
                 data-scroll
                 data-scroll-speed="1.1"
             >
-                <img src={galleryImages[3]} alt="Pic-4" className="w-full h-full object-cover" />
+                <div className={`${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-xl magic-hover-wrapper transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
+                    <div className="magic-hover-inner overflow-hidden">
+                        <img 
+                            src={galleryImages[3]} 
+                            alt="Pic-4" 
+                            className="w-full h-full object-cover magic-hover-img transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" 
+                        />
+                        <div className="magic-hover-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-500"></div>
+                    </div>
+                </div>
             </div>
 
             {/* Pic-5 (Bottom Right, Small) */}
             <div
                 ref={el => (window['pic5'] = el)}
-                className={`absolute bottom-10 right-20 w-[20%] md:w-[15%] lg:w-[12%] z-35 ${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-md`}
+                className="magic-hover-container absolute bottom-50 right-0 w-[20%] md:w-[15%] lg:w-[28%] z-30 group"
                 data-scroll
                 data-scroll-speed="1.3"
             >
-                <img src={galleryImages[4]} alt="Pic-5" className="w-full h-full object-cover" />
+                <div className={`${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-xl magic-hover-wrapper transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
+                    <div className="magic-hover-inner overflow-hidden">
+                        <img 
+                            src={galleryImages[4]} 
+                            alt="Pic-5" 
+                            className="w-full h-full object-cover magic-hover-img transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" 
+                        />
+                        <div className="magic-hover-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-500"></div>
+                    </div>
+                </div>
             </div>
 
             {/* Pic-6 (Top Far Left, Tiny) */}
             <div
                 ref={el => (window['pic6'] = el)}
-                className={`absolute top-5 left-5 w-[12%] md:w-[10%] lg:w-[8%] z-10 ${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-md`}
+                className="magic-hover-container absolute top-0 left-0 w-[12%] md:w-[10%] lg:w-[16%] z-10 group"
                 data-scroll
                 data-scroll-speed="1.5"
             >
-                <img src={galleryImages[5]} alt="Pic-6" className="w-full h-full object-cover" />
+                <div className={`${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-xl magic-hover-wrapper transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
+                    <div className="magic-hover-inner overflow-hidden">
+                        <img 
+                            src={galleryImages[5]} 
+                            alt="Pic-6" 
+                            className="w-full h-full object-cover magic-hover-img transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" 
+                        />
+                        <div className="magic-hover-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-500"></div>
+                    </div>
+                </div>
             </div>
 
             {/* Parallax Background */}
             <div
-                className={`absolute inset-0 z-0 ${theme === 'dark' ? 'bg-gradient-to-br from-neutral-900/50 to-gray-950/70' : 'bg-gradient-to-br from-gray-100/50 to-white/70'}`}
+                className={`absolute inset-0 z-0 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} rounded-2xl`}
                 data-scroll
                 data-scroll-speed="-0.5"
             ></div>
             {/* Decorative Accent */}
             <div
-                className={`absolute -top-20 -left-20 w-48 h-48 rounded-full ${theme === 'dark' ? 'bg-white/15' : 'bg-black/15'} animate-pulse-slow`}
+                className={`absolute -top-[-410px] -left-50 w-90 h-90 rounded-full ${theme === 'dark' ? 'bg-white/5' : 'bg-black/10'} animate-pulse-slow`}
             ></div>
         </div>
     </div>
+
+    {/* Advanced CSS Animations */}
+    <style jsx global>{`
+        .magic-hover-container {
+            perspective: 1500px;
+            transform-style: preserve-3d;
+        }
+        
+        .magic-hover-wrapper {
+            position: relative;
+            transform-style: preserve-3d;
+            will-change: transform;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .magic-hover-inner {
+            position: relative;
+            transform-style: preserve-3d;
+        }
+        
+        .magic-hover-img {
+            transform: translateZ(0);
+            will-change: transform;
+            filter: brightness(0.98);
+        }
+        
+        .magic-hover-overlay {
+            pointer-events: none;
+        }
+        
+        /* Hover Effects */
+        .magic-hover-container:hover {
+            z-index: 100 !important;
+        }
+        
+        .magic-hover-container:hover .magic-hover-wrapper {
+            transform: 
+                translateY(-10px) 
+                scale(1.1)
+                rotateX(2deg) 
+                rotateY(2deg);
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(255, 255, 255, 0.1) inset;
+        }
+        
+        .magic-hover-container:hover .magic-hover-img {
+            transform: scale(1.08) translateZ(10px);
+            filter: brightness(1.05) saturate(1.1);
+        }
+        
+        .magic-hover-container:hover .magic-hover-overlay {
+            opacity: 1;
+        }
+        
+        /* Individual Animation Delays */
+        .magic-hover-container:nth-child(1):hover .magic-hover-wrapper {
+            transition-delay: 0.05s;
+        }
+        
+        .magic-hover-container:nth-child(2):hover .magic-hover-wrapper {
+            transition-delay: 0.1s;
+        }
+        
+        /* Subtle Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        .magic-hover-container {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .magic-hover-container:nth-child(2n) {
+            animation-delay: 0.5s;
+        }
+        
+        .magic-hover-container:nth-child(3n) {
+            animation-delay: 1s;
+        }
+        
+        /* Glow Effect */
+        .magic-hover-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: inherit;
+            opacity: 0;
+            ${theme === 'dark' ? 
+              'box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);' : 
+              'box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);'}
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+        
+        .magic-hover-container:hover .magic-hover-wrapper::after {
+            opacity: 1;
+        }
+    `}</style>
 </section>
 
             {/* Testimonial Section */}
@@ -1416,7 +1571,7 @@ const galleryImages = [
             >
                 <div className="min-h-[60vh] max-w-7xl mx-auto relative z-10">
                     <div className="mb-0 text-center">
-                        <h2 className={`text-lg lg:text-8xl font-[700]  tracking-[-0.08em] ${theme === 'dark' ? 'text-white/10' : 'text-black/10'}`}>
+                        <h2 className={`text-lg lg:text-8xl font-[700]  tracking-[-0.08em] ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
                             Reflections <span className={`block caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>and Raves</span>
                         </h2>
                         <p className={` pb-[-50px] mt-2 text-sm md:text-base font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} style={{ transform: 'translateY(-250%)' }}>
@@ -1573,9 +1728,9 @@ const galleryImages = [
                     <div className="flex flex-col md:flex-row justify-between items-center">
                         <div className="mb-6 md:mb-0">
                             <div className="text-xl font-bold tracking-tight">
-                            <span className={`{accentClass} font-[800] text-red-600`}>K.</span>NISHANT
+                                <span className={`{accentClass} font-[800] text-red-600`}>K.</span>NISHANT
                             </div>
-                            
+
                         </div>
 
                         <div className="flex flex-wrap justify-center gap-6">
