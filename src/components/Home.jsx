@@ -27,18 +27,18 @@ export default function Home() {
     ])
 
 
-// Helper function to add refs to the arrays
-const addToContactItemsRef = (el, index) => {
-    if (el && !contactItemsRef.current[index]) {
-        contactItemsRef.current[index] = el;
-    }
-};
+    // Helper function to add refs to the arrays
+    const addToContactItemsRef = (el, index) => {
+        if (el && !contactItemsRef.current[index]) {
+            contactItemsRef.current[index] = el;
+        }
+    };
 
-const addToSocialLinksRef = (el, index) => {
-    if (el && !socialLinksRef.current[index]) {
-        socialLinksRef.current[index] = el;
-    }
-};
+    const addToSocialLinksRef = (el, index) => {
+        if (el && !socialLinksRef.current[index]) {
+            socialLinksRef.current[index] = el;
+        }
+    };
 
 
     // Use state for githubStats to ensure updates trigger re-render
@@ -77,9 +77,9 @@ const addToSocialLinksRef = (el, index) => {
     const collaborateRef = useRef(null)
     const floatingShapesRef = useRef([])
     const contactInfoRef = useRef([]);
-const socialRef = useRef([]);
-const contactItemsRef = useRef([]); // Array to hold refs for contact items
-const socialLinksRef = useRef([]); // Array to hold refs for social links
+    const socialRef = useRef([]);
+    const contactItemsRef = useRef([]); // Array to hold refs for contact items
+    const socialLinksRef = useRef([]); // Array to hold refs for social links
 
     // Toggle theme
     const toggleTheme = () => {
@@ -104,49 +104,84 @@ const socialLinksRef = useRef([]); // Array to hold refs for social links
         }
     };
 
-    // GSAP Animations for contact section
-useEffect(() => {
-    // Animate contact items (fade in with slight slide from right)
-    contactItemsRef.current.forEach((item, index) => {
-        if (item) {
-            gsap.fromTo(
-                item,
-                { opacity: 0, x: 50 },
-                {
-                    opacity: 1,
-                    x: 0,
-                    duration: 0.8,
-                    delay: index * 0.2,
-                    ease: 'power2.out',
+    // Animation setup in useEffect
+    useEffect(() => {
+        cardRefs.current.forEach((card, index) => {
+            if (card) {
+                gsap.from(card, {
+                    opacity: 30,
+                    y: 100,
+                    rotation: index % 2 === 0 ? -15 : 15,
                     scrollTrigger: {
-                        trigger: item,
-                        start: 'top 80%',
+                        trigger: card,
+                        start: 'top 90%',
+                        end: 'bottom 20%',
+                        scrub: true,
+                        onEnter: () => gsap.to(card, { rotation: 0, duration: 5 }),
+                        onLeaveBack: () => gsap.to(card, { rotation: index % 2 === 0 ? -15 : 15, duration: 1 })
                     }
-                }
-            );
-        }
-    });
+                });
+            }
+        });
 
-    // Animate social links (scale up with rotation)
-    socialLinksRef.current.forEach((link, index) => {
-        if (link) {
-            gsap.fromTo(
-                link,
-                { scale: 0, rotation: 180 },
-                {
-                    scale: 1,
-                    rotation: 0,
-                    duration: 0.6,
-                    delay: index * 0.1 + 0.6, // Stagger after contact items
-                    ease: 'back.out(1.7)',
-                    scrollTrigger: {
-                        trigger: link,
-                        start: 'top 80%',
+        initialRefs.current.forEach((initial) => {
+            if (initial) {
+                gsap.fromTo(
+                    initial,
+                    { scale: 0, rotation: 360 },
+                    {
+                        scale: 1,
+                        rotation: 30,
+                        duration: 1,
+                        repeat: -1,
+                        yoyo: true,
+                        ease: 'power1.inOut'
                     }
-                }
-            );
-        }
-    });
+                );
+            }
+        });
+
+        // Animate contact items (fade in with slight slide from right)
+        contactItemsRef.current.forEach((item, index) => {
+            if (item) {
+                gsap.fromTo(
+                    item,
+                    { opacity: 0, x: 50 },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        duration: 0.8,
+                        delay: index * 0.2,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: item,
+                            start: 'top 80%',
+                        }
+                    }
+                );
+            }
+        });
+
+        // Animate social links (scale up with rotation)
+        socialLinksRef.current.forEach((link, index) => {
+            if (link) {
+                gsap.fromTo(
+                    link,
+                    { scale: 0, rotation: 180 },
+                    {
+                        scale: 1,
+                        rotation: 0,
+                        duration: 0.6,
+                        delay: index * 0.1 + 0.6, // Stagger after contact items
+                        ease: 'back.out(1.7)',
+                        scrollTrigger: {
+                            trigger: link,
+                            start: 'top 80%',
+                        }
+                    }
+                );
+            }
+        });
 
     }, [guestbookEntries]); // Re-run if guestbookEntries chang
 
@@ -593,38 +628,38 @@ useEffect(() => {
 
 
         // Contact Info Micro-Animations
-    contactInfoRef.current.forEach((el, index) => {
-        if (el) {
-            gsap.from(el, {
-                opacity: 0,
-                y: 20,
-                duration: 0.6,
-                delay: index * 0.2,
-                scrollTrigger: {
-                    trigger: contactRef.current,
-                    start: 'top 80%',
-                },
-                ease: 'power2.out'
-            });
-        }
-    });
+        contactInfoRef.current.forEach((el, index) => {
+            if (el) {
+                gsap.from(el, {
+                    opacity: 0,
+                    y: 20,
+                    duration: 0.6,
+                    delay: index * 0.2,
+                    scrollTrigger: {
+                        trigger: contactRef.current,
+                        start: 'top 80%',
+                    },
+                    ease: 'power2.out'
+                });
+            }
+        });
 
-    // Social Links Micro-Animations
-    socialRef.current.forEach((el, index) => {
-        if (el) {
-            gsap.from(el, {
-                opacity: 0,
-                x: index % 2 === 0 ? 20 : -20,
-                duration: 0.6,
-                delay: index * 0.2 + 0.4,
-                scrollTrigger: {
-                    trigger: contactRef.current,
-                    start: 'top 80%',
-                },
-                ease: 'power2.out'
-            });
-        }
-    });
+        // Social Links Micro-Animations
+        socialRef.current.forEach((el, index) => {
+            if (el) {
+                gsap.from(el, {
+                    opacity: 0,
+                    x: index % 2 === 0 ? 20 : -20,
+                    duration: 0.6,
+                    delay: index * 0.2 + 0.4,
+                    scrollTrigger: {
+                        trigger: contactRef.current,
+                        start: 'top 80%',
+                    },
+                    ease: 'power2.out'
+                });
+            }
+        });
 
         return () => {
             lenis.destroy()
@@ -1291,112 +1326,110 @@ useEffect(() => {
             >
                 <div className="w-full mx-auto">
                     <h1
-                                ref={titleRef}
-                                className="text-6xl md:text-[9rem] lg:text-[19rem] font-[700] leading-none mb-6 text-left"
-                            >
-                                <span className={` ${theme === 'dark' ? 'text-white' : 'text-black'} text-6xl md:text-[8rem] lg:text-[15rem] tracking-[-0.08em]`}>Let's</span>
-                                <span className={`block ${theme === 'dark' ? 'text-white' : 'text-black'} text-6xl md:text-[8rem] lg:text-[16rem] tracking-[-0.08em] leading-[0.60] pb-14`}>Collaborate</span>
-                            </h1>
-                            <div className='text-right'>
-                    <p className="text-xl mb-0 opacity-90 text-right">
-                        Interested in collaborating on a project? 
-                        </p>
-                    <p className="text-xl mb-8 opacity-90 text-right">
-                        I'm available for freelance work and open to new opportunities.
-                    </p>
-                    <a
-                        href="#contact"
-                        className={`text-right inline-block px-8 py-4 ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'} rounded-full font-medium transition-colors duration-300`}
+                        ref={titleRef}
+                        className="text-6xl md:text-[9rem] lg:text-[19rem] font-[700] leading-none mb-6 text-left"
                     >
-                        Get In Touch
-                    </a>
+                        <span className={` ${theme === 'dark' ? 'text-white' : 'text-black'} text-6xl md:text-[8rem] lg:text-[15rem] tracking-[-0.08em]`}>Let's</span>
+                        <span className={`block ${theme === 'dark' ? 'text-white' : 'text-black'} text-6xl md:text-[8rem] lg:text-[16rem] tracking-[-0.08em] leading-[0.60] pb-14`}>Collaborate</span>
+                    </h1>
+                    <div className='text-right'>
+                        <p className="text-xl mb-0 opacity-90 text-right">
+                            Interested in collaborating on a project?
+                        </p>
+                        <p className="text-xl mb-8 opacity-90 text-right">
+                            I'm available for freelance work and open to new opportunities.
+                        </p>
+                        <a
+                            href="#contact"
+                            className={`text-right inline-block px-8 py-4 ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'} rounded-full font-medium transition-colors duration-300`}
+                        >
+                            Get In Touch
+                        </a>
                     </div>
                 </div>
             </section>
 
             {/* Contact Section */}
             <section
-    ref={contactRef}
-    id="contact"
-    className={`py-16 px-6 md:px-12 lg:px-16 ${bgClass} relative overflow-hidden`}
->
-    <div className="max-w-7xl mx-auto flex justify-end">
-        <div className="w-full md:w-1/3 text-right">
-            {/* Header */}
-            <div className="mb-8">
-                <h2 className={`text-3xl md:text-4xl font-sans font-bold uppercase tracking-widest ${theme === 'dark' ? 'text-white/20' : 'text-black/20'}`}>
-                    Get In <span className={accentClass}>Touch</span>
-                </h2>
-                <p className={`mt-2 text-sm font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-                    Let’s create something extraordinary.
-                </p>
-            </div>
+                ref={contactRef}
+                id="contact"
+                className={`py-16 px-6 md:px-12 lg:px-16 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} relative overflow-hidden`}
+            >
+                <div className="w-full mx-auto flex justify-between">
+                    <div className="w-full px-8 ">
+                        {/* Header */}
+                        <div className="mb-8 text-left">
+                            <h2 className={`text-lg lg:text-8xl font-[700] mt-10 tracking-[-0.08em] ${theme === 'dark' ? 'text-white/10' : 'text-black/10'}`}>
+                                Get In <span className={`block pl-15 caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>touch</span>
+                            </h2>
+                            <p className={`mt-[-70px] text-sm font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                                Let’s create something extraordinary.
+                            </p>
+                        </div>
 
-            {/* Contact Information */}
-            <div className="space-y-4 mb-6">
-                <div ref={(el) => addToContactItemsRef(el, 0)} className="flex justify-end items-center space-x-3">
-                    <a
-                        href="mailto:me.knishant@gmail.com"
-                        className={`text-sm font-sans ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-black'} transition-colors duration-300`}
-                    >
-                        me.knishant@gmail.com
-                    </a>
-                    <FiMail className={`w-5 h-5 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} />
-                </div>
-                <div ref={(el) => addToContactItemsRef(el, 1)} className="flex justify-end items-center space-x-3">
-                    <span className={`text-sm font-sans ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-                        +91 8986412823
-                    </span>
-                    <FiPhone className={`w-5 h-5 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} />
-                </div>
-                <div ref={(el) => addToContactItemsRef(el, 2)} className="flex justify-end items-center space-x-3">
-                    <span className={`text-sm font-sans ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-                        Bhagalpur, Bihar, India
-                    </span>
-                    <FiMapPin className={`w-5 h-5 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} />
-                </div>
-            </div>
+                        {/* Contact Information */}
+                        <div className="space-y-4 mb-6 text-right">
+                            <div ref={(el) => addToContactItemsRef(el, 0)} className="flex justify-end items-center space-x-3">
+                                <a
+                                    href="mailto:me.knishant@gmail.com"
+                                    className={`text-sm font-sans ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-black'} transition-colors duration-300`}
+                                >
+                                    me.knishant@gmail.com
+                                </a>
+                                <FiMail className={`w-5 h-5 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} />
+                            </div>
+                            <div ref={(el) => addToContactItemsRef(el, 1)} className="flex justify-end items-center space-x-3">
+                                <span className={`text-sm font-sans ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                                    +91 8986412823
+                                </span>
+                                <FiPhone className={`w-5 h-5 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} />
+                            </div>
+                            <div ref={(el) => addToContactItemsRef(el, 2)} className="flex justify-end items-center space-x-3">
+                                <span className={`text-sm font-sans ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                                    Bhagalpur, Bihar, India
+                                </span>
+                                <FiMapPin className={`w-5 h-5 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} />
+                            </div>
+                        </div>
 
-            {/* Social Links */}
-            <div className="flex justify-end space-x-4">
-                {[
-                    { icon: <FiGithub />, link: "#", label: "GitHub" },
-                    { icon: <FiTwitter />, link: "#", label: "Twitter" },
-                    { icon: <FiLinkedin />, link: "#", label: "LinkedIn" },
-                    { icon: <FiDribbble />, link: "#", label: "Dribbble" }
-                ].map((social, index) => (
-                    <a
-                        key={index}
-                        href={social.link}
-                        ref={(el) => addToSocialLinksRef(el, index)}
-                        className={`w-10 h-10 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white hover:text-black' : 'bg-black/10 hover:bg-black hover:text-white'} flex items-center justify-center transition-colors duration-300`}
-                    >
-                        {social.icon}
-                        <span className="sr-only">{social.label}</span>
-                    </a>
-                ))}
-            </div>
-        </div>
-    </div>
+                        {/* Social Links */}
+                        <div className="flex justify-end space-x-4">
+                            {[
+                                { icon: <FiGithub />, link: "#", label: "GitHub" },
+                                { icon: <FiTwitter />, link: "#", label: "Twitter" },
+                                { icon: <FiLinkedin />, link: "#", label: "LinkedIn" },
+                                { icon: <FiDribbble />, link: "#", label: "Dribbble" }
+                            ].map((social, index) => (
+                                <a
+                                    key={index}
+                                    href={social.link}
+                                    ref={(el) => addToSocialLinksRef(el, index)}
+                                    className={`w-10 h-10 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white hover:text-black' : 'bg-black/10 hover:bg-black hover:text-white'} flex items-center justify-center transition-colors duration-300`}
+                                >
+                                    {social.icon}
+                                    <span className="sr-only">{social.label}</span>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </div>
 
-    {/* Subtle Background Accent */}
-    <div className={`absolute top-0 left-0 w-32 h-32 ${theme === 'dark' ? 'bg-white/5' : 'bg-black/5'} rounded-full -translate-x-16 translate-y-16`}></div>
-</section>
+                {/* Subtle Background Accent */}
+                <div className={`absolute top-0 left-0 w-64 h-64 ${theme === 'dark' ? 'bg-white/5' : 'bg-black/5'} rounded-full -translate-x-16 translate-y-16`}></div>
+            </section>
 
             {/* Footer Section */}
             <footer
                 ref={footerRef}
-                className={`py-12 px-8 md:px-16 lg:px-24 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} border-t ${borderClass}`}
+                className={`py-12 px-8 md:px-16 lg:px-24 ${bgClass} border-t ${borderClass}`}
             >
-                <div className="max-w-6xl mx-auto">
+                <div className="max-w-7xl mx-auto">
                     <div className="flex flex-col md:flex-row justify-between items-center">
                         <div className="mb-6 md:mb-0">
                             <div className="text-xl font-bold tracking-tight">
-                                <span className={accentClass}>K.</span>NISHANT
+                            <span className={`{accentClass} font-[800] text-red-600`}>K.</span>NISHANT
                             </div>
-                            <p className="mt-2 text-sm opacity-80">
-                                Full-Stack Developer specializing in Java Spring Boot and React.js
-                            </p>
+                            
                         </div>
 
                         <div className="flex flex-wrap justify-center gap-6">
