@@ -1452,10 +1452,13 @@ export default function Home() {
                         ></div>
                         {/* Decorative Accent */}
                         <div
-                            className={`absolute -top-[-410px] -left-50 w-90 h-90 rounded-full ${theme === 'dark' ? 'bg-white/5' : 'bg-black/10'} animate-pulse-slow`}
+                            className={`absolute -top-[-340px] -left-60 w-90 h-90 rounded-full ${theme === 'dark' ? 'bg-white/5' : 'bg-black/10'} animate-pulse-slow`}
                         ></div>
                     </div>
                 </div>
+
+                <div className={`absolute inset-0 z-0 ${theme === 'dark' ? 'bg-black/1' : 'bg-white/90'}`}></div>
+
 
                 {/* Advanced CSS Animations */}
                 <style jsx global>{`
@@ -1566,17 +1569,17 @@ export default function Home() {
             <section
     ref={guestbookRef}
     id="guestbook"
-    className={`py-26 px-6 md:px-12 lg:px-16 ${theme === 'dark' ? 'bg-gray-950' : 'bg-gray-50'} relative overflow-hidden`}
+    className={`py-26 px-6 md:px-12 lg:px-16 ${bgClass} relative overflow-hidden`}
     data-scroll-section
     style={{
-        backgroundImage: `url('https://media-hosting.imagekit.io/af39b3ac94e54ece/Test_bg.jpeg?Expires=1840139433&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=rg2yF00ZFz1clLcUbkoIVP35s2ml0O~BR4syVezdbkAAWfDUP3JrPav6BGf6Sn3n31qnv9~BNq5eBySfA50Q~bIwtXKWNcZQYaD46Ki9u17PoSRWf2sBoJj-uV5LTOVib2oJyUfUoxIRLa6RJzSnDdClwwRhpqE5BYj5VD3odmNfrGe6AGmRqnX4rcv5OX89~ZMX0WhvzdnWW62GV692MCZnzhSfWn1M5vCHlWd7Z1s9rOsXq0pehIQNpSIc1~f6pu-C2FtmJVq3hKqHKWknznqDh8sY94HPq5ixjnqo5t7HzaoD3qwHnNWNACTNdVhwl7kDo5w3li-vdL5nqxRS1Q__')`,
+        backgroundImage: `url('https://media-hosting.imagekit.io/aad8428398174daa/Test_bg-removebg-preview.png?Expires=1840140424&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=vP3kYFgwg8KTTMFf8Y7G5HvEKLrn7CsWwHR4CsZNZ0ki~aLwxML36N5E1prgEbQ5znuocgqAdJrx6kGzOIVArJtrhE78ZymeH7e8JP4AdFddgBMYq947NYcC9nCIRo7jplaD6DKrYMDhzxeb8fTjhc39E6pVFd9h7HDxcuGr88N0syo1Msyy7DVXef9XiW6UrXRnQYQsSOzz8p4jA6x5QQo7LXW5dXmzJ5ky35SVHjzsVc9VihSWgMEr9-kd5o-FWd2ksiybzonR~6nbmm4eFA5ojRwTpmcChaajT~43PAMrMnHqFQYzxs39QrIpshuYQYHlU01zRwNQ26lNHq4TPw__')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundBlendMode: 'multiply' // or 'multiply', 'screen', etc.
     }}
 >
     {/* Background overlay for better readability */}
-    <div className={`absolute inset-0 z-0 ${theme === 'dark' ? 'bg-black/1' : 'bg-white/60'}`}></div>
+    <div className={`absolute inset-0 z-0 ${theme === 'dark' ? 'bg-black/1' : 'bg-white/90'}`}></div>
 
     <div className="min-h-[60vh] max-w-7xl mx-auto relative z-10">
         {/* Rest of your existing code remains exactly the same */}
