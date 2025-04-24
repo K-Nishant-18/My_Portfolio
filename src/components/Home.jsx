@@ -52,8 +52,6 @@ export default function Home() {
     const projectsRef = useRef([])
     const projectImagesRef = useRef([])
     const contactRef = useRef(null)
-    const formRef = useRef(null)
-    const infoRef = useRef(null)
     const footerRef = useRef(null)
     const yearRef = useRef(null)
     const statsRef = useRef(null)
@@ -64,6 +62,8 @@ export default function Home() {
     const guestbookRef = useRef(null)
     const collaborateRef = useRef(null)
     const floatingShapesRef = useRef([])
+    const contactInfoRef = useRef([]);
+const socialRef = useRef([]);
 
     // Toggle theme
     const toggleTheme = () => {
@@ -566,6 +566,41 @@ export default function Home() {
                 ease: 'sine.inOut'
             })
         })
+
+
+        // Contact Info Micro-Animations
+    contactInfoRef.current.forEach((el, index) => {
+        if (el) {
+            gsap.from(el, {
+                opacity: 0,
+                y: 20,
+                duration: 0.6,
+                delay: index * 0.2,
+                scrollTrigger: {
+                    trigger: contactRef.current,
+                    start: 'top 80%',
+                },
+                ease: 'power2.out'
+            });
+        }
+    });
+
+    // Social Links Micro-Animations
+    socialRef.current.forEach((el, index) => {
+        if (el) {
+            gsap.from(el, {
+                opacity: 0,
+                x: index % 2 === 0 ? 20 : -20,
+                duration: 0.6,
+                delay: index * 0.2 + 0.4,
+                scrollTrigger: {
+                    trigger: contactRef.current,
+                    start: 'top 80%',
+                },
+                ease: 'power2.out'
+            });
+        }
+    });
 
         return () => {
             lenis.destroy()
@@ -1230,7 +1265,7 @@ export default function Home() {
                 id="collaborate"
                 className={`py-20 px-8 md:px-16 lg:px-24 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} `}
             >
-                <div className="max-w-3xl mx-auto">
+                <div className="max-w-3 mx-auto">
                     <h1
                                 ref={titleRef}
                                 className="text-6xl md:text-[9rem] lg:text-[19rem] font-[700] leading-none mb-6 text-left"
@@ -1252,135 +1287,99 @@ export default function Home() {
 
             {/* Contact Section */}
             <section
-                ref={contactRef}
-                id="contact"
-                className={`py-20 px-8 md:px-16 lg:px-24 ${bgClass}`}
+    ref={contactRef}
+    id="contact"
+    className={`py-12 px-6 md:px-10 lg:px-16 ${theme === 'dark' ? 'bg-gray-950' : 'bg-gray-50'} relative overflow-hidden`}
+>
+    <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        {/* Contact Information */}
+        <div className="space-y-6">
+            <div
+                ref={(el) => (contactInfoRef.current[0] = el)}
+                className={`flex items-center space-x-4 p-4 ${theme === 'dark' ? 'bg-gray-900/50' : 'bg-white/50'} rounded-lg border ${borderClass} hover:shadow-md transition-shadow duration-300`}
             >
-                <div className="max-w-6xl mx-auto">
-                    <div className="mb-20">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                            Get In <span className={accentClass}>Touch</span>
-                        </h2>
-                        <p className="text-lg max-w-2xl opacity-90">
-                            Have a project in mind or want to discuss potential opportunities?
-                            I'd love to hear from you.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-                        <div ref={formRef} className={`p-8 ${theme === 'dark' ? 'bg-white/5' : 'bg-black/5'} rounded-xl border ${borderClass}`}>
-                            <form className="space-y-6">
-                                <div>
-                                    <label htmlFor="name" className="block mb-2 font-medium">Name</label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        className={`w-full px-4 py-3 bg-transparent border-b ${theme === 'dark' ? 'border-white/20 focus:border-white' : 'border-black/20 focus:border-black'} outline-none transition-colors duration-300`}
-                                    />
-                                </div>
-
-                                <div>
-                                    <label htmlFor="email" className="block mb-2 font-medium">Email</label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        className={`w-full px-4 py-3 bg-transparent border-b ${theme === 'dark' ? 'border-white/20 focus:border-white' : 'border-black/20 focus:border-black'} outline-none transition-colors duration-300`}
-                                    />
-                                </div>
-
-                                <div>
-                                    <label htmlFor="message" className="block mb-2 font-medium">Message</label>
-                                    <textarea
-                                        id="message"
-                                        rows="5"
-                                        className={`w-full px-4 py-3 bg-transparent border-b ${theme === 'dark' ? 'border-white/20 focus:border-white' : 'border-black/20 focus:border-black'} outline-none transition-colors duration-300`}
-                                    ></textarea>
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    className={`px-8 py-4 ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'} rounded-full transition-colors duration-300`}
-                                >
-                                    Send Message
-                                </button>
-                            </form>
-                        </div>
-
-                        <div ref={infoRef} className="space-y-8">
-                            <div>
-                                <h3 className="text-xl font-bold mb-4">Contact Information</h3>
-                                <p className="mb-6 opacity-90">Feel free to reach out through any of these channels:</p>
-
-                                <div className="space-y-4">
-                                    <div className="flex items-start">
-                                        <div className={`w-10 h-10 rounded-full ${theme === 'dark' ? 'bg-white/10' : 'bg-black/10'} flex items-center justify-center mr-4`}>
-                                            <FiMail className={`w-5 h-5 ${theme === 'dark' ? 'text-white' : 'text-black'}`} />
-                                        </div>
-                                        <div>
-                                            <h4 className="font-medium">Email</h4>
-                                            <p className="text-sm opacity-80">me.knishant@gmail.com</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex items-start">
-                                        <div className={`w-10 h-10 rounded-full ${theme === 'dark' ? 'bg-white/10' : 'bg-black/10'} flex items-center justify-center mr-4`}>
-                                            <FiPhone className={`w-5 h-5 ${theme === 'dark' ? 'text-white' : 'text-black'}`} />
-                                        </div>
-                                        <div>
-                                            <h4 className="font-medium">Phone</h4>
-                                            <p className="text-sm opacity-80">+91 8986412823</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex items-start">
-                                        <div className={`w-10 h-10 rounded-full ${theme === 'dark' ? 'bg-white/10' : 'bg-black/10'} flex items-center justify-center mr-4`}>
-                                            <FiMapPin className={`w-5 h-5 ${theme === 'dark' ? 'text-white' : 'text-black'}`} />
-                                        </div>
-                                        <div>
-                                            <h4 className="font-medium">Location</h4>
-                                            <p className="text-sm opacity-80">Bhagalpur, Bihar, India</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <h3 className="text-xl font-bold mb-4">Connect With Me</h3>
-                                <div className="flex space-x-4">
-                                    <a
-                                        href="#"
-                                        className={`w-12 h-12 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white hover:text-black' : 'bg-black/10 hover:bg-black hover:text-white'} flex items-center justify-center transition-colors duration-300`}
-                                    >
-                                        <FiGithub className="w-5 h-5" />
-                                        <span className="sr-only">GitHub</span>
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className={`w-12 h-12 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white hover:text-black' : 'bg-black/10 hover:bg-black hover:text-white'} flex items-center justify-center transition-colors duration-300`}
-                                    >
-                                        <FiTwitter className="w-5 h-5" />
-                                        <span className="sr-only">Twitter</span>
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className={`w-12 h-12 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white hover:text-black' : 'bg-black/10 hover:bg-black hover:text-white'} flex items-center justify-center transition-colors duration-300`}
-                                    >
-                                        <FiLinkedin className="w-5 h-5" />
-                                        <span className="sr-only">LinkedIn</span>
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className={`w-12 h-12 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white hover:text-black' : 'bg-black/10 hover:bg-black hover:text-white'} flex items-center justify-center transition-colors duration-300`}
-                                    >
-                                        <FiDribbble className="w-5 h-5" />
-                                        <span className="sr-only">Dribbble</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div className={`w-10 h-10 rounded-full ${theme === 'dark' ? 'bg-white/10' : 'bg-black/10'} flex items-center justify-center`}>
+                    <FiMail className={`w-5 h-5 ${theme === 'dark' ? 'text-white' : 'text-black'}`} />
                 </div>
-            </section>
+                <div>
+                    <p className={`text-sm font-sans uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>Email</p>
+                    <p className={`text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>me.knishant@gmail.com</p>
+                </div>
+            </div>
+            <div
+                ref={(el) => (contactInfoRef.current[1] = el)}
+                className={`flex items-center space-x-4 p-4 ${theme === 'dark' ? 'bg-gray-900/50' : 'bg-white/50'} rounded-lg border ${borderClass} hover:shadow-md transition-shadow duration-300`}
+            >
+                <div className={`w-10 h-10 rounded-full ${theme === 'dark' ? 'bg-white/10' : 'bg-black/10'} flex items-center justify-center`}>
+                    <FiPhone className={`w-5 h-5 ${theme === 'dark' ? 'text-white' : 'text-black'}`} />
+                </div>
+                <div>
+                    <p className={`text-sm font-sans uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>Phone</p>
+                    <p className={`text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>+91 8986412823</p>
+                </div>
+            </div>
+            <div
+                ref={(el) => (contactInfoRef.current[2] = el)}
+                className={`flex items-center space-x-4 p-4 ${theme === 'dark' ? 'bg-gray-900/50' : 'bg-white/50'} rounded-lg border ${borderClass} hover:shadow-md transition-shadow duration-300`}
+            >
+                <div className={`w-10 h-10 rounded-full ${theme === 'dark' ? 'bg-white/10' : 'bg-black/10'} flex items-center justify-center`}>
+                    <FiMapPin className={`w-5 h-5 ${theme === 'dark' ? 'text-white' : 'text-black'}`} />
+                </div>
+                <div>
+                    <p className={`text-sm font-sans uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>Location</p>
+                    <p className={`text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>Bhagalpur, Bihar, India</p>
+                </div>
+            </div>
+        </div>
+
+        {/* Social Links */}
+        <div className="flex flex-col items-end space-y-6">
+            <div
+                ref={(el) => (socialRef.current[0] = el)}
+                className={`flex space-x-4 ${theme === 'dark' ? 'bg-gray-900/50' : 'bg-white/50'} p-4 rounded-lg border ${borderClass} hover:shadow-md transition-shadow duration-300`}
+            >
+                <a
+                    href="#"
+                    className={`w-10 h-10 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white hover:text-black' : 'bg-black/10 hover:bg-black hover:text-white'} flex items-center justify-center transition-colors duration-300`}
+                >
+                    <FiGithub className="w-5 h-5" />
+                    <span className="sr-only">GitHub</span>
+                </a>
+                <a
+                    href="#"
+                    className={`w-10 h-10 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white hover:text-black' : 'bg-black/10 hover:bg-black hover:text-white'} flex items-center justify-center transition-colors duration-300`}
+                >
+                    <FiTwitter className="w-5 h-5" />
+                    <span className="sr-only">Twitter</span>
+                </a>
+            </div>
+            <div
+                ref={(el) => (socialRef.current[1] = el)}
+                className={`flex space-x-4 ${theme === 'dark' ? 'bg-gray-900/50' : 'bg-white/50'} p-4 rounded-lg border ${borderClass} hover:shadow-md transition-shadow duration-300`}
+            >
+                <a
+                    href="#"
+                    className={`w-10 h-10 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white hover:text-black' : 'bg-black/10 hover:bg-black hover:text-white'} flex items-center justify-center transition-colors duration-300`}
+                >
+                    <FiLinkedin className="w-5 h-5" />
+                    <span className="sr-only">LinkedIn</span>
+                </a>
+                <a
+                    href="#"
+                    className={`w-10 h-10 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white hover:text-black' : 'bg-black/10 hover:bg-black hover:text-white'} flex items-center justify-center transition-colors duration-300`}
+                >
+                    <FiDribbble className="w-5 h-5" />
+                    <span className="sr-only">Dribbble</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {/* Subtle Background Accent */}
+    <div
+        className={`absolute -top-16 right-8 w-24 h-24 ${theme === 'dark' ? 'bg-white/5' : 'bg-black/5'} rounded-full opacity-50 blur-md`}
+    ></div>
+</section>
 
             {/* Footer Section */}
             <footer
