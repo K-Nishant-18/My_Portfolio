@@ -99,7 +99,7 @@ export default function Home() {
                     scrollTrigger: {
                         trigger: card,
                         start: 'top 90%',
-                        end: 'bottom 80%',
+                        end: 'bottom 20%',
                         scrub: true,
                         onEnter: () => gsap.to(card, { rotation: 0, duration: 5 }),
                         onLeaveBack: () => gsap.to(card, { rotation: index % 2 === 0 ? -15 : 15, duration: 1 })
@@ -757,9 +757,9 @@ export default function Home() {
                     ref={aboutContentRef}
                     className="w-full mx-auto text-center"
                 >
-                    <h2 className={`text-lg lg:text-8xl font-[700]  tracking-[-0.08em] ${theme === 'dark' ? 'text-white/10' : 'text-black/10'}`}>
-                            ABOUT <span className={`block caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>me</span>
-                        </h2>
+                    <h2 className={`pb-15 text-lg lg:text-8xl font-[700] uppercase leading-none mb-6 ${theme === 'dark' ? 'text-white/10' : 'text-black/10'}`}>
+                        About <span className={`block caveat-bold absolute top-10 left-47/100 leading-[.08em] lowercase text-4xl md:text-5xl font-bold   ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(40%)' }}>me</span>
+                    </h2>
 
                     <p className={`px-50 text-lg md:text-3xl font- uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-950'}`}>
                         I'm K. Nishant, a passionate full-stack developer with expertise in <span className="font-medium">Java Spring Boot</span> and <span className="font-medium">React.js</span>.
