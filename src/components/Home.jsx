@@ -264,15 +264,6 @@ export default function Home() {
             impact: "Increased conversion rate by 28% with optimized UI/UX",
             link: "#"
         },
-        {
-            title: "AI Content Generator",
-            description: "Web application leveraging OpenAI API to generate marketing content and images.",
-            tags: ["React", "Python", "OpenAI", "Flask"],
-            category: "ai",
-            image: "https://images.unsplash.com/photo-1677442135136-760c813a743d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
-            impact: "Reduced content creation time by 75% for marketing teams",
-            link: "#"
-        }
     ]
 
     // Skills data - updated with your skills
