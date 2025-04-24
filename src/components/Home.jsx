@@ -1228,17 +1228,17 @@ export default function Home() {
             <section
                 ref={collaborateRef}
                 id="collaborate"
-                className={`py-20 px-8 md:px-16 lg:px-24 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} text-center`}
+                className={`py-20 px-8 md:px-16 lg:px-24 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} `}
             >
                 <div className="max-w-3xl mx-auto">
                     <h1
                                 ref={titleRef}
-                                className="text-6xl md:text-[9rem] lg:text-[19rem] font-[700] leading-none mb-6"
+                                className="text-6xl md:text-[9rem] lg:text-[19rem] font-[700] leading-none mb-6 text-left"
                             >
                                 <span className={` ${theme === 'dark' ? 'text-white' : 'text-black'} text-6xl md:text-[8rem] lg:text-[15rem] tracking-[-0.08em]`}>Let's</span>
                                 <span className={`block ${theme === 'dark' ? 'text-white' : 'text-black'} text-6xl md:text-[8rem] lg:text-[16rem] tracking-[-0.08em] leading-[0.60] pb-14`}>Collaborate</span>
                             </h1>
-                    <p className="text-xl mb-8 opacity-90">
+                    <p className="text-xl mb-8 opacity-90 text-right">
                         Interested in collaborating on a project? I'm available for freelance work and open to new opportunities.
                     </p>
                     <a
