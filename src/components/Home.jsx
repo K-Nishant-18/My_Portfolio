@@ -1310,155 +1310,155 @@ export default function Home() {
 
             {/* Gallery Section */}
             <section
-    ref={galleryRef}
-    id="gallery"
-    className={`py-20 px-6 md:px-12 lg:px-20 ${bgClass} relative overflow-hidden`}
-    data-scroll-section
->
-    <div className="max-w-8xl mx-auto relative z-10">
-        {/* Heading and Tagline */}
-        <div
-            className={`absolute bottom-10 left-0 w-[35%] md:w-[30%] lg:w-[40%] p-6 transform -translate-y-8 translate-x-8 z-50`}
-            data-scroll
-            data-scroll-speed="0.6"
-        >
-            <h2 className={`text-lg lg:text-9xl font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
-                Gallery <span className={`block caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>___My Goofy Pics___</span>
-            </h2>
-        </div>
-
-        {/* Images Layout */}
-        <div className="relative h-[600px] md:h-[700px] lg:h-[750px]">
-            {/* All images follow this pattern - I'll show one example, apply similarly to others */}
-            {/* Pic-1 (Top Left, Small) */}
-            <div
-                ref={el => (window['pic1'] = el)}
-                className="magic-hover-container absolute top-27 left-27 w-[18%] md:w-[14%] lg:w-[25%] z-20 group"
-                data-scroll
-                data-scroll-speed="1.2"
+                ref={galleryRef}
+                id="gallery"
+                className={`py-20 px-6 md:px-12 lg:px-20 ${bgClass} relative overflow-hidden`}
+                data-scroll-section
             >
-                <div className={`${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-xl magic-hover-wrapper transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
-                    <div className="magic-hover-inner overflow-hidden">
-                        <img 
-                            src={galleryImages[0]} 
-                            alt="Pic-1" 
-                            className="w-full h-full object-cover magic-hover-img transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" 
-                        />
-                        <div className="magic-hover-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-500"></div>
+                <div className="max-w-8xl mx-auto relative z-10">
+                    {/* Heading and Tagline */}
+                    <div
+                        className={`absolute bottom-10 left-0 w-[35%] md:w-[30%] lg:w-[40%] p-6 transform -translate-y-8 translate-x-8 z-50`}
+                        data-scroll
+                        data-scroll-speed="0.6"
+                    >
+                        <h2 className={`text-lg lg:text-9xl font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
+                            Gallery <span className={`block caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>___My Goofy Pics___</span>
+                        </h2>
+                    </div>
+
+                    {/* Images Layout */}
+                    <div className="relative h-[600px] md:h-[700px] lg:h-[750px]">
+                        {/* All images follow this pattern - I'll show one example, apply similarly to others */}
+                        {/* Pic-1 (Top Left, Small) */}
+                        <div
+                            ref={el => (window['pic1'] = el)}
+                            className="magic-hover-container absolute top-27 left-27 w-[18%] md:w-[14%] lg:w-[25%] z-20 group"
+                            data-scroll
+                            data-scroll-speed="1.2"
+                        >
+                            <div className={`${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-xl magic-hover-wrapper transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
+                                <div className="magic-hover-inner overflow-hidden">
+                                    <img
+                                        src={galleryImages[0]}
+                                        alt="Pic-1"
+                                        className="w-full h-full object-cover magic-hover-img transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                                    />
+                                    <div className="magic-hover-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-500"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Pic-2 (Top Center, Medium) */}
+                        <div
+                            ref={el => (window['pic2'] = el)}
+                            className="magic-hover-container absolute top-0 left-[25%] md:left-[20%] lg:left-[23%] w-[25%] md:w-[20%] lg:w-[22%] z-25 group"
+                            data-scroll
+                            data-scroll-speed="0.9"
+                        >
+                            <div className={`${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-xl magic-hover-wrapper transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
+                                <div className="magic-hover-inner overflow-hidden">
+                                    <img
+                                        src={galleryImages[1]}
+                                        alt="Pic-2"
+                                        className="w-full h-full object-cover magic-hover-img transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                                    />
+                                    <div className="magic-hover-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-500"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Pic-3 (Top Right, Large) */}
+                        <div
+                            ref={el => (window['pic3'] = el)}
+                            className="magic-hover-container absolute top-18 right-18 w-[35%] md:w-[30%] lg:w-[40%] z-15 group"
+                            data-scroll
+                            data-scroll-speed="1.4"
+                        >
+                            <div className={`${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-xl magic-hover-wrapper transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
+                                <div className="magic-hover-inner overflow-hidden">
+                                    <img
+                                        src={galleryImages[2]}
+                                        alt="Pic-3"
+                                        className="w-full h-full object-cover magic-hover-img transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                                    />
+                                    <div className="magic-hover-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-500"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Pic-4 (Bottom Left, Medium) */}
+                        <div
+                            ref={el => (window['pic4'] = el)}
+                            className="magic-hover-container absolute bottom-0 left-140 w-[30%] md:w-[25%] lg:w-[33%] z-35 group"
+                            data-scroll
+                            data-scroll-speed="1.1"
+                        >
+                            <div className={`${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-xl magic-hover-wrapper transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
+                                <div className="magic-hover-inner overflow-hidden">
+                                    <img
+                                        src={galleryImages[3]}
+                                        alt="Pic-4"
+                                        className="w-full h-full object-cover magic-hover-img transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                                    />
+                                    <div className="magic-hover-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-500"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Pic-5 (Bottom Right, Small) */}
+                        <div
+                            ref={el => (window['pic5'] = el)}
+                            className="magic-hover-container absolute bottom-50 right-0 w-[20%] md:w-[15%] lg:w-[28%] z-30 group"
+                            data-scroll
+                            data-scroll-speed="1.3"
+                        >
+                            <div className={`${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-xl magic-hover-wrapper transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
+                                <div className="magic-hover-inner overflow-hidden">
+                                    <img
+                                        src={galleryImages[4]}
+                                        alt="Pic-5"
+                                        className="w-full h-full object-cover magic-hover-img transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                                    />
+                                    <div className="magic-hover-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-500"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Pic-6 (Top Far Left, Tiny) */}
+                        <div
+                            ref={el => (window['pic6'] = el)}
+                            className="magic-hover-container absolute top-0 left-0 w-[12%] md:w-[10%] lg:w-[16%] z-10 group"
+                            data-scroll
+                            data-scroll-speed="1.5"
+                        >
+                            <div className={`${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-xl magic-hover-wrapper transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
+                                <div className="magic-hover-inner overflow-hidden">
+                                    <img
+                                        src={galleryImages[5]}
+                                        alt="Pic-6"
+                                        className="w-full h-full object-cover magic-hover-img transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                                    />
+                                    <div className="magic-hover-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-500"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Parallax Background */}
+                        <div
+                            className={`absolute inset-0 z-0 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} rounded-2xl`}
+                            data-scroll
+                            data-scroll-speed="-0.5"
+                        ></div>
+                        {/* Decorative Accent */}
+                        <div
+                            className={`absolute -top-[-410px] -left-50 w-90 h-90 rounded-full ${theme === 'dark' ? 'bg-white/5' : 'bg-black/10'} animate-pulse-slow`}
+                        ></div>
                     </div>
                 </div>
-            </div>
 
-            {/* Pic-2 (Top Center, Medium) */}
-            <div
-                ref={el => (window['pic2'] = el)}
-                className="magic-hover-container absolute top-0 left-[25%] md:left-[20%] lg:left-[23%] w-[25%] md:w-[20%] lg:w-[22%] z-25 group"
-                data-scroll
-                data-scroll-speed="0.9"
-            >
-                <div className={`${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-xl magic-hover-wrapper transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
-                    <div className="magic-hover-inner overflow-hidden">
-                        <img 
-                            src={galleryImages[1]} 
-                            alt="Pic-2" 
-                            className="w-full h-full object-cover magic-hover-img transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" 
-                        />
-                        <div className="magic-hover-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-500"></div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Pic-3 (Top Right, Large) */}
-            <div
-                ref={el => (window['pic3'] = el)}
-                className="magic-hover-container absolute top-18 right-18 w-[35%] md:w-[30%] lg:w-[40%] z-15 group"
-                data-scroll
-                data-scroll-speed="1.4"
-            >
-                <div className={`${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-xl magic-hover-wrapper transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
-                    <div className="magic-hover-inner overflow-hidden">
-                        <img 
-                            src={galleryImages[2]} 
-                            alt="Pic-3" 
-                            className="w-full h-full object-cover magic-hover-img transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" 
-                        />
-                        <div className="magic-hover-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-500"></div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Pic-4 (Bottom Left, Medium) */}
-            <div
-                ref={el => (window['pic4'] = el)}
-                className="magic-hover-container absolute bottom-0 left-140 w-[30%] md:w-[25%] lg:w-[33%] z-35 group"
-                data-scroll
-                data-scroll-speed="1.1"
-            >
-                <div className={`${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-xl magic-hover-wrapper transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
-                    <div className="magic-hover-inner overflow-hidden">
-                        <img 
-                            src={galleryImages[3]} 
-                            alt="Pic-4" 
-                            className="w-full h-full object-cover magic-hover-img transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" 
-                        />
-                        <div className="magic-hover-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-500"></div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Pic-5 (Bottom Right, Small) */}
-            <div
-                ref={el => (window['pic5'] = el)}
-                className="magic-hover-container absolute bottom-50 right-0 w-[20%] md:w-[15%] lg:w-[28%] z-30 group"
-                data-scroll
-                data-scroll-speed="1.3"
-            >
-                <div className={`${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-xl magic-hover-wrapper transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
-                    <div className="magic-hover-inner overflow-hidden">
-                        <img 
-                            src={galleryImages[4]} 
-                            alt="Pic-5" 
-                            className="w-full h-full object-cover magic-hover-img transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" 
-                        />
-                        <div className="magic-hover-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-500"></div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Pic-6 (Top Far Left, Tiny) */}
-            <div
-                ref={el => (window['pic6'] = el)}
-                className="magic-hover-container absolute top-0 left-0 w-[12%] md:w-[10%] lg:w-[16%] z-10 group"
-                data-scroll
-                data-scroll-speed="1.5"
-            >
-                <div className={`${theme === 'dark' ? 'bg-neutral-800' : 'bg-white'} rounded-xl overflow-hidden shadow-xl magic-hover-wrapper transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
-                    <div className="magic-hover-inner overflow-hidden">
-                        <img 
-                            src={galleryImages[5]} 
-                            alt="Pic-6" 
-                            className="w-full h-full object-cover magic-hover-img transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" 
-                        />
-                        <div className="magic-hover-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-500"></div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Parallax Background */}
-            <div
-                className={`absolute inset-0 z-0 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} rounded-2xl`}
-                data-scroll
-                data-scroll-speed="-0.5"
-            ></div>
-            {/* Decorative Accent */}
-            <div
-                className={`absolute -top-[-410px] -left-50 w-90 h-90 rounded-full ${theme === 'dark' ? 'bg-white/5' : 'bg-black/10'} animate-pulse-slow`}
-            ></div>
-        </div>
-    </div>
-
-    {/* Advanced CSS Animations */}
-    <style jsx global>{`
+                {/* Advanced CSS Animations */}
+                <style jsx global>{`
         .magic-hover-container {
             perspective: 1500px;
             transform-style: preserve-3d;
@@ -1548,9 +1548,9 @@ export default function Home() {
             bottom: 0;
             border-radius: inherit;
             opacity: 0;
-            ${theme === 'dark' ? 
-              'box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);' : 
-              'box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);'}
+            ${theme === 'dark' ?
+                        'box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);' :
+                        'box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);'}
             transition: opacity 0.4s ease;
             pointer-events: none;
         }
@@ -1559,65 +1559,68 @@ export default function Home() {
             opacity: 1;
         }
     `}</style>
-</section>
+            </section>
 
             {/* Testimonial Section */}
 
             <section
-                ref={guestbookRef}
-                id="guestbook"
-                className={`py-26 px-6 md:px-12 lg:px-16 ${theme === 'dark' ? 'bg-gray-950' : 'bg-gray-50'} relative overflow-hidden`}
-                data-scroll-section
-            >
-                <div className="min-h-[60vh] max-w-7xl mx-auto relative z-10">
-                    <div className="mb-0 text-center">
-                        <h2 className={`text-lg lg:text-8xl font-[700]  tracking-[-0.08em] ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
-                            Reflections <span className={`block caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>and Raves</span>
-                        </h2>
-                        <p className={` pb-[-50px] mt-2 text-sm md:text-base font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} style={{ transform: 'translateY(-250%)' }}>
-                            A glimpse into the moments that mattered.
-                        </p>
-                    </div>
+    ref={guestbookRef}
+    id="guestbook"
+    className={`py-26 px-6 md:px-12 lg:px-16 ${theme === 'dark' ? 'bg-gray-950' : 'bg-gray-50'} relative overflow-hidden`}
+    data-scroll-section
+    style={{
+        backgroundImage: `url('https://media-hosting.imagekit.io/af39b3ac94e54ece/Test_bg.jpeg?Expires=1840139433&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=rg2yF00ZFz1clLcUbkoIVP35s2ml0O~BR4syVezdbkAAWfDUP3JrPav6BGf6Sn3n31qnv9~BNq5eBySfA50Q~bIwtXKWNcZQYaD46Ki9u17PoSRWf2sBoJj-uV5LTOVib2oJyUfUoxIRLa6RJzSnDdClwwRhpqE5BYj5VD3odmNfrGe6AGmRqnX4rcv5OX89~ZMX0WhvzdnWW62GV692MCZnzhSfWn1M5vCHlWd7Z1s9rOsXq0pehIQNpSIc1~f6pu-C2FtmJVq3hKqHKWknznqDh8sY94HPq5ixjnqo5t7HzaoD3qwHnNWNACTNdVhwl7kDo5w3li-vdL5nqxRS1Q__')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundBlendMode: 'multiply' // or 'multiply', 'screen', etc.
+    }}
+>
+    {/* Background overlay for better readability */}
+    <div className={`absolute inset-0 z-0 ${theme === 'dark' ? 'bg-black/1' : 'bg-white/60'}`}></div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative" data-scroll data-scroll-speed="1">
-                        {guestbookEntries.map((entry, index) => (
-                            <div
-                                key={entry.id}
-                                ref={(el) => addToCardRefs(el, index)} // Assign ref to card
-                                className={`relative p-6 opacity-5 ${theme === 'dark' ? 'bg-gray-900' : 'bg-slate-100'} border ${borderClass} rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 perspective-1000`}
-                            >
-                                <div
-                                    ref={(el) => addToInitialRefs(el, index)} // Assign ref to initial badge
-                                    className={`absolute -top-8 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center z-10`}
-                                >
-                                    <span className={`text-lg font-bold ${theme === 'dark' ? 'text-gray-800' : 'text-gray-900'}`}>
-                                        {entry.name.charAt(0)}
-                                    </span>
-                                </div>
-                                <p className="text-sm md:text-base font-sans leading-relaxed mb-4 opacity-90">
-                                    "{entry.message}"
-                                </p>
-                                <div className="flex justify-between items-end">
-                                    <span className={`text-xs font-medium ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-                                        {entry.name}
-                                    </span>
-                                    <span className={`text-xs ${theme === 'dark' ? 'text-gray-500' : 'text-gray-500'}`}>
-                                        {new Date(entry.date).toLocaleDateString()}
-                                    </span>
-                                </div>
-                            </div>
-                        ))}
-                        {/* Crazy Parallax Background */}
-                        {/* <div
-                className={`absolute inset-0 z-0 ${theme === 'dark' ? 'bg-gradient-to-br from-gray-900/50 to-gray-950/50' : 'bg-gradient-to-br from-white/50 to-gray-50/50'}`}
-                data-scroll
-                data-scroll-speed="-0.5"
-            ></div> */}
-                        {/* Pulsing Accent */}
-                        <div className="absolute -top-20 right-10 w-40 h-40 bg-accent rounded-full opacity-20 animate-pulse"></div>
+    <div className="min-h-[60vh] max-w-7xl mx-auto relative z-10">
+        {/* Rest of your existing code remains exactly the same */}
+        <div className="mb-0 text-center">
+            <h2 className={`text-lg lg:text-8xl font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
+                Reflections <span className={`block caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>and Raves</span>
+            </h2>
+            <p className={`pb-[-50px] mt-2 text-sm md:text-base font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} style={{ transform: 'translateY(-250%)' }}>
+                A glimpse into the moments that mattered.
+            </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative" data-scroll data-scroll-speed="1">
+            {guestbookEntries.map((entry, index) => (
+                <div
+                    key={entry.id}
+                    ref={(el) => addToCardRefs(el, index)}
+                    className={`relative p-6 opacity-5 ${theme === 'dark' ? 'bg-gray-900' : 'bg-slate-100'} border ${borderClass} rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 perspective-1000`}
+                >
+                    <div
+                        ref={(el) => addToInitialRefs(el, index)}
+                        className={`absolute -top-8 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center z-10`}
+                    >
+                        <span className={`text-lg font-bold ${theme === 'dark' ? 'text-gray-800' : 'text-gray-900'}`}>
+                            {entry.name.charAt(0)}
+                        </span>
+                    </div>
+                    <p className="text-sm md:text-base font-sans leading-relaxed mb-4 opacity-90">
+                        "{entry.message}"
+                    </p>
+                    <div className="flex justify-between items-end">
+                        <span className={`text-xs font-medium ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                            {entry.name}
+                        </span>
+                        <span className={`text-xs ${theme === 'dark' ? 'text-gray-500' : 'text-gray-500'}`}>
+                            {new Date(entry.date).toLocaleDateString()}
+                        </span>
                     </div>
                 </div>
-            </section>
+            ))}
+            <div className="absolute -top-20 right-10 w-40 h-40 bg-accent rounded-full opacity-20 animate-pulse"></div>
+        </div>
+    </div>
+</section>
 
             {/* Collaborate Section */}
             <section
@@ -1660,7 +1663,7 @@ export default function Home() {
                     <div className="w-full px-8 ">
                         {/* Header */}
                         <div className="mb-8 text-left">
-                            <h2 className={`text-lg lg:text-8xl font-[700] mt-10 tracking-[-0.08em] ${theme === 'dark' ? 'text-white/10' : 'text-black/10'}`}>
+                            <h2 className={`text-lg lg:text-8xl font-[700] mt-10 tracking-[-0.08em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
                                 Get In <span className={`block pl-15 caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>touch</span>
                             </h2>
                             <p className={`mt-[-70px] text-sm font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
