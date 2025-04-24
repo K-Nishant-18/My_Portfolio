@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 import Lenis from '@studio-freight/lenis'
 import axios from 'axios';
+import LocomotiveScroll from 'locomotive-scroll'
 
 import {
     FiGithub, FiTwitter, FiLinkedin, FiDribbble, FiMail, FiPhone,
@@ -18,12 +19,14 @@ gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
 export default function Home() {
     const [theme, setTheme] = useState('light')
     const [activeTab, setActiveTab] = useState('all')
-    const [guestbookEntries, setGuestbookEntries] = useState([
-        { id: 1, name: 'Sarah Johnson', message: 'Amazing portfolio! Love the clean design.', date: '2023-05-15' },
-        { id: 2, name: 'Michael Chen', message: 'Your work is inspiring. Would love to collaborate sometime.', date: '2023-06-22' },
-        { id: 3, name: 'Emma Wilson', message: 'The attention to detail in your projects is remarkable.', date: '2023-07-10' }
+   
+    const [guestbookEntries] = useState([
+        { id: 1, name: 'Priya Sharma', message: 'Amazing portfolio! Love the clean design.', date: '2023-05-15' },
+        { id: 2, name: 'Rahul Patel', message: 'Your work is inspiring. Would love to collaborate sometime.', date: '2023-06-22' },
+        { id: 3, name: 'Anjali Gupta', message: 'The attention to detail in your projects is remarkable.', date: '2023-07-10' }
     ])
-    const [newEntry, setNewEntry] = useState({ name: '', message: '' })
+    
+    
     // Use state for githubStats to ensure updates trigger re-render
     const [githubStats, setGithubStats] = useState({
         repos: 24,
@@ -66,6 +69,62 @@ export default function Home() {
     const toggleTheme = () => {
         setTheme(theme === 'light' ? 'dark' : 'light')
     }
+
+
+    // Testimonial Section
+const cardRefs = useRef([]); // Array to hold refs for each card
+const initialRefs = useRef([]); // Array to hold refs for each initial badge
+
+// Helper function to add refs to the array if they don't exist
+const addToCardRefs = (el, index) => {
+    if (el && !cardRefs.current[index]) {
+        cardRefs.current[index] = el;
+    }
+};
+
+const addToInitialRefs = (el, index) => {
+    if (el && !initialRefs.current[index]) {
+        initialRefs.current[index] = el;
+    }
+};
+
+// Animation setup in useEffect
+useEffect(() => {
+    cardRefs.current.forEach((card, index) => {
+        if (card) {
+            gsap.from(card, {
+                opacity: 30,
+                y: 100,
+                rotation: index % 2 === 0 ? -15 : 15,
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 90%',
+                    end: 'bottom 80%',
+                    scrub: true,
+                    onEnter: () => gsap.to(card, { rotation: 0, duration: 5 }),
+                    onLeaveBack: () => gsap.to(card, { rotation: index % 2 === 0 ? -15 : 15, duration: 1 })
+                }
+            });
+        }
+    });
+
+    initialRefs.current.forEach((initial) => {
+        if (initial) {
+            gsap.fromTo(
+                initial,
+                { scale: 0, rotation: 360 },
+                { 
+                    scale: 1, 
+                    rotation: 30, 
+                    duration: 1, 
+                    repeat: -1, 
+                    yoyo: true, 
+                    ease: 'power1.inOut' 
+                }
+            );
+        }
+    });
+}, [guestbookEntries]); // Re-run if guestbookEntries chang
 
     // Fetch GitHub data
     useEffect(() => {
@@ -554,26 +613,7 @@ function getGridSpan(index) {
         ? projects
         : projects.filter(project => project.category === activeTab)
 
-    const handleGuestbookSubmit = (e) => {
-        e.preventDefault()
-        if (newEntry.name && newEntry.message) {
-            const entry = {
-                id: guestbookEntries.length + 1,
-                name: newEntry.name,
-                message: newEntry.message,
-                date: new Date().toISOString().split('T')[0]
-            }
-            setGuestbookEntries([entry, ...guestbookEntries])
-            setNewEntry({ name: '', message: '' })
-
-            // Animation for new entry
-            gsap.from(`#entry-${entry.id}`, {
-                y: 50,
-                opacity: 0,
-                duration: 0.8
-            })
-        }
-    }
+    
 
     // Theme classes
     const bgClass = theme === 'dark' ? 'bg-gray-950' : 'bg-grey-50'
@@ -741,7 +781,7 @@ function getGridSpan(index) {
                 id="skills"
                 className={`pt-30 pb-50 py-16 px-8 md:px-12 lg:px-16 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} relative overflow-hidden`}
             >
-                <div className={`absolute top-0 left-0 w-24 h-24 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-200'} opacity-30 rotate-45 -translate-x-12 -translate-y-12`}></div>
+                <div className={`absolute top-0 left-0 w-24 h-24 ${theme === 'dark' ? 'bg-gray-950' : 'bg-gray-50'} opacity-100 rotate-45 -translate-x-12 -translate-y-12`}></div>
 
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-22 relative text-right">
@@ -1126,79 +1166,63 @@ function getGridSpan(index) {
             </div>
         </section>
 
-            {/* Guestbook Section */}
+            {/* Testimonial Section */}
+            
             <section
-                ref={guestbookRef}
-                id="guestbook"
-                className={`py-20 px-8 md:px-16 lg:px-24 ${bgClass}`}
-            >
-                <div className="max-w-6xl mx-auto">
-                    <div className="mb-20">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                            Visitor <span className={accentClass}>Guestbook</span>
-                        </h2>
-                        <p className="text-lg max-w-2xl opacity-80">
-                            Leave a message or feedback. I'd love to hear from you!
-                        </p>
+    ref={guestbookRef}
+    id="guestbook"
+    className={`py-26 px-6 md:px-12 lg:px-16 ${theme === 'dark' ? 'bg-gray-950' : 'bg-gray-50'} relative overflow-hidden`}
+    data-scroll-section
+>
+    <div className="min-h-[50vh] max-w-7xl mx-auto relative z-10">
+        <div className="mb-12 text-center">
+            <h2 className={`text-3xl md:text-4xl font-sans font-bold uppercase tracking-widest ${theme === 'dark' ? 'text-white/20' : 'text-black/20'}`}>
+                Echoes of <span className={accentClass}>Excellence</span>
+            </h2>
+            <p className={`mt-2 text-sm md:text-base font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                Bold voices from my creative journey.
+            </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative" data-scroll data-scroll-speed="1">
+            {guestbookEntries.map((entry, index) => (
+                <div
+                    key={entry.id}
+                    ref={(el) => addToCardRefs(el, index)} // Assign ref to card
+                    className={`relative p-6 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} border ${borderClass} rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 perspective-1000`}
+                >
+                    <div
+                        ref={(el) => addToInitialRefs(el, index)} // Assign ref to initial badge
+                        className={`absolute -top-8 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center z-10`}
+                    >
+                        <span className={`text-lg font-bold ${theme === 'dark' ? 'text-gray-800' : 'text-gray-900'}`}>
+                            {entry.name.charAt(0)}
+                        </span>
                     </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <div>
-                            <form onSubmit={handleGuestbookSubmit} className="space-y-6">
-                                <div>
-                                    <label htmlFor="name" className="block mb-2 font-medium">Name</label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        value={newEntry.name}
-                                        onChange={(e) => setNewEntry({ ...newEntry, name: e.target.value })}
-                                        className={`w-full px-4 py-3 bg-transparent border-b ${theme === 'dark' ? 'border-white/20 focus:border-white' : 'border-black/20 focus:border-black'} outline-none transition-colors duration-300`}
-                                        required
-                                    />
-                                </div>
-
-                                <div>
-                                    <label htmlFor="message" className="block mb-2 font-medium">Message</label>
-                                    <textarea
-                                        id="message"
-                                        rows="5"
-                                        value={newEntry.message}
-                                        onChange={(e) => setNewEntry({ ...newEntry, message: e.target.value })}
-                                        className={`w-full px-4 py-3 bg-transparent border-b ${theme === 'dark' ? 'border-white/20 focus:border-white' : 'border-black/20 focus:border-black'} outline-none transition-colors duration-300`}
-                                        required
-                                    ></textarea>
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    className={`px-6 py-3 ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'} rounded-full transition-colors duration-300`}
-                                >
-                                    Submit Message
-                                </button>
-                            </form>
-                        </div>
-
-                        <div className="space-y-6">
-                            <h3 className="text-xl font-bold">Recent Messages</h3>
-                            <div className="space-y-4">
-                                {guestbookEntries.map((entry) => (
-                                    <div
-                                        key={entry.id}
-                                        id={`entry-${entry.id}`}
-                                        className={`guestbook-entry p-4 ${theme === 'dark' ? 'bg-white/5' : 'bg-black/5'} rounded-lg border ${borderClass}`}
-                                    >
-                                        <div className="flex justify-between items-start mb-2">
-                                            <h4 className="font-medium">{entry.name}</h4>
-                                            <span className={`text-xs ${theme === 'dark' ? 'text-white/60' : 'text-black/60'}`}>{entry.date}</span>
-                                        </div>
-                                        <p className="text-sm opacity-90">{entry.message}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                    <p className="text-sm md:text-base font-sans leading-relaxed mb-4 opacity-90">
+                        "{entry.message}"
+                    </p>
+                    <div className="flex justify-between items-end">
+                        <span className={`text-xs font-medium ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                            {entry.name}
+                        </span>
+                        <span className={`text-xs ${theme === 'dark' ? 'text-gray-500' : 'text-gray-500'}`}>
+                            {new Date(entry.date).toLocaleDateString()}
+                        </span>
                     </div>
                 </div>
-            </section>
+            ))}
+            {/* Crazy Parallax Background */}
+            {/* <div
+                className={`absolute inset-0 z-0 ${theme === 'dark' ? 'bg-gradient-to-br from-gray-900/50 to-gray-950/50' : 'bg-gradient-to-br from-white/50 to-gray-50/50'}`}
+                data-scroll
+                data-scroll-speed="-0.5"
+            ></div> */}
+            {/* Pulsing Accent */}
+            <div className="absolute -top-20 right-10 w-40 h-40 bg-accent rounded-full opacity-20 animate-pulse"></div>
+        </div>
+    </div>
+</section>
 
             {/* Collaborate Section */}
             <section
@@ -1386,15 +1410,12 @@ function getGridSpan(index) {
                         </div>
                     </div>
 
-                    <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                    <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-center items-center">
                         <p className="text-sm opacity-80 mb-4 md:mb-0">
                             © <span ref={yearRef}>2023</span> K. Nishant. All Rights Reserved.
                         </p>
 
-                        <div className="flex space-x-4">
-                            <a href="#" className="text-xs hover:opacity-80 transition-opacity duration-300">Privacy Policy</a>
-                            <a href="#" className="text-xs hover:opacity-80 transition-opacity duration-300">Terms of Service</a>
-                        </div>
+                        
                     </div>
                 </div>
             </footer>
