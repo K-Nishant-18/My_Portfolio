@@ -962,8 +962,8 @@ export default function Home() {
 
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-22 relative text-right">
-                        <h2 className={`text-4xl md:text-5xl font-bold uppercase tracking-[-0.08em] ${theme === 'dark' ? 'text-white/10' : 'text-black/10'}`}>
-                            Technical <span className={`text-lg lg:text-8xl font-[700] leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Skills</span>
+                        <h2 className={`text-4xl  md:text-6xl font-bold  tracking-[-0.08em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
+                           <span className='caveat-bold'> Technical </span><span className={`text-lg lg:text-8xl font-[700] uppercase leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Skills</span>
                         </h2>
                         <p className={`text-right text-base md:text-lg mt-2 w-full opacity-70 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
                             Frontend, backend, databases, and DevOps expertise.
@@ -1034,8 +1034,8 @@ export default function Home() {
             >
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-12 relative pb-24">
-                        <h2 className={`text-4xl md:text-5xl font-bold uppercase tracking-[-0.08em] ${theme === 'dark' ? 'text-white/10' : 'text-black/10'}`}>
-                            <span className={`text-lg lg:text-8xl font-[700] leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Development</span> Stats
+                        <h2 className={`text-4xl md:text-6xl font-bold  tracking-[-0.1em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
+                            <span className={`text-lg lg:text-8xl uppercase font-[700] leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Development</span> <span className='caveat-bold'>Numbers</span> 
                         </h2>
                         <p className={`text-base md:text-lg mt-2 w-2/3 opacity-70 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
                             My coding journey in numbers.
@@ -1323,7 +1323,7 @@ export default function Home() {
                         data-scroll-speed="0.6"
                     >
                         <h2 className={`text-lg lg:text-[12rem] font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
-                        Gallery
+                            Gallery
                         </h2>
                     </div>
 
@@ -1565,65 +1565,64 @@ export default function Home() {
             </section>
 
             {/* Testimonial Section */}
-
             <section
-    ref={guestbookRef}
-    id="guestbook"
-    className={`py-26 px-6 md:px-12 lg:px-16 ${bgClass} relative overflow-hidden`}
-    data-scroll-section
-    style={{
-        backgroundImage: `url('https://media-hosting.imagekit.io/aad8428398174daa/Test_bg-removebg-preview.png?Expires=1840140424&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=vP3kYFgwg8KTTMFf8Y7G5HvEKLrn7CsWwHR4CsZNZ0ki~aLwxML36N5E1prgEbQ5znuocgqAdJrx6kGzOIVArJtrhE78ZymeH7e8JP4AdFddgBMYq947NYcC9nCIRo7jplaD6DKrYMDhzxeb8fTjhc39E6pVFd9h7HDxcuGr88N0syo1Msyy7DVXef9XiW6UrXRnQYQsSOzz8p4jA6x5QQo7LXW5dXmzJ5ky35SVHjzsVc9VihSWgMEr9-kd5o-FWd2ksiybzonR~6nbmm4eFA5ojRwTpmcChaajT~43PAMrMnHqFQYzxs39QrIpshuYQYHlU01zRwNQ26lNHq4TPw__')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundBlendMode: 'multiply' // or 'multiply', 'screen', etc.
-    }}
->
-    {/* Background overlay for better readability */}
-    <div className={`absolute inset-0 z-0 ${theme === 'dark' ? 'bg-black/1' : 'bg-white/90'}`}></div>
+                ref={guestbookRef}
+                id="guestbook"
+                className={`py-26 px-6 md:px-12 lg:px-16 ${bgClass} relative overflow-hidden`}
+                data-scroll-section
+                style={{
+                    backgroundImage: `url('https://media-hosting.imagekit.io/aad8428398174daa/Test_bg-removebg-preview.png?Expires=1840140424&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=vP3kYFgwg8KTTMFf8Y7G5HvEKLrn7CsWwHR4CsZNZ0ki~aLwxML36N5E1prgEbQ5znuocgqAdJrx6kGzOIVArJtrhE78ZymeH7e8JP4AdFddgBMYq947NYcC9nCIRo7jplaD6DKrYMDhzxeb8fTjhc39E6pVFd9h7HDxcuGr88N0syo1Msyy7DVXef9XiW6UrXRnQYQsSOzz8p4jA6x5QQo7LXW5dXmzJ5ky35SVHjzsVc9VihSWgMEr9-kd5o-FWd2ksiybzonR~6nbmm4eFA5ojRwTpmcChaajT~43PAMrMnHqFQYzxs39QrIpshuYQYHlU01zRwNQ26lNHq4TPw__')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundBlendMode: 'multiply' // or 'multiply', 'screen', etc.
+                }}
+            >
+                {/* Background overlay for better readability */}
+                <div className={`absolute inset-0 z-0 ${theme === 'dark' ? 'bg-black/1' : 'bg-white/90'}`}></div>
 
-    <div className="min-h-[60vh] max-w-7xl mx-auto relative z-10">
-        {/* Rest of your existing code remains exactly the same */}
-        <div className="mb-0 text-center">
-            <h2 className={`text-lg lg:text-8xl font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
-                Reflections <span className={`block caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>and Raves</span>
-            </h2>
-            <p className={`pb-[-50px] mt-2 text-sm md:text-base font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} style={{ transform: 'translateY(-250%)' }}>
-                A glimpse into the moments that mattered.
-            </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative" data-scroll data-scroll-speed="1">
-            {guestbookEntries.map((entry, index) => (
-                <div
-                    key={entry.id}
-                    ref={(el) => addToCardRefs(el, index)}
-                    className={`relative p-6 opacity-5 ${theme === 'dark' ? 'bg-gray-900' : 'bg-slate-100'} border ${borderClass} rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 perspective-1000`}
-                >
-                    <div
-                        ref={(el) => addToInitialRefs(el, index)}
-                        className={`absolute -top-8 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center z-10`}
-                    >
-                        <span className={`text-lg font-bold ${theme === 'dark' ? 'text-gray-800' : 'text-gray-900'}`}>
-                            {entry.name.charAt(0)}
-                        </span>
+                <div className="min-h-[60vh] max-w-7xl mx-auto relative z-10">
+                    {/* Rest of your existing code remains exactly the same */}
+                    <div className="mb-0 text-center">
+                        <h2 className={`text-lg lg:text-8xl font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
+                            Reflections <span className={`block caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>and Raves</span>
+                        </h2>
+                        <p className={`pb-[-50px] mt-2 text-sm md:text-base font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} style={{ transform: 'translateY(-250%)' }}>
+                            A glimpse into the moments that mattered.
+                        </p>
                     </div>
-                    <p className="text-sm md:text-base font-sans leading-relaxed mb-4 opacity-90">
-                        "{entry.message}"
-                    </p>
-                    <div className="flex justify-between items-end">
-                        <span className={`text-xs font-medium ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-                            {entry.name}
-                        </span>
-                        <span className={`text-xs ${theme === 'dark' ? 'text-gray-500' : 'text-gray-500'}`}>
-                            {new Date(entry.date).toLocaleDateString()}
-                        </span>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative" data-scroll data-scroll-speed="1">
+                        {guestbookEntries.map((entry, index) => (
+                            <div
+                                key={entry.id}
+                                ref={(el) => addToCardRefs(el, index)}
+                                className={`relative p-6 opacity-5 ${theme === 'dark' ? 'bg-gray-900' : 'bg-slate-100'} border ${borderClass} rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 perspective-1000`}
+                            >
+                                <div
+                                    ref={(el) => addToInitialRefs(el, index)}
+                                    className={`absolute -top-8 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center z-10`}
+                                >
+                                    <span className={`text-lg font-bold ${theme === 'dark' ? 'text-gray-800' : 'text-gray-900'}`}>
+                                        {entry.name.charAt(0)}
+                                    </span>
+                                </div>
+                                <p className="text-sm md:text-base font-sans leading-relaxed mb-4 opacity-90">
+                                    "{entry.message}"
+                                </p>
+                                <div className="flex justify-between items-end">
+                                    <span className={`text-xs font-medium ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                                        {entry.name}
+                                    </span>
+                                    <span className={`text-xs ${theme === 'dark' ? 'text-gray-500' : 'text-gray-500'}`}>
+                                        {new Date(entry.date).toLocaleDateString()}
+                                    </span>
+                                </div>
+                            </div>
+                        ))}
+                        <div className="absolute -top-20 right-10 w-40 h-40 bg-accent rounded-full opacity-20 animate-pulse"></div>
                     </div>
                 </div>
-            ))}
-            <div className="absolute -top-20 right-10 w-40 h-40 bg-accent rounded-full opacity-20 animate-pulse"></div>
-        </div>
-    </div>
-</section>
+            </section>
 
             {/* Collaborate Section */}
             <section
