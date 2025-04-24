@@ -1328,7 +1328,7 @@ export default function Home() {
         </div>
 
         {/* Images Layout */}
-        <div className="relative h-[600px] md:h-[700px] lg:h-[800px]">
+        <div className="relative h-[600px] md:h-[700px] lg:h-[750px]">
             {/* All images follow this pattern - I'll show one example, apply similarly to others */}
             {/* Pic-1 (Top Left, Small) */}
             <div
@@ -1371,7 +1371,7 @@ export default function Home() {
             {/* Pic-3 (Top Right, Large) */}
             <div
                 ref={el => (window['pic3'] = el)}
-                className="magic-hover-container absolute top-25 right-25 w-[35%] md:w-[30%] lg:w-[40%] z-15 group"
+                className="magic-hover-container absolute top-18 right-18 w-[35%] md:w-[30%] lg:w-[40%] z-15 group"
                 data-scroll
                 data-scroll-speed="1.4"
             >
@@ -1390,7 +1390,7 @@ export default function Home() {
             {/* Pic-4 (Bottom Left, Medium) */}
             <div
                 ref={el => (window['pic4'] = el)}
-                className="magic-hover-container absolute bottom-0 left-130 w-[30%] md:w-[25%] lg:w-[35%] z-35 group"
+                className="magic-hover-container absolute bottom-0 left-140 w-[30%] md:w-[25%] lg:w-[33%] z-35 group"
                 data-scroll
                 data-scroll-speed="1.1"
             >
