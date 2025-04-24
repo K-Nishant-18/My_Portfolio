@@ -69,3 +69,15 @@ button:focus-visible {
   }
 }
 
+.whisper-regular {
+  font-family: "Whisper", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.caveat-bold {
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}

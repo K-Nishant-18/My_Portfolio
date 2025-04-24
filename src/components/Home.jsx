@@ -19,14 +19,14 @@ gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
 export default function Home() {
     const [theme, setTheme] = useState('light')
     const [activeTab, setActiveTab] = useState('all')
-   
+
     const [guestbookEntries] = useState([
         { id: 1, name: 'Priya Sharma', message: 'Amazing portfolio! Love the clean design.', date: '2023-05-15' },
         { id: 2, name: 'Rahul Patel', message: 'Your work is inspiring. Would love to collaborate sometime.', date: '2023-06-22' },
         { id: 3, name: 'Anjali Gupta', message: 'The attention to detail in your projects is remarkable.', date: '2023-07-10' }
     ])
-    
-    
+
+
     // Use state for githubStats to ensure updates trigger re-render
     const [githubStats, setGithubStats] = useState({
         repos: 24,
@@ -72,59 +72,59 @@ export default function Home() {
 
 
     // Testimonial Section
-const cardRefs = useRef([]); // Array to hold refs for each card
-const initialRefs = useRef([]); // Array to hold refs for each initial badge
+    const cardRefs = useRef([]); // Array to hold refs for each card
+    const initialRefs = useRef([]); // Array to hold refs for each initial badge
 
-// Helper function to add refs to the array if they don't exist
-const addToCardRefs = (el, index) => {
-    if (el && !cardRefs.current[index]) {
-        cardRefs.current[index] = el;
-    }
-};
-
-const addToInitialRefs = (el, index) => {
-    if (el && !initialRefs.current[index]) {
-        initialRefs.current[index] = el;
-    }
-};
-
-// Animation setup in useEffect
-useEffect(() => {
-    cardRefs.current.forEach((card, index) => {
-        if (card) {
-            gsap.from(card, {
-                opacity: 30,
-                y: 100,
-                rotation: index % 2 === 0 ? -15 : 15,
-                scrollTrigger: {
-                    trigger: card,
-                    start: 'top 90%',
-                    end: 'bottom 80%',
-                    scrub: true,
-                    onEnter: () => gsap.to(card, { rotation: 0, duration: 5 }),
-                    onLeaveBack: () => gsap.to(card, { rotation: index % 2 === 0 ? -15 : 15, duration: 1 })
-                }
-            });
+    // Helper function to add refs to the array if they don't exist
+    const addToCardRefs = (el, index) => {
+        if (el && !cardRefs.current[index]) {
+            cardRefs.current[index] = el;
         }
-    });
+    };
 
-    initialRefs.current.forEach((initial) => {
-        if (initial) {
-            gsap.fromTo(
-                initial,
-                { scale: 0, rotation: 360 },
-                { 
-                    scale: 1, 
-                    rotation: 30, 
-                    duration: 1, 
-                    repeat: -1, 
-                    yoyo: true, 
-                    ease: 'power1.inOut' 
-                }
-            );
+    const addToInitialRefs = (el, index) => {
+        if (el && !initialRefs.current[index]) {
+            initialRefs.current[index] = el;
         }
-    });
-}, [guestbookEntries]); // Re-run if guestbookEntries chang
+    };
+
+    // Animation setup in useEffect
+    useEffect(() => {
+        cardRefs.current.forEach((card, index) => {
+            if (card) {
+                gsap.from(card, {
+                    opacity: 30,
+                    y: 100,
+                    rotation: index % 2 === 0 ? -15 : 15,
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 90%',
+                        end: 'bottom 80%',
+                        scrub: true,
+                        onEnter: () => gsap.to(card, { rotation: 0, duration: 5 }),
+                        onLeaveBack: () => gsap.to(card, { rotation: index % 2 === 0 ? -15 : 15, duration: 1 })
+                    }
+                });
+            }
+        });
+
+        initialRefs.current.forEach((initial) => {
+            if (initial) {
+                gsap.fromTo(
+                    initial,
+                    { scale: 0, rotation: 360 },
+                    {
+                        scale: 1,
+                        rotation: 30,
+                        duration: 1,
+                        repeat: -1,
+                        yoyo: true,
+                        ease: 'power1.inOut'
+                    }
+                );
+            }
+        });
+    }, [guestbookEntries]); // Re-run if guestbookEntries chang
 
     // Fetch GitHub data
     useEffect(() => {
@@ -268,17 +268,17 @@ useEffect(() => {
 
 
     // Helper function to assign asymmetric grid spans for visual interest
-function getGridSpan(index) {
-    const pattern = [
-        'col-span-2 row-span-2', // Larger item
-        'col-span-1 row-span-1', // Smaller item
-        'col-span-1 row-span-1', // Smaller item
-        'col-span-2 row-span-1', // Medium item
-        'col-span-1 row-span-2', // Tall item
-        'col-span-1 row-span-1'  // Smaller item
-    ];
-    return pattern[index % pattern.length];
-}
+    function getGridSpan(index) {
+        const pattern = [
+            'col-span-2 row-span-2', // Larger item
+            'col-span-1 row-span-1', // Smaller item
+            'col-span-1 row-span-1', // Smaller item
+            'col-span-2 row-span-1', // Medium item
+            'col-span-1 row-span-2', // Tall item
+            'col-span-1 row-span-1'  // Smaller item
+        ];
+        return pattern[index % pattern.length];
+    }
 
     // Gallery images
     const galleryImages = [
@@ -613,7 +613,7 @@ function getGridSpan(index) {
         ? projects
         : projects.filter(project => project.category === activeTab)
 
-    
+
 
     // Theme classes
     const bgClass = theme === 'dark' ? 'bg-gray-950' : 'bg-grey-50'
@@ -757,9 +757,9 @@ function getGridSpan(index) {
                     ref={aboutContentRef}
                     className="w-full mx-auto text-center"
                 >
-                    <h2 className={`pb-15 text-lg lg:text-8xl font-[700] uppercase leading-none mb-6 ${theme === 'dark' ? 'text-white/10' : 'text-black/10'}`}>
-                        About <span className={`block absolute top-10 left-47/100 leading-[.08em] lowercase text-4xl md:text-5xl font-bold   ${theme === 'dark' ? 'text-white' : 'text-black'}`}style={{ transform: 'translateY(40%)' }}>me</span>
-                    </h2>
+                    <h2 className={`text-lg lg:text-8xl font-[700]  tracking-[-0.08em] ${theme === 'dark' ? 'text-white/10' : 'text-black/10'}`}>
+                            ABOUT <span className={`block caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>me</span>
+                        </h2>
 
                     <p className={`px-50 text-lg md:text-3xl font- uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-950'}`}>
                         I'm K. Nishant, a passionate full-stack developer with expertise in <span className="font-medium">Java Spring Boot</span> and <span className="font-medium">React.js</span>.
@@ -771,7 +771,7 @@ function getGridSpan(index) {
                         I'm constantly exploring modern tools like Vite, Tailwind CSS, and AI platforms to create innovative solutions.
                     </p>
 
-                    
+
                 </div>
             </section>
 
@@ -1133,96 +1133,96 @@ function getGridSpan(index) {
 
             {/* Gallery Section */}
             <section
-            ref={galleryRef}
-            id="gallery"
-            className={`py-16 px-6 md:px-12 lg:px-16 ${theme === 'dark' ? 'bg-neutral-900' : 'bg-white'}`}
-        >
-            <div className="max-w-[1200px] mx-auto">
-                {/* Header */}
-                <div className="mb-12">
-                    <h2 className={`text-4xl md:text-5xl font-extrabold tracking-tight font-sans ${theme === 'dark' ? 'text-white' : 'text-black'} mb-3`}>
-                        Design <span className={accentClass}>Gallery</span>
-                    </h2>
-                    <p className={`text-base font-light tracking-wide font-sans max-w-xl ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'}`}>
-                        Visual inspiration and design explorations.
-                    </p>
-                </div>
+                ref={galleryRef}
+                id="gallery"
+                className={`py-16 px-6 md:px-12 lg:px-16 ${theme === 'dark' ? 'bg-neutral-900' : 'bg-white'}`}
+            >
+                <div className="max-w-[1200px] mx-auto">
+                    {/* Header */}
+                    <div className="mb-12">
+                        <h2 className={`text-4xl md:text-5xl font-extrabold tracking-tight font-sans ${theme === 'dark' ? 'text-white' : 'text-black'} mb-3`}>
+                            Design <span className={accentClass}>Gallery</span>
+                        </h2>
+                        <p className={`text-base font-light tracking-wide font-sans max-w-xl ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'}`}>
+                            Visual inspiration and design explorations.
+                        </p>
+                    </div>
 
-                {/* Gallery Grid */}
-                <div className="grid grid-cols-4 gap-4">
-                    {galleryImages.map((image, index) => (
-                        <div
-                            key={index}
-                            className={`gallery-item overflow-hidden ${getGridSpan(index)}`}
-                        >
-                            <img
-                                src={image}
-                                alt={`Gallery image ${index + 1}`}
-                                className={`w-full h-full object-cover transition-transform duration-300 hover:scale-105 ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'} border`}
-                            />
-                        </div>
-                    ))}
+                    {/* Gallery Grid */}
+                    <div className="grid grid-cols-4 gap-4">
+                        {galleryImages.map((image, index) => (
+                            <div
+                                key={index}
+                                className={`gallery-item overflow-hidden ${getGridSpan(index)}`}
+                            >
+                                <img
+                                    src={image}
+                                    alt={`Gallery image ${index + 1}`}
+                                    className={`w-full h-full object-cover transition-transform duration-300 hover:scale-105 ${theme === 'dark' ? 'border-neutral-800' : 'border-neutral-200'} border`}
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
             {/* Testimonial Section */}
-            
-            <section
-    ref={guestbookRef}
-    id="guestbook"
-    className={`py-26 px-6 md:px-12 lg:px-16 ${theme === 'dark' ? 'bg-gray-950' : 'bg-gray-50'} relative overflow-hidden`}
-    data-scroll-section
->
-    <div className="min-h-[50vh] max-w-7xl mx-auto relative z-10">
-        <div className="mb-12 text-center">
-            <h2 className={`text-3xl md:text-4xl font-sans font-bold uppercase tracking-widest ${theme === 'dark' ? 'text-white/20' : 'text-black/20'}`}>
-                Echoes of <span className={accentClass}>Excellence</span>
-            </h2>
-            <p className={`mt-2 text-sm md:text-base font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-                Bold voices from my creative journey.
-            </p>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative" data-scroll data-scroll-speed="1">
-            {guestbookEntries.map((entry, index) => (
-                <div
-                    key={entry.id}
-                    ref={(el) => addToCardRefs(el, index)} // Assign ref to card
-                    className={`relative p-6 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} border ${borderClass} rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 perspective-1000`}
-                >
-                    <div
-                        ref={(el) => addToInitialRefs(el, index)} // Assign ref to initial badge
-                        className={`absolute -top-8 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center z-10`}
-                    >
-                        <span className={`text-lg font-bold ${theme === 'dark' ? 'text-gray-800' : 'text-gray-900'}`}>
-                            {entry.name.charAt(0)}
-                        </span>
+            <section
+                ref={guestbookRef}
+                id="guestbook"
+                className={`py-26 px-6 md:px-12 lg:px-16 ${theme === 'dark' ? 'bg-gray-950' : 'bg-gray-50'} relative overflow-hidden`}
+                data-scroll-section
+            >
+                <div className="min-h-[70vh] max-w-7xl mx-auto relative z-10">
+                    <div className="mb-0 text-center">
+                        <h2 className={`text-lg lg:text-8xl font-[700]  tracking-[-0.08em] ${theme === 'dark' ? 'text-white/10' : 'text-black/10'}`}>
+                            Reflections <span className={`block caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>and Raves</span>
+                        </h2>
+                        <p className={` pb-[-50px] mt-2 text-sm md:text-base font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} style={{ transform: 'translateY(-250%)' }}>
+                            A glimpse into the moments that mattered.
+                        </p>
                     </div>
-                    <p className="text-sm md:text-base font-sans leading-relaxed mb-4 opacity-90">
-                        "{entry.message}"
-                    </p>
-                    <div className="flex justify-between items-end">
-                        <span className={`text-xs font-medium ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-                            {entry.name}
-                        </span>
-                        <span className={`text-xs ${theme === 'dark' ? 'text-gray-500' : 'text-gray-500'}`}>
-                            {new Date(entry.date).toLocaleDateString()}
-                        </span>
-                    </div>
-                </div>
-            ))}
-            {/* Crazy Parallax Background */}
-            {/* <div
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative" data-scroll data-scroll-speed="1">
+                        {guestbookEntries.map((entry, index) => (
+                            <div
+                                key={entry.id}
+                                ref={(el) => addToCardRefs(el, index)} // Assign ref to card
+                                className={`relative p-6 opacity-5 ${theme === 'dark' ? 'bg-gray-900' : 'bg-slate-100'} border ${borderClass} rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 perspective-1000`}
+                            >
+                                <div
+                                    ref={(el) => addToInitialRefs(el, index)} // Assign ref to initial badge
+                                    className={`absolute -top-8 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center z-10`}
+                                >
+                                    <span className={`text-lg font-bold ${theme === 'dark' ? 'text-gray-800' : 'text-gray-900'}`}>
+                                        {entry.name.charAt(0)}
+                                    </span>
+                                </div>
+                                <p className="text-sm md:text-base font-sans leading-relaxed mb-4 opacity-90">
+                                    "{entry.message}"
+                                </p>
+                                <div className="flex justify-between items-end">
+                                    <span className={`text-xs font-medium ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                                        {entry.name}
+                                    </span>
+                                    <span className={`text-xs ${theme === 'dark' ? 'text-gray-500' : 'text-gray-500'}`}>
+                                        {new Date(entry.date).toLocaleDateString()}
+                                    </span>
+                                </div>
+                            </div>
+                        ))}
+                        {/* Crazy Parallax Background */}
+                        {/* <div
                 className={`absolute inset-0 z-0 ${theme === 'dark' ? 'bg-gradient-to-br from-gray-900/50 to-gray-950/50' : 'bg-gradient-to-br from-white/50 to-gray-50/50'}`}
                 data-scroll
                 data-scroll-speed="-0.5"
             ></div> */}
-            {/* Pulsing Accent */}
-            <div className="absolute -top-20 right-10 w-40 h-40 bg-accent rounded-full opacity-20 animate-pulse"></div>
-        </div>
-    </div>
-</section>
+                        {/* Pulsing Accent */}
+                        <div className="absolute -top-20 right-10 w-40 h-40 bg-accent rounded-full opacity-20 animate-pulse"></div>
+                    </div>
+                </div>
+            </section>
 
             {/* Collaborate Section */}
             <section
@@ -1415,7 +1415,7 @@ function getGridSpan(index) {
                             © <span ref={yearRef}>2023</span> K. Nishant. All Rights Reserved.
                         </p>
 
-                        
+
                     </div>
                 </div>
             </footer>
