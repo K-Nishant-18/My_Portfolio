@@ -330,10 +330,10 @@ export default function Home() {
 
     // Gallery images
     const galleryImages = [
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
         "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-        "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1509718443690-d8e2fb3474b7?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
         "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
     ]
@@ -1318,12 +1318,12 @@ export default function Home() {
                 <div className="max-w-8xl mx-auto relative z-10">
                     {/* Heading and Tagline */}
                     <div
-                        className={`absolute bottom-10 left-0 w-[35%] md:w-[30%] lg:w-[40%] p-6 transform -translate-y-8 translate-x-8 z-50`}
+                        className={`absolute bottom-10 left-[-50px] w-[35%] md:w-[30%] lg:w-[40%] p-6 transform -translate-y-8 translate-x-8 z-50`}
                         data-scroll
                         data-scroll-speed="0.6"
                     >
-                        <h2 className={`text-lg lg:text-9xl font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
-                            Gallery <span className={`block caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>___My Goofy Pics___</span>
+                        <h2 className={`text-lg lg:text-[12rem] font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+                        Gallery
                         </h2>
                     </div>
 
@@ -1333,7 +1333,7 @@ export default function Home() {
                         {/* Pic-1 (Top Left, Small) */}
                         <div
                             ref={el => (window['pic1'] = el)}
-                            className="magic-hover-container absolute top-27 left-27 w-[18%] md:w-[14%] lg:w-[25%] z-20 group"
+                            className="magic-hover-container absolute top-27 left-27 w-[18%] md:w-[14%] lg:w-[28%] z-20 group"
                             data-scroll
                             data-scroll-speed="1.2"
                         >
@@ -1352,7 +1352,7 @@ export default function Home() {
                         {/* Pic-2 (Top Center, Medium) */}
                         <div
                             ref={el => (window['pic2'] = el)}
-                            className="magic-hover-container absolute top-0 left-[25%] md:left-[20%] lg:left-[23%] w-[25%] md:w-[20%] lg:w-[22%] z-25 group"
+                            className="magic-hover-container absolute top-0 left-[25%] md:left-[20%] lg:left-[23%] w-[25%] md:w-[20%] lg:w-[25%] z-25 group"
                             data-scroll
                             data-scroll-speed="0.9"
                         >
@@ -1390,7 +1390,7 @@ export default function Home() {
                         {/* Pic-4 (Bottom Left, Medium) */}
                         <div
                             ref={el => (window['pic4'] = el)}
-                            className="magic-hover-container absolute bottom-0 left-140 w-[30%] md:w-[25%] lg:w-[33%] z-35 group"
+                            className="magic-hover-container absolute bottom-0 left-150 w-[30%] md:w-[25%] lg:w-[33%] z-35 group"
                             data-scroll
                             data-scroll-speed="1.1"
                         >
