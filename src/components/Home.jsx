@@ -5,7 +5,7 @@ import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 import Lenis from '@studio-freight/lenis'
 import axios from 'axios';
 import LocomotiveScroll from 'locomotive-scroll'
-
+import { WavyLine } from "./wavy-line";
 import {
     FiGithub, FiTwitter, FiLinkedin, FiDribbble, FiMail, FiPhone,
     FiMapPin, FiCalendar, FiBook, FiCode, FiUsers, FiLayers,
@@ -852,6 +852,7 @@ export default function Home() {
                     </button>
                 </div>
             </nav>
+            <WavyLine className="w-full" strokeColor="text-black dark:text-white" strokeWidth="stroke-[8px]" />
 
             {/* Hero Section */}
             <section
@@ -1149,12 +1150,12 @@ export default function Home() {
                         <button
                             onClick={() => setActiveTab("all")}
                             className={`px-4 py-2 rounded-full text-sm ${activeTab === "all"
-                                    ? theme === "dark"
-                                        ? "bg-white text-black"
-                                        : "bg-black text-white"
-                                    : theme === "dark"
-                                        ? "bg-white/10"
-                                        : "bg-black/10"
+                                ? theme === "dark"
+                                    ? "bg-white text-black"
+                                    : "bg-black text-white"
+                                : theme === "dark"
+                                    ? "bg-white/10"
+                                    : "bg-black/10"
                                 }`}
                         >
                             All Projects
@@ -1164,12 +1165,12 @@ export default function Home() {
                                 key={category}
                                 onClick={() => setActiveTab(category)}
                                 className={`px-4 py-2 rounded-full text-sm capitalize ${activeTab === category
-                                        ? theme === "dark"
-                                            ? "bg-white text-black"
-                                            : "bg-black text-white"
-                                        : theme === "dark"
-                                            ? "bg-white/10"
-                                            : "bg-black/10"
+                                    ? theme === "dark"
+                                        ? "bg-white text-black"
+                                        : "bg-black text-white"
+                                    : theme === "dark"
+                                        ? "bg-white/10"
+                                        : "bg-black/10"
                                     }`}
                             >
                                 {category}
@@ -1226,8 +1227,8 @@ export default function Home() {
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className={`inline-flex items-center px-4 py-2 ${theme === "dark"
-                                                        ? "bg-white text-black hover:bg-gray-200"
-                                                        : "bg-black text-white hover:bg-gray-800"
+                                                    ? "bg-white text-black hover:bg-gray-200"
+                                                    : "bg-black text-white hover:bg-gray-800"
                                                     } rounded-full text-sm transition-colors duration-300`}
                                             >
                                                 View Project <FiExternalLink className="ml-2" />
@@ -1248,11 +1249,11 @@ export default function Home() {
                 className={`py-20 px-8 md:px-16 lg:px-24 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'}`}
             >
                 <div className="max-w-6xl mx-auto">
-                <div className="mb-0 text-left">
+                    <div className="mb-0 text-left">
                         <h2 className={`text-lg lg:text-8xl font-[700]  ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
                             <span className='tracking-[-0.08em]'>PROFESSIONAL</span> <span className={`block caveat-bold pl-50 text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>Journey</span>
                         </h2>
-                    
+
                     </div>
 
                     <div className="relative">
@@ -1287,12 +1288,12 @@ export default function Home() {
                 className={`py-20 px-8 md:px-16 lg:px-24 ${bgClass}`}
             >
                 <div className="max-w-6xl mx-auto">
-                <div className="mb-0 text-right">
+                    <div className="mb-0 text-right">
                         <h2 className={`text-lg lg:text-8xl font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
                             WEB <span className={`block caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>Journals</span>
                         </h2>
                         <p className={`pb-[-50px] mt-2 text-sm md:text-base font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} style={{ transform: 'translateY(-250%)' }}>
-                        Thoughts on development, design, and technology.
+                            Thoughts on development, design, and technology.
                         </p>
                     </div>
 
