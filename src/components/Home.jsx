@@ -9,7 +9,8 @@ import LocomotiveScroll from 'locomotive-scroll'
 import {
     FiGithub, FiTwitter, FiLinkedin, FiDribbble, FiMail, FiPhone,
     FiMapPin, FiCalendar, FiBook, FiCode, FiUsers, FiLayers,
-    FiSun, FiMoon, FiArrowRight, FiExternalLink, FiAward, FiBriefcase
+    FiSun, FiMoon, FiArrowRight, FiExternalLink, FiAward, FiBriefcase,
+    FiInstagram
 } from 'react-icons/fi'
 import { FaJava, FaReact, FaDocker } from 'react-icons/fa'
 import { SiSpring, SiMysql, SiMongodb, SiJavascript, SiTailwindcss } from 'react-icons/si'
@@ -1681,7 +1682,7 @@ export default function Home() {
                     <div className="w-full px-8 ">
                         {/* Header */}
                         <div className="mb-8 text-left">
-                            <h2 className={`text-lg lg:text-8xl font-[700] mt-10 tracking-[-0.08em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
+                            <h2 className={`text-lg lg:text-8xl font-[700] mt-10 tracking-[-0.05em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
                                 Get In <span className={`block pl-15 caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>touch</span>
                             </h2>
                             <p className={`mt-[-70px] text-sm font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
@@ -1690,43 +1691,43 @@ export default function Home() {
                         </div>
 
                         {/* Contact Information */}
-                        <div className="space-y-4 mb-6 text-right">
+                        <div className="space-y-4 mb-6 text-right relative z-20">
                             <div ref={(el) => addToContactItemsRef(el, 0)} className="flex justify-end items-center space-x-3">
                                 <a
                                     href="mailto:me.knishant@gmail.com"
-                                    className={`text-sm font-sans ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-black'} transition-colors duration-300`}
+                                    className={`text-xl bold  font-sans ${theme === 'dark' ? 'text-white hover:text-white' : 'text-black hover:text-black'} transition-colors duration-300`}
                                 >
                                     me.knishant@gmail.com
                                 </a>
-                                <FiMail className={`w-5 h-5 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} />
+                                <FiMail className={`w-7 h-7 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} />
                             </div>
                             <div ref={(el) => addToContactItemsRef(el, 1)} className="flex justify-end items-center space-x-3">
-                                <span className={`text-sm font-sans ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                                <span className={`text-lg font-sans ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                                     +91 8986412823
                                 </span>
-                                <FiPhone className={`w-5 h-5 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} />
+                                <FiPhone className={`w-7 h-7 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} />
                             </div>
                             <div ref={(el) => addToContactItemsRef(el, 2)} className="flex justify-end items-center space-x-3">
-                                <span className={`text-sm font-sans ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                                <span className={`text-lg font-sans ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                                     Bhagalpur, Bihar, India
                                 </span>
-                                <FiMapPin className={`w-5 h-5 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} />
+                                <FiMapPin className={`w-7 h-7 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} />
                             </div>
                         </div>
 
                         {/* Social Links */}
-                        <div className="flex justify-end space-x-4">
+                        <div className="flex justify-end space-x-4 relative z-20">
                             {[
-                                { icon: <FiGithub />, link: "#", label: "GitHub" },
-                                { icon: <FiTwitter />, link: "#", label: "Twitter" },
-                                { icon: <FiLinkedin />, link: "#", label: "LinkedIn" },
-                                { icon: <FiDribbble />, link: "#", label: "Dribbble" }
+                                { icon: <FiGithub />, link: "https://github.com/K-Nishant-18", label: "GitHub" },
+                                { icon: <FiTwitter />, link: "https://x.com/_Nishaant_", label: "Twitter" },
+                                { icon: <FiLinkedin />, link: "https://www.linkedin.com/in/kumar-nishant-dev/", label: "LinkedIn" },
+                                { icon: <FiInstagram />, link: "https://www.instagram.com/me.nishant_18/", label: "Instagram" }
                             ].map((social, index) => (
                                 <a
                                     key={index}
                                     href={social.link}
                                     ref={(el) => addToSocialLinksRef(el, index)}
-                                    className={`w-10 h-10 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white hover:text-black' : 'bg-black/10 hover:bg-black hover:text-white'} flex items-center justify-center transition-colors duration-300`}
+                                    className={`w-15 h-15 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white hover:text-black' : 'bg-black/10 hover:bg-black hover:text-white'} flex items-center justify-center transition-colors duration-300`}
                                 >
                                     {social.icon}
                                     <span className="sr-only">{social.label}</span>
@@ -1738,6 +1739,8 @@ export default function Home() {
 
                 {/* Subtle Background Accent */}
                 <div className={`absolute top-0 left-0 w-64 h-64 ${theme === 'dark' ? 'bg-white/5' : 'bg-black/5'} rounded-full -translate-x-16 translate-y-16`}></div>
+                <div className={` bottom-10 mb-[-300px] relative z-10 right-[-1190px] bottom-[340px] w-90 h-90 ${theme === 'dark' ? 'bg-white/5' : 'bg-black/5'} rounded-full -translate-x-16 translate-y-16`}></div>
+
             </section>
 
             {/* Footer Section */}
