@@ -5,7 +5,6 @@ import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 import Lenis from '@studio-freight/lenis'
 import axios from 'axios';
 import LocomotiveScroll from 'locomotive-scroll'
-import { WavyLine } from "./wavy-line";
 import {
     FiGithub, FiTwitter, FiLinkedin, FiDribbble, FiMail, FiPhone,
     FiMapPin, FiCalendar, FiBook, FiCode, FiUsers, FiLayers,
@@ -789,9 +788,9 @@ export default function Home() {
     const textClass = theme === 'dark' ? 'text-gray-100' : 'text-gray-900'
     const borderClass = theme === 'dark' ? 'border-gray-800' : 'border-gray-200'
     const cardBgClass = theme === 'dark' ? 'bg-gray-900' : 'bg-white'
-    const buttonBgClass = theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black';
-    const hoverButtonClass = theme === 'dark' ? 'hover:bg-white hover:text-black' : 'hover:bg-black hover:text-white';
-    const accentClass = theme === 'dark' ? 'text-white' : 'text-gray-900'
+    // const buttonBgClass = theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black';
+    // const hoverButtonClass = theme === 'dark' ? 'hover:bg-white hover:text-black' : 'hover:bg-black hover:text-white';
+    // const accentClass = theme === 'dark' ? 'text-white' : 'text-gray-900'
     const primaryColor = theme === 'dark' ? 'rgb(255,255,255)' : 'rgb(0,0,0)'
     const secondaryColor = theme === 'dark' ? 'rgb(100,100,100)' : 'rgb(150,150,150)'
     const accentColor = theme === 'dark' ? 'rgb(200,200,200)' : 'rgb(50,50,50)'
@@ -852,7 +851,6 @@ export default function Home() {
                     </button>
                 </div>
             </nav>
-            <WavyLine className="w-full" strokeColor="text-black dark:text-white" strokeWidth="stroke-[8px]" />
 
             {/* Hero Section */}
             <section
@@ -1127,6 +1125,7 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+
 
             {/* Projects Section */}
             <section
