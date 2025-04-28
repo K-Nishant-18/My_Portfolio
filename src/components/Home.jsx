@@ -28,7 +28,7 @@ export default function Home() {
         { id: 3, name: 'Anjali Gupta', message: 'The attention to detail in your projects is remarkable.', date: '2023-07-10' }
     ])
 
-    
+
 
 
     // Helper function to add refs to the arrays
@@ -739,7 +739,7 @@ export default function Home() {
 
         return () => {
             lenis.destroy()
-            
+
         }
     }, [theme])
 
@@ -818,92 +818,92 @@ export default function Home() {
             ))}
 
             {/* Navigation */}
-           {/* Swiss-Inspired Navigation with Your Aesthetic */}
-<nav
-  ref={navRef}
-  className={`fixed top-0 left-0 w-full py-4 px-6 md:py-6 md:px-8 flex justify-between items-center z-1000 ${
-    theme === 'dark' ? 'bg-gray-950/80' : 'bg-white/80'
-  } backdrop-blur-sm border-b ${borderClass}`}
->
-  {/* Left-aligned logo (unchanged from your version) */}
-  <div className="text-xl font-bold tracking-tight hover-scale">
-    <span className={`${theme === 'dark' ? 'text-red-600' : 'text-red-600'} font-[800]`}>K.</span>NISHANT
-  </div>
-
-  {/* Right-aligned navigation cluster */}
-  <div className="flex items-center space-x-6 md:space-x-8">
-    {/* Desktop navigation - hidden on mobile */}
-    <ul className="hidden md:flex space-x-6 md:space-x-8">
-      {['Home', 'About', 'Projects', 'Contact'].map((item) => (
-        <li key={item} className="nav-item">
-          <a
-            href={`#${item.toLowerCase()}`}
-            className={`text-xs uppercase tracking-wider hover:opacity-80 transition-opacity duration-300 ${
-              theme === 'dark' ? 'text-gray-200' : 'text-gray-800'
-            }`}
-          >
-            {item}
-          </a>
-        </li>
-      ))}
-    </ul>
-
-    {/* Theme toggle - refined but keeping your styling */}
-    <button
-      onClick={toggleTheme}
-      className={`w-12 h-12 rounded-full border transition-all duration-300 flex items-center justify-center shadow ${
-        theme === 'dark'
-          ? 'bg-white text-white hover:bg-gray-200 hover:text-black border-black/10'
-          : 'bg-black text-white hover:bg-gray-800 border-black/10'
-      }`}
-      aria-label="Toggle theme"
-    >
-      {theme === 'dark' ? (
-        <FiSun className="w-5 h-5" />
-      ) : (
-        <FiMoon className="w-5 h-5" />
-      )}
-    </button>
-
-    {/* Mobile menu button - Swiss minimalism */}
-    <button
-      className="md:hidden p-1"
-      onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-      aria-label="Menu"
-    >
-      {isMobileMenuOpen ? (
-        <FiX className={`w-6 h-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} />
-      ) : (
-        <FiMenu className={`w-6 h-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} />
-      )}
-    </button>
-  </div>
-
-  {/* Mobile menu overlay - Swiss precision */}
-  {isMobileMenuOpen && (
-    <div
-      className={`min-h-screen fixed inset-0 z-50000 flex flex-col items-center justify-center ${
-        theme === 'dark' ? 'bg-gray-950' : 'bg-white'
-      } backdrop-blur-lg`}
-    >
-      <ul className="flex flex-col items-center space-y-10">
-        {['Home', 'About', 'Projects', 'Contact'].map((item) => (
-          <li key={item} className="nav-item">
-            <a
-              href={`#${item.toLowerCase()}`}
-              className={`text-xl uppercase tracking-wider ${
-                theme === 'dark' ? 'text-gray-200' : 'text-gray-800'
-              } hover:opacity-80 transition-opacity duration-300`}
-              onClick={() => setIsMobileMenuOpen(false)}
+            {/* Swiss-Inspired Navigation with Your Aesthetic */}
+            <nav
+                ref={navRef}
+                className={`fixed top-0 left-0 w-full py-4 px-6 md:py-6 md:px-8 flex justify-between items-center z-1000 ${theme === 'dark' ? 'bg-gray-950/80' : 'bg-white/80'
+                    } backdrop-blur-sm border-b ${borderClass}`}
             >
-              {item}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )}
-</nav>
+                {/* Left-aligned mobile menu button and logo */}
+                <div className="flex items-center space-x-4">
+                    {/* Mobile menu button - Swiss minimalism, no background */}
+                    <button
+                        className={`md:hidden !bg-transparent !p-0 !m-0 focus:outline-none ${theme === 'dark' ? 'text-white' : 'text-black'
+                            }`}
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        aria-label="Menu"
+                        style={{ background: 'transparent', border: 'none', boxShadow: 'none' }}
+                    >
+                        {isMobileMenuOpen ? (
+                            <FiX className="w-6 h-6" />
+                        ) : (
+                            <FiMenu className="w-6 h-6" />
+                        )}
+                    </button>
+
+                    {/* Logo */}
+                    <div className="text-xl pl-4 font-bold tracking-tight hover-scale">
+                        <span className={`${theme === 'dark' ? 'text-red-600' : 'text-red-600'} font-[800]`}>K.</span>NISHANT
+                    </div>
+                </div>
+
+                {/* Right-aligned navigation cluster */}
+                <div className="flex items-center space-x-6 md:space-x-8">
+                    {/* Desktop navigation - hidden on mobile */}
+                    <ul className="hidden md:flex space-x-6 md:space-x-8">
+                        {['Home', 'About', 'Projects', 'Contact'].map((item) => (
+                            <li key={item} className="nav-item">
+                                <a
+                                    href={`#${item.toLowerCase()}`}
+                                    className={`text-xs uppercase tracking-wider hover:opacity-80 transition-opacity duration-300 ${theme === 'dark' ? 'text-gray-200' : 'text-gray-800'
+                                        }`}
+                                >
+                                    {item}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+
+                    {/* Theme toggle - refined but keeping your styling */}
+                    <button
+                        onClick={toggleTheme}
+                        className={`w-12 h-12 rounded-full border transition-all duration-300 flex items-center justify-center shadow ${theme === 'dark'
+                                ? 'bg-white text-white hover:bg-gray-200 hover:text-black border-black/10'
+                                : 'bg-black text-white hover:bg-gray-800 border-black/10'
+                            }`}
+                        aria-label="Toggle theme"
+                    >
+                        {theme === 'dark' ? (
+                            <FiSun className="w-5 h-5" />
+                        ) : (
+                            <FiMoon className="w-5 h-5" />
+                        )}
+                    </button>
+                </div>
+
+                {/* Mobile menu overlay - Swiss precision */}
+                {isMobileMenuOpen && (
+                    <div
+                        className={`min-h-screen fixed inset-0 z-50000 flex flex-col items-center justify-center ${theme === 'dark' ? 'bg-gray-950' : 'bg-white'
+                            } backdrop-blur-lg`}
+                    >
+                        <ul className="flex flex-col items-center space-y-10">
+                            {['Home', 'About', 'Projects', 'GitHub', 'Resume', 'Contact'].map((item) => (
+                                <li key={item} className="nav-item">
+                                    <a
+                                        href={`#${item.toLowerCase()}`}
+                                        className={`text-xl uppercase tracking-wider ${theme === 'dark' ? 'text-gray-200' : 'text-gray-800'
+                                            } hover:opacity-80 transition-opacity duration-300`}
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                        {item}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+            </nav>
 
             {/* Hero Section */}
             <section
@@ -1007,7 +1007,7 @@ export default function Home() {
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-22 relative text-right">
                         <h2 className={`text-4xl  md:text-6xl font-bold  tracking-[-0.08em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
-                            <span className='caveat-bold'> Technical </span><span className={`text-lg lg:text-8xl font-[700] uppercase leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Skills</span>
+                            <span className='caveat-bold'> Technical  </span><span className={`text-7xl lg:text-8xl font-[700] uppercase leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Skills</span>
                         </h2>
                         <p className={`text-right text-base md:text-lg mt-2 w-full opacity-70 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
                             Frontend, backend, databases, and DevOps expertise.
@@ -1079,7 +1079,7 @@ export default function Home() {
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-12 relative pb-24">
                         <h2 className={`text-4xl md:text-6xl font-bold  tracking-[-0.1em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
-                            <span className={`text-lg lg:text-8xl uppercase font-[700] leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Development</span> <span className='caveat-bold'>Numbers</span>
+                            <span className={`text-5xl lg:text-8xl uppercase font-[700] leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Development</span> <span className='caveat-bold'>Numbers</span>
                         </h2>
                         <p className={`text-base md:text-lg mt-2 w-2/3 opacity-70 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
                             My coding journey in numbers.
@@ -1188,7 +1188,7 @@ export default function Home() {
                 <div className="max-w-6xl ml-auto">
                     <div className="mb-12 text-right">
                         <h2
-                            className={`text-lg lg:text-[12rem] font-[700] tracking-[-0.08em] ${theme === "dark" ? "text-white" : "text-black"
+                            className={`text-5xl lg:text-[12rem] font-[700] tracking-[-0.08em] ${theme === "dark" ? "text-white" : "text-black"
                                 }`}
                         >
                             Projects
@@ -1302,7 +1302,7 @@ export default function Home() {
             >
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-0 text-left">
-                        <h2 className={`text-lg lg:text-8xl font-[700]  ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
+                        <h2 className={`text-5xl lg:text-8xl font-[700]  ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
                             <span className='tracking-[-0.08em]'>PROFESSIONAL</span> <span className={`block caveat-bold pl-50 text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>Journey</span>
                         </h2>
 
@@ -1341,7 +1341,7 @@ export default function Home() {
             >
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-0 text-right">
-                        <h2 className={`text-lg lg:text-8xl font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
+                        <h2 className={`text-5xl lg:text-8xl font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
                             WEB <span className={`block caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>Journals</span>
                         </h2>
                         <p className={`pb-[-50px] mt-2 text-sm md:text-base font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} style={{ transform: 'translateY(-250%)' }}>
@@ -1392,7 +1392,7 @@ export default function Home() {
                         data-scroll
                         data-scroll-speed="0.6"
                     >
-                        <h2 className={`text-lg lg:text-[12rem] font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+                        <h2 className={`text-5xl lg:text-[12rem] font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
                             Gallery
                         </h2>
                     </div>
@@ -1653,7 +1653,7 @@ export default function Home() {
                 <div className="min-h-[60vh] max-w-7xl mx-auto relative z-10">
                     {/* Rest of your existing code remains exactly the same */}
                     <div className="mb-0 text-center">
-                        <h2 className={`text-lg lg:text-8xl font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
+                        <h2 className={`text-5xl lg:text-8xl font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
                             Reflections <span className={`block caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>and Raves</span>
                         </h2>
                         <p className={`pb-[-50px] mt-2 text-sm md:text-base font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} style={{ transform: 'translateY(-250%)' }}>
@@ -1705,8 +1705,8 @@ export default function Home() {
                         ref={titleRef}
                         className="text-6xl md:text-[9rem] lg:text-[19rem] font-[700] leading-none mb-6 text-left"
                     >
-                        <span className={` ${theme === 'dark' ? 'text-white' : 'text-black'} text-6xl md:text-[8rem] lg:text-[15rem] tracking-[-0.08em]`}>Let's</span>
-                        <span className={`block ${theme === 'dark' ? 'text-white' : 'text-black'} text-6xl md:text-[8rem] lg:text-[16rem] tracking-[-0.08em] leading-[0.60] pb-14`}>Collaborate</span>
+                        <span className={` ${theme === 'dark' ? 'text-white' : 'text-black'} text-7xl md:text-[8rem] lg:text-[15rem] tracking-[-0.08em]`}>Let's</span>
+                        <span className={`block ${theme === 'dark' ? 'text-white' : 'text-black'} text-7xl md:text-[8rem] lg:text-[16rem] tracking-[-0.08em] leading-[0.60] pb-14`}>Collaborate</span>
                     </h1>
                     <div className='text-right'>
                         <p className="text-xl mb-0 opacity-90 text-right">
@@ -1735,7 +1735,7 @@ export default function Home() {
                     <div className="w-full px-8 ">
                         {/* Header */}
                         <div className="mb-8 text-left">
-                            <h2 className={`text-lg lg:text-8xl font-[700] mt-10 tracking-[-0.05em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
+                            <h2 className={`text-5xl lg:text-8xl font-[700] mt-10 tracking-[-0.05em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
                                 Get In <span className={`block pl-15 caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>touch</span>
                             </h2>
                             <p className={`mt-[-70px] text-sm font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
