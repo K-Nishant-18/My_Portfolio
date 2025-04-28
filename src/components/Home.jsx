@@ -857,9 +857,9 @@ export default function Home() {
             <section
                 ref={heroRef}
                 id="home"
-                className={`min-h-[130vh] ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'} flex justify-center items-center px-8 md:px-16 lg:px-24 relative overflow-hidden`}
+                className={`min-h-screen md:min-h-[130vh] ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'} flex justify-center items-center px-8 md:px-16 lg:px-24 relative overflow-hidden`}
             >
-                <div className="relative z-100 flex flex-col md:flex-row items-center justify-between w-full pb-0">
+                <div className="relative z-100 flex flex-col md:flex-row items-center justify-between w-full pb-30">
                     {/* Left/Center: Main Title and Button */}
                     <div className="text-center md:text-left flex flex-col md:flex-col w-3/5 mb-10 ">
                         <div>
@@ -871,7 +871,7 @@ export default function Home() {
                                 <span className={`block ${theme === 'dark' ? 'text-white' : 'text-black'} text-6xl md:text-[8rem] lg:text-[16rem] tracking-[-0.08em] leading-[0.60] pb-14`}>Nishant`</span>
                             </h1>
                         </div>
-                        <div className="flex flex-row md:flex-row items-center justify-between w-full pl-3 pr-10">
+                        <div className="flex flex-col md:flex-row items-center justify-between w-full pl-3 pr-10">
                             <div className="mb-6">
                                 <p className={`text-sm md:text-base font-medium uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-950'}`}>
                                     Currently
@@ -935,7 +935,7 @@ export default function Home() {
                         My journey in web development focuses on building scalable applications with clean architecture and optimized performance.
                     </p>
 
-                    <p className={`px-50 text-lg md:text-3xl font- uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-950'}`}>
+                    <p className={`px-5 md:px-50 text-xl md:text-3xl font- uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-950'}`}>
                         Through my projects, I've achieved up to <span className="font-medium">40% performance gains</span> and <span className="font-medium">50% security improvements</span>.
                         I'm constantly exploring modern tools like Vite, Tailwind CSS, and AI platforms to create innovative solutions.
                     </p>
@@ -1773,7 +1773,7 @@ export default function Home() {
 
                     <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-center items-center">
                         <p className="text-sm opacity-80 mb-4 md:mb-0">
-                            © <span ref={yearRef}>2023</span> K. Nishant. All Rights Reserved.
+                            © <span ref={yearRef}>2023</span> K.Nishant. All Rights Reserved.
                         </p>
 
 
