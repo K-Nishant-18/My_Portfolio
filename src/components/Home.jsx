@@ -797,7 +797,7 @@ export default function Home() {
     const accentColor = theme === 'dark' ? 'rgb(200,200,200)' : 'rgb(50,50,50)'
 
     return (
-        <div ref={appRef} className={`relative ${bgClass} ${textClass} overflow-x-hidden`}>
+        <div ref={appRef} className={`relative  ${textClass} overflow-x-hidden`}>
             {/* Floating background shapes */}
             {floatingShapes.map((shape, index) => (
                 <div
@@ -859,19 +859,19 @@ export default function Home() {
                 id="home"
                 className={`min-h-screen md:min-h-[130vh] ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'} flex justify-center items-center px-8 md:px-16 lg:px-24 relative overflow-hidden`}
             >
-                <div className="relative z-100 flex flex-col md:flex-row items-center justify-between w-full pb-30">
+                <div className="relative z-100 flex flex-col md:flex-row items-center justify-between w-full pb-30 md:pb-0">
                     {/* Left/Center: Main Title and Button */}
-                    <div className="text-center md:text-left flex flex-col md:flex-col w-3/5 mb-10 ">
+                    <div className="text-center md:text-left flex flex-col md:flex-col w-full md:w-3/5 mb-10 ">
                         <div>
                             <h1
                                 ref={titleRef}
-                                className="text-9lg md:text-[15rem] lg:text-[19rem] font-[700] leading-none mb-6"
+                                className="text-[6rem] md:text-[15rem] lg:text-[19rem] font-[700] leading-none mb-6"
                             >
-                                <span className={` ${theme === 'dark' ? 'text-white' : 'text-black'} text-6xl md:text-[8rem] lg:text-[15rem] tracking-[-0.08em]`}>K</span><span className={` ${theme === 'dark' ? 'text-white' : 'text-black'} text-6xl md:text-[6rem] lg:text-[15rem] tracking-[-0.08em]`}>umar</span>
-                                <span className={`block ${theme === 'dark' ? 'text-white' : 'text-black'} text-6xl md:text-[8rem] lg:text-[16rem] tracking-[-0.08em] leading-[0.60] pb-14`}>Nishant`</span>
+                                <span className={` ${theme === 'dark' ? 'text-white' : 'text-black'} text-8xl md:text-[8rem] lg:text-[15rem] tracking-[-0.08em]`}>K</span><span className={` ${theme === 'dark' ? 'text-white' : 'text-black'} text-8xl md:text-[6rem] lg:text-[15rem] tracking-[-0.08em]`}>umar</span>
+                                <span className={`block ${theme === 'dark' ? 'text-white' : 'text-black'} text-8xl md:text-[8rem] lg:text-[16rem] tracking-[-0.08em] leading-[0.60] pb-14`}>Nishant`</span>
                             </h1>
                         </div>
-                        <div className="flex flex-col md:flex-row items-center justify-between w-full pl-3 pr-10">
+                        <div className="flex flex-row md:flex-row items-center justify-between w-full pl-3 pr-3 md:pr-10">
                             <div className="mb-6">
                                 <p className={`text-sm md:text-base font-medium uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-950'}`}>
                                     Currently
@@ -892,9 +892,9 @@ export default function Home() {
                     </div>
 
                     {/* Bottom: Updated Section with Bullet Points */}
-                    <div className="relative z-10 flex justify-start mb-[-150px] w-2/8 ">
+                    <div className="relative z-10 flex justify-center md:justify-start mb-[-150px] w-full md:w-2/8 ">
                         <div className="text-center md:text-left">
-                            <ul className={`text-lg md:text-2xl font- uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-950'}`}>
+                            <ul className={`text-xl md:text-2xl font- uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-950'}`}>
                                 <li>Web Designer</li>
                                 <li>Web Developer</li>
                                 <li>Freelancer</li>
@@ -906,10 +906,10 @@ export default function Home() {
                 {/* Marquee Section */}
                 <div className="absolute bottom-10 left-0 w-full overflow-hidden -translate-y-1/2 rotate-6 ">
                     <div ref={marqueeRef} className="flex whitespace-nowrap">
-                        <span className={`text-7xl md:text-7xl lg:text-7xl font-bold ${theme === 'dark' ? 'text-white/10' : 'text-black/10'} mr-16`}>
+                        <span className={`text-5xl md:text-7xl lg:text-7xl font-bold ${theme === 'dark' ? 'text-white/10' : 'text-black/10'} mr-16`}>
                             JAVA · SPRING BOOT · REACT · DOCKER · MYSQL · MONGODB · JWT · SPRING SECURITY · VITE · TAILWIND ·
                         </span>
-                        <span className={`text-7xl md:text-7xl lg:text-7xl font-bold ${theme === 'dark' ? 'text-white/10' : 'text-black/10'} mr-16`}>
+                        <span className={`text-5xl md:text-7xl lg:text-7xl font-bold ${theme === 'dark' ? 'text-white/10' : 'text-black/10'} mr-16`}>
                             JAVA · SPRING BOOT · REACT · DOCKER · MYSQL · MONGODB · JWT · SPRING SECURITY · VITE · TAILWIND ·
                         </span>
                     </div>
