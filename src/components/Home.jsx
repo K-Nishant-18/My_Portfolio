@@ -248,7 +248,7 @@ export default function Home() {
             impact: "Enhanced security 50% with JWT; increased engagement 20% with responsive UI; reduced latency 35%",
             link: "#"
         },
-       
+
         {
             title: "The Cultural Circuit",
             description: "Built a cultural heritage platform dedicated to preserving and promoting Indian traditions through blogs, festival coverage, and tour destinations.",
@@ -267,7 +267,7 @@ export default function Home() {
             impact: "Empowered learners to bridge the gap between theory and practice, increasing project submission rates by 30% and user engagement by 25%.",
             link: "#"
         },
-        
+
     ]
 
     // Skills data - updated with your skills
@@ -335,36 +335,36 @@ export default function Home() {
 
 
     // Timeline items -  
-const timelineItems = [  
-    {  
-        year: "2024 - Present",  
-        title: "Freelance Full-Stack Dev",  
-        description: "Building full-stack apps for clients, blending UI/UX with robust backend systems.",  
-        icon: <FiCode />,  
-          
-    },  
-    {  
-        year: "2024",  
-        title: "DSA & Problem Solving",  
-        description: "Solved 150+ problems on LeetCode & GFG, mastering algorithms and optimization.",  
-        icon: <FiCpu />,  
-          
-    },  
-    {  
-        year: "2023",  
-        title: "Dev Projects & Learning",  
-        description: "Developed 5+ projects with React, Spring boot, and databases to solidify skills.",  
-        icon: <FiLayers />,  
-         
-    },  
-    {  
-        year: "2022",  
-        title: "B.Tech in CSE",  
-        description: "Started my CS degree, building core programming and system design fundamentals.",  
-        icon: <FiBook />,  
-          
-    }  
-];  
+    const timelineItems = [
+        {
+            year: "2024 - Present",
+            title: "Freelance Full-Stack Dev",
+            description: "Building full-stack apps for clients, blending UI/UX with robust backend systems.",
+            icon: <FiCode />,
+
+        },
+        {
+            year: "2024",
+            title: "DSA & Problem Solving",
+            description: "Solved 150+ problems on LeetCode & GFG, mastering algorithms and optimization.",
+            icon: <FiCpu />,
+
+        },
+        {
+            year: "2023",
+            title: "Dev Projects & Learning",
+            description: "Developed 5+ projects with React, Spring boot, and databases to solidify skills.",
+            icon: <FiLayers />,
+
+        },
+        {
+            year: "2022",
+            title: "B.Tech in CSE",
+            description: "Started my CS degree, building core programming and system design fundamentals.",
+            icon: <FiBook />,
+
+        }
+    ];
 
     // Floating shapes for background
     const floatingShapes = [
@@ -1379,31 +1379,43 @@ const timelineItems = [
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {blogPosts.map((post) => (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                        {blogPosts.map((post, index) => (
                             <div
                                 key={post.id}
-                                className={`blog-item ${cardBgClass} rounded-xl overflow-hidden border ${borderClass} hover-scale transition-transform duration-300`}
+                                className={`blog-item bg-transparent rounded-xl overflow-hidden border ${borderClass} hover-scale transition-transform duration-300`}
                             >
-                                <div className="h-48 bg-gray-800 overflow-hidden">
-                                    <div className={`w-full h-full ${theme === 'dark' ? 'bg-gradient-to-br from-white/5 to-white/10' : 'bg-gradient-to-br from-black/5 to-black/10'}`}></div>
+                                <div className={`h-48 flex items-center justify-center ${theme === 'dark' ? 'transparent' : 'transparent'}`}>
+                                    <span className={`text-9xl font-bold ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+                                        {`0${index + 1}`}
+                                    </span>
                                 </div>
                                 <div className="p-6">
-                                    <div className="flex justify-between items-center mb-3">
-                                        <span className={`text-xs ${theme === 'dark' ? 'text-white/80' : 'text-black/80'}`}>{post.date}</span>
-                                        <span className={`text-xs ${theme === 'dark' ? 'bg-white/10' : 'bg-black/10'} px-2 py-1 rounded-full`}>{post.readTime} read</span>
+                                    <div className="flex justify-between items-center mb-4">
+                                        <span className={`text-xs font-mono ${theme === 'dark' ? 'text-white/80' : 'text-black/80'}`}>{post.date}</span>
+                                        <span className={`text-xs font-mono ${theme === 'dark' ? 'bg-white/10' : 'bg-black/10'} px-2 py-1 rounded-full`}>{post.readTime} read</span>
                                     </div>
-                                    <h3 className="text-xl font-bold mb-3">{post.title}</h3>
-                                    <p className="mb-4 opacity-90">{post.excerpt}</p>
+                                    <h3 className="text-xl font-bold mb-3 font-sans">{post.title}</h3>
+                                    <p className={`mb-4 text-sm ${theme === 'dark' ? 'text-white/80' : 'text-black/80'}`}>{post.excerpt}</p>
                                     <a
                                         href={post.link}
-                                        className={`inline-flex items-center text-sm ${theme === 'dark' ? 'text-white hover:text-white/80' : 'text-black hover:text-black/80'} transition-colors duration-300`}
+                                        className={`inline-flex items-center text-sm font-mono ${theme === 'dark' ? 'text-white hover:text-white/80' : 'text-black hover:text-black/80'} transition-colors duration-300`}
                                     >
                                         Read more <FiArrowRight className="ml-1" />
                                     </a>
                                 </div>
                             </div>
                         ))}
+                    </div>
+
+                    {/* More Blogs Button - Swiss style */}
+                    <div className="mt-16 text-center">
+                        <a
+                            href="https://medium.com/@me.knishant"
+                            className={`text-right inline-block px-8 py-4 ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'} rounded-full font-medium transition-colors duration-300`}
+                        >
+                            Read more blogs
+                        </a>
                     </div>
                 </div>
             </section>
@@ -1746,10 +1758,10 @@ const timelineItems = [
                             I'm available for freelance work and open to new opportunities.
                         </p>
                         <a
-                            href="#contact"
+                            href="https://github.com/K-Nishant-18"
                             className={`text-right inline-block px-8 py-4 ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'} rounded-full font-medium transition-colors duration-300`}
                         >
-                            Contact me
+                            Visit my GitHub
                         </a>
                     </div>
                 </div>
