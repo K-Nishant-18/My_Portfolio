@@ -8,7 +8,7 @@ import LocomotiveScroll from 'locomotive-scroll'
 
 import {
     FiGithub, FiTwitter, FiLinkedin, FiDribbble, FiMail, FiPhone,
-    FiMapPin, FiCalendar, FiBook, FiCode, FiUsers, FiLayers,
+    FiMapPin, FiCalendar, FiBook, FiCode, FiUsers, FiLayers, FiCpu,
     FiSun, FiMoon, FiArrowRight, FiExternalLink, FiAward, FiBriefcase,
     FiInstagram, FiMenu, FiX,
 } from 'react-icons/fi'
@@ -23,9 +23,9 @@ export default function Home() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const [guestbookEntries] = useState([
-        { id: 1, name: 'Priya Sharma', message: 'Amazing portfolio! Love the clean design.', date: '2023-05-15' },
-        { id: 2, name: 'Rahul Patel', message: 'Your work is inspiring. Would love to collaborate sometime.', date: '2023-06-22' },
-        { id: 3, name: 'Anjali Gupta', message: 'The attention to detail in your projects is remarkable.', date: '2023-07-10' }
+        { id: 1, name: 'Prashant Kumar', message: 'Amazing portfolio! Love the clean design.', date: '2023-05-15' },
+        { id: 2, name: 'Gaurav Shaw', message: 'Your work is inspiring. Would love to collaborate sometime.', date: '2023-06-22' },
+        { id: 3, name: 'Tripti Sharma', message: 'The attention to detail in your projects is remarkable.', date: '2023-07-10' }
     ])
 
 
@@ -248,6 +248,7 @@ export default function Home() {
             impact: "Enhanced security 50% with JWT; increased engagement 20% with responsive UI; reduced latency 35%",
             link: "#"
         },
+       
         {
             title: "The Cultural Circuit",
             description: "Built a cultural heritage platform dedicated to preserving and promoting Indian traditions through blogs, festival coverage, and tour destinations.",
@@ -258,14 +259,15 @@ export default function Home() {
             link: "#"
         },
         {
-            title: "E-Commerce Platform",
-            description: "A full-stack e-commerce solution with real-time inventory, payment processing, and admin dashboard.",
-            tags: ["React", "Node.js", "MongoDB", "Stripe"],
+            title: "SkillBloom+",
+            description: "A comprehensive platform combining structured learning pathways and real-world projects to help learners apply skills in practice. Features include interactive tutorials, real-world project templates, and a skill-based rewards system.",
+            tags: ["Spring Boot", "React.js", "MySQL", "JWT", "Docker", "GitHub API"],
             category: "web",
-            image: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-            impact: "Increased conversion rate by 28% with optimized UI/UX",
+            image: "https://images.unsplash.com/photo-1616400619175-5beda3a17896?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            impact: "Empowered learners to bridge the gap between theory and practice, increasing project submission rates by 30% and user engagement by 25%.",
             link: "#"
         },
+        
     ]
 
     // Skills data - updated with your skills
@@ -288,8 +290,8 @@ export default function Home() {
             { name: "HTML/CSS", percent: 15 },
             { name: "Other", percent: 5 }
         ],
-        weeklyHours: 42,
-        activeDays: 6.2
+        weeklyHours: 32,
+        activeDays: 4.5
     }
 
     // Blog posts - could be your actual blog if you have one
@@ -332,27 +334,37 @@ export default function Home() {
     ]
 
 
-    // Timeline items - based on your resume
-    const timelineItems = [
-        {
-            year: "2024 - Present",
-            title: "Full-Stack Developer",
-            description: "Developing Collegia - an all-in-one student platform with Java Spring Boot and React.js",
-            icon: <FiCode />
-        },
-        {
-            year: "2024",
-            title: "Project: The Cultural Circuit",
-            description: "Built a cultural heritage platform with Spring Boot and React.js",
-            icon: <FiBriefcase />
-        },
-        {
-            year: "2023",
-            title: "Education",
-            description: "Completed B.Tech in Computer Science and Engineering",
-            icon: <FiBook />
-        }
-    ]
+    // Timeline items -  
+const timelineItems = [  
+    {  
+        year: "2024 - Present",  
+        title: "Freelance Full-Stack Dev",  
+        description: "Building full-stack apps for clients, blending UI/UX with robust backend systems.",  
+        icon: <FiCode />,  
+          
+    },  
+    {  
+        year: "2024",  
+        title: "DSA & Problem Solving",  
+        description: "Solved 150+ problems on LeetCode & GFG, mastering algorithms and optimization.",  
+        icon: <FiCpu />,  
+          
+    },  
+    {  
+        year: "2023",  
+        title: "Dev Projects & Learning",  
+        description: "Developed 5+ projects with React, Spring boot, and databases to solidify skills.",  
+        icon: <FiLayers />,  
+         
+    },  
+    {  
+        year: "2022",  
+        title: "B.Tech in CSE",  
+        description: "Started my CS degree, building core programming and system design fundamentals.",  
+        icon: <FiBook />,  
+          
+    }  
+];  
 
     // Floating shapes for background
     const floatingShapes = [
@@ -868,8 +880,8 @@ export default function Home() {
                     <button
                         onClick={toggleTheme}
                         className={`w-12 h-12 rounded-full border transition-all duration-300 flex items-center justify-center shadow ${theme === 'dark'
-                                ? 'bg-white text-white hover:bg-gray-200 hover:text-black border-black/10'
-                                : 'bg-black text-white hover:bg-gray-800 border-black/10'
+                            ? 'bg-white text-white hover:bg-gray-200 hover:text-black border-black/10'
+                            : 'bg-black text-white hover:bg-gray-800 border-black/10'
                             }`}
                         aria-label="Toggle theme"
                     >
@@ -978,8 +990,8 @@ export default function Home() {
                     ref={aboutContentRef}
                     className="w-full mx-auto text-center"
                 >
-                    <h2 className={`pb-15 text-6xl lg:text-8xl font-[700] uppercase leading-none mb-6 ${theme === 'dark' ? 'text-white/10' : 'text-black/10'}`}>
-                        About <span className={`block absolute top-10 left-47/100 leading-[.08em] lowercase text-4xl md:text-5xl font-bold   ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(40%)' }}>me</span>
+                    <h2 className={`pb-15 text-6xl lg:text-8xl font-[700] uppercase leading-none mb-6 ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
+                        About <span className={`block absolute top-10 left-45/100 md:left-45/100 leading-[.08em] lowercase text-4xl md:text-5xl font-bold   ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(40%)' }}>me</span>
                     </h2>
 
                     <p className={`px-5 md:px-50 text-xl md:text-3xl font- uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-950'}`}>
@@ -988,7 +1000,7 @@ export default function Home() {
                     </p>
 
                     <p className={`px-5 md:px-50 text-xl md:text-3xl font- uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-950'}`}>
-                        Through my projects, I've achieved up to <span className="font-medium">40% performance gains</span> and <span className="font-medium">50% security improvements</span>.
+                        {/* Through my projects, I've achieved up to <span className="font-medium">40% performance gains</span> and <span className="font-medium">50% security improvements</span>. */}
                         I'm constantly exploring modern tools like Vite, Tailwind CSS, and AI platforms to create innovative solutions.
                     </p>
 
@@ -1000,7 +1012,7 @@ export default function Home() {
             <section
                 ref={skillsRef}
                 id="skills"
-                className={`pt-30 pb-50 py-16 px-8 md:px-12 lg:px-16 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} relative overflow-hidden`}
+                className={`pt-30 pb-20 md:pb-40 py-16 px-8 md:px-12 lg:px-16 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} relative overflow-hidden`}
             >
                 <div className={`absolute top-0 left-0 w-24 h-24 ${theme === 'dark' ? 'bg-gray-950' : 'bg-gray-50'} opacity-100 rotate-45 -translate-x-12 -translate-y-12`}></div>
 
@@ -1009,10 +1021,10 @@ export default function Home() {
                         <h2 className={`text-4xl  md:text-6xl font-bold  tracking-[-0.08em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
                             <span className='caveat-bold'> Technical  </span><span className={`text-7xl lg:text-8xl font-[700] uppercase leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Skills</span>
                         </h2>
-                        <p className={`text-right text-base md:text-lg mt-2 w-full opacity-70 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                        <p className={`text-right pb-5 text-base md:text-lg mt-2 w-full opacity-70 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
                             Frontend, backend, databases, and DevOps expertise.
                         </p>
-                        <div className={`absolute bottom-0 left-0 w-16 h-1 ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
+                        <div className={`absolute bottom-0 left-80 md:left-0 w-16 h-1 ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -1074,17 +1086,17 @@ export default function Home() {
             <section
                 ref={statsRef}
                 id="stats"
-                className={`pb-50 py-16 px-8 md:px-12 lg:px-16 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} relative overflow-hidden`}
+                className={`pb-20 md:pb-40 py-16 px-8 md:px-12 lg:px-16 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} relative overflow-hidden`}
             >
                 <div className="max-w-6xl mx-auto">
-                    <div className="mb-12 relative pb-24">
-                        <h2 className={`text-4xl md:text-6xl font-bold  tracking-[-0.1em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
-                            <span className={`text-6xl lg:text-8xl uppercase font-[700] leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Development</span> <span className={` caveat-bold text-7xl pl-25 md:pl-0`}>Numbers</span>
+                    <div className="mb-1 relative pb-24">
+                        <h2 className={`text-4xl md:text-6xl font-bold  tracking-[-0.1em] ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+                            <span className={`text-6xl lg:text-8xl uppercase font-[700] leading-none mb-0 md:mb-6 pb-0 ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>Development</span> <span className={`block caveat-bold text-7xl md:text-[5rem] pl-25 md:pl-0 mb-[-50px]`} style={{ transform: 'translateY(-60%)' }} >numbers</span>
                         </h2>
-                        <p className={`text-base md:text-lg mt-2 w-2/3 opacity-70 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                        {/* <p className={`text-center md:text-left text-base md:text-lg mt-2 w-full md:w-2/3 opacity-70 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
                             My coding journey in numbers.
-                        </p>
-                        <div className={`absolute bottom-[70px] right-0 w-20 h-1 ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
+                        </p> */}
+                        <div className={`absolute bottom-[70px] right-37 md:right-0 w-20 h-1 mb-[10px] ${theme === 'dark' ? 'bg-white' : 'bg-black/30'}`}></div>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -1188,17 +1200,17 @@ export default function Home() {
                 <div className="max-w-6xl ml-auto">
                     <div className="mb-12 text-right">
                         <h2
-                            className={`text-6xl lg:text-[12rem] font-[700] tracking-[-0.08em] ${theme === "dark" ? "text-white" : "text-black"
+                            className={`pb-5 text-8xl lg:text-[12rem] font-[700] tracking-[-0.08em] ${theme === "dark" ? "text-white" : "text-black"
                                 }`}
                         >
                             Projects
                         </h2>
-                        <p className={`text-lg max-w-2xl opacity-90 ml-auto `} style={{ transform: 'translateY(-160%)' }}>
+                        <p className={`text-lg max-w-2xl opacity-90 ml-auto `} style={{ transform: 'translateY(-20%)' }}>
                             A selection of my recent work.
                         </p>
                     </div>
 
-                    <div className="mb-12 flex flex-wrap gap-2 justify-end">
+                    {/* <div className="mb-12 flex flex-wrap gap-2 justify-end">
                         <button
                             onClick={() => setActiveTab("all")}
                             className={`px-4 py-2 rounded-full text-sm ${activeTab === "all"
@@ -1228,7 +1240,7 @@ export default function Home() {
                                 {category}
                             </button>
                         ))}
-                    </div>
+                    </div> */}
 
                     <div className="grid grid-cols-1 gap-12">
                         {filteredProjects.map((project, index) => (
@@ -1274,17 +1286,35 @@ export default function Home() {
                                                 ))}
                                             </div>
 
-                                            <a
-                                                href={project.link}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className={`inline-flex items-center px-4 py-2 ${theme === "dark"
-                                                    ? "bg-white text-black hover:bg-gray-200"
-                                                    : "bg-black text-white hover:bg-gray-800"
-                                                    } rounded-full text-sm transition-colors duration-300`}
-                                            >
-                                                View Project <FiExternalLink className="ml-2" />
-                                            </a>
+                                            <div className='flex gap-2'>
+                                                <div>
+                                                    <a
+                                                        href={project.link}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className={`inline-flex items-center px-4 py-2 ${theme === "dark"
+                                                            ? "bg-white text-black hover:bg-gray-200"
+                                                            : "bg-black text-white hover:bg-gray-800"
+                                                            } rounded-full text-sm transition-colors duration-300`}
+                                                    >
+                                                        GitHub <FiExternalLink className="ml-2" />
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                    <a
+                                                        href={project.link}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className={`inline-flex items-center px-4 py-2 ${theme === "dark"
+                                                            ? "bg-white text-black hover:bg-gray-200"
+                                                            : "bg-black text-white hover:bg-gray-800"
+                                                            } rounded-full text-sm transition-colors duration-300`}
+                                                    >
+                                                        Live Link <FiExternalLink className="ml-2" />
+                                                    </a>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -1303,7 +1333,7 @@ export default function Home() {
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-0 text-left">
                         <h2 className={`text-6xl lg:text-8xl font-[700]  ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
-                            <span className='tracking-[-0.08em]'>PROFESSIONAL</span> <span className={`block caveat-bold pl-50 text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>Journey</span>
+                            <span className='tracking-[-0.08em]'>PROFESSIONAL</span> <span className={`block caveat-bold pl-40 md:pl-50 text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>Journey</span>
                         </h2>
 
                     </div>
