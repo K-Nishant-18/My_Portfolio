@@ -921,7 +921,7 @@ export default function Home() {
             <section
                 ref={heroRef}
                 id="home"
-                className={`min-h-screen md:min-h-[130vh] ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'} flex justify-center items-center px-8 md:px-16 lg:px-24 relative overflow-hidden`}
+                className={`min-h-[115vh] md:min-h-[130vh] ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'} flex justify-center items-center px-8 md:px-16 lg:px-24 relative overflow-hidden`}
             >
                 <div className="relative z-100 flex flex-col md:flex-row items-center justify-between w-full pb-20 md:pb-0">
                     {/* Left/Center: Main Title and Button */}
@@ -991,11 +991,11 @@ export default function Home() {
                     className="w-full mx-auto text-center"
                 >
                     <h2 className={`pb-15 text-6xl lg:text-8xl font-[700] uppercase leading-none mb-6 ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
-                        About <span className={`block absolute top-10 left-45/100 md:left-45/100 leading-[.08em] lowercase text-4xl md:text-5xl font-bold   ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(40%)' }}>me</span>
+                        About <span className={`block absolute top-10 left-45/100 md:left-47/100 leading-[.08em] lowercase text-4xl md:text-5xl font-bold   ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(40%)' }}>me</span>
                     </h2>
 
                     <p className={`px-5 md:px-50 text-xl md:text-3xl font- uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-950'}`}>
-                        I'm K. Nishant, a passionate full-stack developer with expertise in <span className="font-medium">Java Spring Boot</span> and <span className="font-medium">React.js</span>.
+                        I'm Kumar Nishant, a passionate full-stack developer with expertise in <span className="font-medium">Java Spring Boot</span> and <span className="font-medium">React.js</span>.
                         My journey in web development focuses on building scalable applications with clean architecture and optimized performance.
                     </p>
 
@@ -1703,7 +1703,7 @@ export default function Home() {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative" data-scroll data-scroll-speed="1">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative" data-scroll data-scroll-speed="5">
                         {guestbookEntries.map((entry, index) => (
                             <div
                                 key={entry.id}
