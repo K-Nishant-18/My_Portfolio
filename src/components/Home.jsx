@@ -10,9 +10,9 @@ import {
     FiGithub, FiTwitter, FiLinkedin, FiDribbble, FiMail, FiPhone,
     FiMapPin, FiCalendar, FiBook, FiCode, FiUsers, FiLayers,
     FiSun, FiMoon, FiArrowRight, FiExternalLink, FiAward, FiBriefcase,
-    FiInstagram
+    FiInstagram, FiMenu, FiX,
 } from 'react-icons/fi'
-import { FaJava, FaReact, FaDocker } from 'react-icons/fa'
+import { FaJava, FaReact, FaDocker, } from 'react-icons/fa'
 import { SiSpring, SiMysql, SiMongodb, SiJavascript, SiTailwindcss } from 'react-icons/si'
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
@@ -20,6 +20,7 @@ gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
 export default function Home() {
     const [theme, setTheme] = useState('light')
     const [activeTab, setActiveTab] = useState('all')
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const [guestbookEntries] = useState([
         { id: 1, name: 'Priya Sharma', message: 'Amazing portfolio! Love the clean design.', date: '2023-05-15' },
@@ -27,7 +28,7 @@ export default function Home() {
         { id: 3, name: 'Anjali Gupta', message: 'The attention to detail in your projects is remarkable.', date: '2023-07-10' }
     ])
 
-
+    
 
 
     // Helper function to add refs to the arrays
@@ -738,6 +739,7 @@ export default function Home() {
 
         return () => {
             lenis.destroy()
+            
         }
     }, [theme])
 
@@ -816,42 +818,92 @@ export default function Home() {
             ))}
 
             {/* Navigation */}
-            <nav
-                ref={navRef}
-                className={`fixed top-0 left-0 w-full py-6 px-8 flex justify-between items-center z-1000 ${theme === 'dark' ? 'bg-gray-950/80' : 'bg-white/80'} backdrop-blur-sm border-b ${borderClass}`}
+           {/* Swiss-Inspired Navigation with Your Aesthetic */}
+<nav
+  ref={navRef}
+  className={`fixed top-0 left-0 w-full py-4 px-6 md:py-6 md:px-8 flex justify-between items-center z-1000 ${
+    theme === 'dark' ? 'bg-gray-950/80' : 'bg-white/80'
+  } backdrop-blur-sm border-b ${borderClass}`}
+>
+  {/* Left-aligned logo (unchanged from your version) */}
+  <div className="text-xl font-bold tracking-tight hover-scale">
+    <span className={`${theme === 'dark' ? 'text-red-600' : 'text-red-600'} font-[800]`}>K.</span>NISHANT
+  </div>
+
+  {/* Right-aligned navigation cluster */}
+  <div className="flex items-center space-x-6 md:space-x-8">
+    {/* Desktop navigation - hidden on mobile */}
+    <ul className="hidden md:flex space-x-6 md:space-x-8">
+      {['Home', 'About', 'Projects', 'Contact'].map((item) => (
+        <li key={item} className="nav-item">
+          <a
+            href={`#${item.toLowerCase()}`}
+            className={`text-xs uppercase tracking-wider hover:opacity-80 transition-opacity duration-300 ${
+              theme === 'dark' ? 'text-gray-200' : 'text-gray-800'
+            }`}
+          >
+            {item}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    {/* Theme toggle - refined but keeping your styling */}
+    <button
+      onClick={toggleTheme}
+      className={`w-12 h-12 rounded-full border transition-all duration-300 flex items-center justify-center shadow ${
+        theme === 'dark'
+          ? 'bg-white text-white hover:bg-gray-200 hover:text-black border-black/10'
+          : 'bg-black text-white hover:bg-gray-800 border-black/10'
+      }`}
+      aria-label="Toggle theme"
+    >
+      {theme === 'dark' ? (
+        <FiSun className="w-5 h-5" />
+      ) : (
+        <FiMoon className="w-5 h-5" />
+      )}
+    </button>
+
+    {/* Mobile menu button - Swiss minimalism */}
+    <button
+      className="md:hidden p-1"
+      onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      aria-label="Menu"
+    >
+      {isMobileMenuOpen ? (
+        <FiX className={`w-6 h-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} />
+      ) : (
+        <FiMenu className={`w-6 h-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} />
+      )}
+    </button>
+  </div>
+
+  {/* Mobile menu overlay - Swiss precision */}
+  {isMobileMenuOpen && (
+    <div
+      className={`min-h-screen fixed inset-0 z-50000 flex flex-col items-center justify-center ${
+        theme === 'dark' ? 'bg-gray-950' : 'bg-white'
+      } backdrop-blur-lg`}
+    >
+      <ul className="flex flex-col items-center space-y-10">
+        {['Home', 'About', 'Projects', 'Contact'].map((item) => (
+          <li key={item} className="nav-item">
+            <a
+              href={`#${item.toLowerCase()}`}
+              className={`text-xl uppercase tracking-wider ${
+                theme === 'dark' ? 'text-gray-200' : 'text-gray-800'
+              } hover:opacity-80 transition-opacity duration-300`}
+              onClick={() => setIsMobileMenuOpen(false)}
             >
-                <div className="text-xl font-bold tracking-tight hover-scale">
-                    <span className={`{accentClass} font-[800] text-red-600`}>K.</span>NISHANT
-                </div>
-
-                <div className="flex items-center space-x-8">
-                    <ul className="flex space-x-5 md:space-x-8">
-                        {['Home', 'About', 'GitHub', 'Projects', 'Contact'].map((item) => (
-                            <li key={item} className="nav-item">
-                                <a
-                                    href={`#${item.toLowerCase()}`}
-                                    className="text-xs uppercase tracking-wider hover:opacity-80 transition-opacity duration-300"
-                                >
-                                    {item}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-
-                    <button
-                        onClick={toggleTheme}
-                        className={`w-13 h-13 rounded-full border transition-all duration-300 flex items-center justify-center shadow
-    ${theme === 'dark'
-                                ? 'bg-white text-white hover:bg-white hover:text-white border-black/10'
-                                : 'bg-black text-white hover:bg-black hover:text-white border-black/10'}
-  `}
-                    >
-                        {theme === 'dark'
-                            ? <FiSun className="w-10 h-10 text-inherit" />
-                            : <FiMoon className="w-10 h-10 text-inherit" />}
-                    </button>
-                </div>
-            </nav>
+              {item}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</nav>
 
             {/* Hero Section */}
             <section
