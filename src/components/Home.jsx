@@ -978,7 +978,7 @@ export default function Home() {
                     ref={aboutContentRef}
                     className="w-full mx-auto text-center"
                 >
-                    <h2 className={`pb-15 text-lg lg:text-8xl font-[700] uppercase leading-none mb-6 ${theme === 'dark' ? 'text-white/10' : 'text-black/10'}`}>
+                    <h2 className={`pb-15 text-6xl lg:text-8xl font-[700] uppercase leading-none mb-6 ${theme === 'dark' ? 'text-white/10' : 'text-black/10'}`}>
                         About <span className={`block absolute top-10 left-47/100 leading-[.08em] lowercase text-4xl md:text-5xl font-bold   ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(40%)' }}>me</span>
                     </h2>
 
@@ -1079,12 +1079,12 @@ export default function Home() {
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-12 relative pb-24">
                         <h2 className={`text-4xl md:text-6xl font-bold  tracking-[-0.1em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
-                            <span className={`text-5xl lg:text-8xl uppercase font-[700] leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Development</span> <span className='caveat-bold'>Numbers</span>
+                            <span className={`text-6xl lg:text-8xl uppercase font-[700] leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Development</span> <span className={` caveat-bold text-7xl pl-25 md:pl-0`}>Numbers</span>
                         </h2>
                         <p className={`text-base md:text-lg mt-2 w-2/3 opacity-70 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
                             My coding journey in numbers.
                         </p>
-                        <div className={`absolute bottom-0 right-0 w-16 h-1 ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
+                        <div className={`absolute bottom-[70px] right-0 w-20 h-1 ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}></div>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -1188,7 +1188,7 @@ export default function Home() {
                 <div className="max-w-6xl ml-auto">
                     <div className="mb-12 text-right">
                         <h2
-                            className={`text-5xl lg:text-[12rem] font-[700] tracking-[-0.08em] ${theme === "dark" ? "text-white" : "text-black"
+                            className={`text-6xl lg:text-[12rem] font-[700] tracking-[-0.08em] ${theme === "dark" ? "text-white" : "text-black"
                                 }`}
                         >
                             Projects
@@ -1302,7 +1302,7 @@ export default function Home() {
             >
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-0 text-left">
-                        <h2 className={`text-5xl lg:text-8xl font-[700]  ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
+                        <h2 className={`text-6xl lg:text-8xl font-[700]  ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
                             <span className='tracking-[-0.08em]'>PROFESSIONAL</span> <span className={`block caveat-bold pl-50 text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>Journey</span>
                         </h2>
 
@@ -1341,7 +1341,7 @@ export default function Home() {
             >
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-0 text-right">
-                        <h2 className={`text-5xl lg:text-8xl font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
+                        <h2 className={`text-6xl lg:text-8xl font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
                             WEB <span className={`block caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>Journals</span>
                         </h2>
                         <p className={`pb-[-50px] mt-2 text-sm md:text-base font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} style={{ transform: 'translateY(-250%)' }}>
@@ -1392,7 +1392,7 @@ export default function Home() {
                         data-scroll
                         data-scroll-speed="0.6"
                     >
-                        <h2 className={`text-5xl lg:text-[12rem] font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+                        <h2 className={`text-6xl lg:text-[12rem] font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
                             Gallery
                         </h2>
                     </div>
@@ -1653,8 +1653,8 @@ export default function Home() {
                 <div className="min-h-[60vh] max-w-7xl mx-auto relative z-10">
                     {/* Rest of your existing code remains exactly the same */}
                     <div className="mb-0 text-center">
-                        <h2 className={`text-5xl lg:text-8xl font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
-                            Reflections <span className={`block caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>and Raves</span>
+                        <h2 className={`text-6xl lg:text-8xl font-[700] tracking-[-0.08em] ${theme === 'dark' ? 'text-white/30' : 'text-black/30'}`}>
+                            Reflections <span className={`block caveat-bold text-5xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>and Raves</span>
                         </h2>
                         <p className={`pb-[-50px] mt-2 text-sm md:text-base font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} style={{ transform: 'translateY(-250%)' }}>
                             A glimpse into the moments that mattered.
@@ -1735,7 +1735,7 @@ export default function Home() {
                     <div className="w-full px-8 ">
                         {/* Header */}
                         <div className="mb-8 text-left">
-                            <h2 className={`text-5xl lg:text-8xl font-[700] mt-10 tracking-[-0.05em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
+                            <h2 className={`text-6xl lg:text-8xl font-[700] mt-10 tracking-[-0.05em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
                                 Get In <span className={`block pl-15 caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>touch</span>
                             </h2>
                             <p className={`mt-[-70px] text-sm font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
