@@ -923,7 +923,7 @@ export default function Home() {
                 id="home"
                 className={`min-h-screen md:min-h-[130vh] ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'} flex justify-center items-center px-8 md:px-16 lg:px-24 relative overflow-hidden`}
             >
-                <div className="relative z-100 flex flex-col md:flex-row items-center justify-between w-full pb-30 md:pb-0">
+                <div className="relative z-100 flex flex-col md:flex-row items-center justify-between w-full pb-20 md:pb-0">
                     {/* Left/Center: Main Title and Button */}
                     <div className="text-center md:text-left flex flex-col md:flex-col w-full md:w-3/5 mb-10 ">
                         <div>
@@ -968,7 +968,7 @@ export default function Home() {
                 </div>
 
                 {/* Marquee Section */}
-                <div className="absolute bottom-10 left-0 w-full overflow-hidden -translate-y-1/2 rotate-6 ">
+                <div className="absolute bottom-10 left-0 w-full overflow-hidden -translate-y-1/2 rotate-8 md:rotate-6 ">
                     <div ref={marqueeRef} className="flex whitespace-nowrap">
                         <span className={`text-5xl md:text-7xl lg:text-7xl font-bold ${theme === 'dark' ? 'text-white/10' : 'text-black/10'} mr-16`}>
                             JAVA · SPRING BOOT · REACT · DOCKER · MYSQL · MONGODB · JWT · SPRING SECURITY · VITE · TAILWIND ·
@@ -1385,8 +1385,8 @@ export default function Home() {
                                 key={post.id}
                                 className={`blog-item bg-transparent rounded-xl overflow-hidden border ${borderClass} hover-scale transition-transform duration-300`}
                             >
-                                <div className={`h-48 flex items-center justify-center ${theme === 'dark' ? 'transparent' : 'transparent'}`}>
-                                    <span className={`text-9xl font-bold ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+                                <div className={`h-48 flex items-center justify-center  ${theme === 'dark' ? 'transparent' : 'transparent'}`}>
+                                    <span className={`text-9xl font-[900] tracking-[-0.08em]  ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
                                         {`0${index + 1}`}
                                     </span>
                                 </div>
@@ -1395,7 +1395,7 @@ export default function Home() {
                                         <span className={`text-xs font-mono ${theme === 'dark' ? 'text-white/80' : 'text-black/80'}`}>{post.date}</span>
                                         <span className={`text-xs font-mono ${theme === 'dark' ? 'bg-white/10' : 'bg-black/10'} px-2 py-1 rounded-full`}>{post.readTime} read</span>
                                     </div>
-                                    <h3 className="text-xl font-bold mb-3 font-sans">{post.title}</h3>
+                                    <h3 className="text-xl font-bold mb-3 font-sans ">{post.title}</h3>
                                     <p className={`mb-4 text-sm ${theme === 'dark' ? 'text-white/80' : 'text-black/80'}`}>{post.excerpt}</p>
                                     <a
                                         href={post.link}
@@ -1409,7 +1409,7 @@ export default function Home() {
                     </div>
 
                     {/* More Blogs Button - Swiss style */}
-                    <div className="mt-16 text-center">
+                    <div className="mt-26 text-center">
                         <a
                             href="https://medium.com/@me.knishant"
                             className={`text-right inline-block px-8 py-4 ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'} rounded-full font-medium transition-colors duration-300`}
@@ -1776,9 +1776,9 @@ export default function Home() {
                 <div className="w-full mx-auto flex justify-between">
                     <div className="w-full px-8 ">
                         {/* Header */}
-                        <div className="mb-8 text-left">
-                            <h2 className={`text-6xl lg:text-8xl font-[700] mt-10 tracking-[-0.05em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
-                                Get In <span className={`block pl-15 caveat-bold text-4xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>touch</span>
+                        <div className="mb-19 md:mb-8  pt-5 text-left">
+                            <h2 className={`text-7xl lg:text-8xl font-[700] mt-10 tracking-[-0.05em] ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>
+                                Get In <span className={`block pl-15 caveat-bold text-6xl md:text-7xl font-bold leading-none mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(-70%)' }}>touch</span>
                             </h2>
                             <p className={`mt-[-70px] text-sm font-sans ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
                                 Let’s create something extraordinary.
