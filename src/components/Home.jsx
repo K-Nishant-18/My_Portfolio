@@ -5,6 +5,7 @@ import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 import Lenis from '@studio-freight/lenis'
 import axios from 'axios';
 import LocomotiveScroll from 'locomotive-scroll'
+
 import {
     FiGithub, FiTwitter, FiLinkedin, FiDribbble, FiMail, FiPhone,
     FiMapPin, FiCalendar, FiBook, FiCode, FiUsers, FiLayers,
@@ -824,8 +825,8 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-center space-x-8">
-                    <ul className="flex space-x-8">
-                        {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item) => (
+                    <ul className="flex space-x-5 md:space-x-8">
+                        {['Home', 'About', 'GitHub', 'Projects', 'Contact'].map((item) => (
                             <li key={item} className="nav-item">
                                 <a
                                     href={`#${item.toLowerCase()}`}
@@ -856,7 +857,7 @@ export default function Home() {
             <section
                 ref={heroRef}
                 id="home"
-                className={`min-h-[130vh] flex justify-center items-center px-8 md:px-16 lg:px-24 relative overflow-hidden ${bgClass}`}
+                className={`min-h-[130vh] ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'} flex justify-center items-center px-8 md:px-16 lg:px-24 relative overflow-hidden`}
             >
                 <div className="relative z-100 flex flex-col md:flex-row items-center justify-between w-full pb-0">
                     {/* Left/Center: Main Title and Button */}
@@ -864,13 +865,13 @@ export default function Home() {
                         <div>
                             <h1
                                 ref={titleRef}
-                                className="text-6xl md:text-[9rem] lg:text-[19rem] font-[700] leading-none mb-6"
+                                className="text-9lg md:text-[15rem] lg:text-[19rem] font-[700] leading-none mb-6"
                             >
                                 <span className={` ${theme === 'dark' ? 'text-white' : 'text-black'} text-6xl md:text-[8rem] lg:text-[15rem] tracking-[-0.08em]`}>K</span><span className={` ${theme === 'dark' ? 'text-white' : 'text-black'} text-6xl md:text-[6rem] lg:text-[15rem] tracking-[-0.08em]`}>umar</span>
                                 <span className={`block ${theme === 'dark' ? 'text-white' : 'text-black'} text-6xl md:text-[8rem] lg:text-[16rem] tracking-[-0.08em] leading-[0.60] pb-14`}>Nishant`</span>
                             </h1>
                         </div>
-                        <div className="flex flex-col md:flex-row items-center justify-between w-full pl-3 pr-10">
+                        <div className="flex flex-row md:flex-row items-center justify-between w-full pl-3 pr-10">
                             <div className="mb-6">
                                 <p className={`text-sm md:text-base font-medium uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-950'}`}>
                                     Currently
@@ -892,7 +893,7 @@ export default function Home() {
 
                     {/* Bottom: Updated Section with Bullet Points */}
                     <div className="relative z-10 flex justify-start mb-[-150px] w-2/8 ">
-                        <div className="text-left">
+                        <div className="text-center md:text-left">
                             <ul className={`text-lg md:text-2xl font- uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-950'}`}>
                                 <li>Web Designer</li>
                                 <li>Web Developer</li>
@@ -905,10 +906,10 @@ export default function Home() {
                 {/* Marquee Section */}
                 <div className="absolute bottom-10 left-0 w-full overflow-hidden -translate-y-1/2 rotate-6 ">
                     <div ref={marqueeRef} className="flex whitespace-nowrap">
-                        <span className={`text-4xl md:text-6xl lg:text-7xl font-bold ${theme === 'dark' ? 'text-white/10' : 'text-black/10'} mr-16`}>
+                        <span className={`text-7xl md:text-7xl lg:text-7xl font-bold ${theme === 'dark' ? 'text-white/10' : 'text-black/10'} mr-16`}>
                             JAVA · SPRING BOOT · REACT · DOCKER · MYSQL · MONGODB · JWT · SPRING SECURITY · VITE · TAILWIND ·
                         </span>
-                        <span className={`text-4xl md:text-6xl lg:text-7xl font-bold ${theme === 'dark' ? 'text-white/10' : 'text-black/10'} mr-16`}>
+                        <span className={`text-7xl md:text-7xl lg:text-7xl font-bold ${theme === 'dark' ? 'text-white/10' : 'text-black/10'} mr-16`}>
                             JAVA · SPRING BOOT · REACT · DOCKER · MYSQL · MONGODB · JWT · SPRING SECURITY · VITE · TAILWIND ·
                         </span>
                     </div>
@@ -919,7 +920,7 @@ export default function Home() {
             <section
                 ref={aboutRef}
                 id="about"
-                className={`min-h-screen  py-10 px-8 md:px-16 lg:px-24 flex flex-col md:flex-row  justify-center gap-16 ${bgClass}`}
+                className={`min-h-screen  py-10 px-8 md:px-16 lg:px-24 flex flex-col md:flex-row  justify-center gap-16 ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'}`}
             >
                 <div
                     ref={aboutContentRef}
@@ -929,7 +930,7 @@ export default function Home() {
                         About <span className={`block absolute top-10 left-47/100 leading-[.08em] lowercase text-4xl md:text-5xl font-bold   ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ transform: 'translateY(40%)' }}>me</span>
                     </h2>
 
-                    <p className={`px-50 text-lg md:text-3xl font- uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-950'}`}>
+                    <p className={`px-5 md:px-50 text-xl md:text-3xl font- uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-950'}`}>
                         I'm K. Nishant, a passionate full-stack developer with expertise in <span className="font-medium">Java Spring Boot</span> and <span className="font-medium">React.js</span>.
                         My journey in web development focuses on building scalable applications with clean architecture and optimized performance.
                     </p>
@@ -1130,7 +1131,7 @@ export default function Home() {
             {/* Projects Section */}
             <section
                 id="projects"
-                className={`py-20 px-8 md:px-16 lg:px-24 ${bgClass}`}
+                className={`py-20 px-8 md:px-16 lg:px-24 ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'}`}
             >
                 <div className="max-w-6xl ml-auto">
                     <div className="mb-12 text-right">
@@ -1284,7 +1285,7 @@ export default function Home() {
             <section
                 ref={blogRef}
                 id="blog"
-                className={`py-20 px-8 md:px-16 lg:px-24 ${bgClass}`}
+                className={`py-20 px-8 md:px-16 lg:px-24 ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'}`}
             >
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-0 text-right">
@@ -1329,7 +1330,7 @@ export default function Home() {
             <section
                 ref={galleryRef}
                 id="gallery"
-                className={`py-20 px-6 md:px-12 lg:px-20 ${bgClass} relative overflow-hidden`}
+                className={`py-20 px-6 md:px-12 lg:px-20 ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'} relative overflow-hidden`}
                 data-scroll-section
             >
                 <div className="max-w-8xl mx-auto relative z-10">
@@ -1585,7 +1586,7 @@ export default function Home() {
             <section
                 ref={guestbookRef}
                 id="guestbook"
-                className={`py-26 px-6 md:px-12 lg:px-16 ${bgClass} relative overflow-hidden`}
+                className={`py-26 px-6 md:px-12 lg:px-16 ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'} relative overflow-hidden`}
                 data-scroll-section
                 style={{
                     backgroundImage: `url('https://media-hosting.imagekit.io/aad8428398174daa/Test_bg-removebg-preview.png?Expires=1840140424&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=vP3kYFgwg8KTTMFf8Y7G5HvEKLrn7CsWwHR4CsZNZ0ki~aLwxML36N5E1prgEbQ5znuocgqAdJrx6kGzOIVArJtrhE78ZymeH7e8JP4AdFddgBMYq947NYcC9nCIRo7jplaD6DKrYMDhzxeb8fTjhc39E6pVFd9h7HDxcuGr88N0syo1Msyy7DVXef9XiW6UrXRnQYQsSOzz8p4jA6x5QQo7LXW5dXmzJ5ky35SVHjzsVc9VihSWgMEr9-kd5o-FWd2ksiybzonR~6nbmm4eFA5ojRwTpmcChaajT~43PAMrMnHqFQYzxs39QrIpshuYQYHlU01zRwNQ26lNHq4TPw__')`,
@@ -1746,7 +1747,7 @@ export default function Home() {
             {/* Footer Section */}
             <footer
                 ref={footerRef}
-                className={`py-12 px-8 md:px-16 lg:px-24 ${bgClass} border-t ${borderClass}`}
+                className={`py-12 px-8 md:px-16 lg:px-24 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'} border-t ${borderClass}`}
             >
                 <div className="max-w-7xl mx-auto">
                     <div className="flex flex-col md:flex-row justify-between items-center">

@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
-import Hero from './components/Hero';
-import About from './components/About';
 import Home from './components/Home';
 import knAnimation from './assets/kn-animation.gif'; // Adjust the path to your GIF
 
