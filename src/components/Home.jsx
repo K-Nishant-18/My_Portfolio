@@ -18,7 +18,7 @@ import { SiSpring, SiMysql, SiMongodb, SiJavascript, SiTailwindcss } from 'react
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
 
 export default function Home() {
-    const [theme, setTheme] = useState('light')
+    const [theme, setTheme] = useState('dark')
     const [activeTab, setActiveTab] = useState('all')
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -970,10 +970,10 @@ export default function Home() {
                 {/* Marquee Section */}
                 <div className="absolute bottom-10 left-0 w-full overflow-hidden -translate-y-1/2 rotate-8 md:rotate-6 ">
                     <div ref={marqueeRef} className="flex whitespace-nowrap">
-                        <span className={`text-5xl md:text-7xl lg:text-7xl font-bold ${theme === 'dark' ? 'text-white/10' : 'text-black/10'} mr-16`}>
+                        <span className={`text-6xl md:text-7xl lg:text-7xl font-bold ${theme === 'dark' ? 'text-white/25' : 'text-black/25'} mr-16`}>
                             JAVA · SPRING BOOT · REACT · DOCKER · MYSQL · MONGODB · JWT · SPRING SECURITY · VITE · TAILWIND ·
                         </span>
-                        <span className={`text-5xl md:text-7xl lg:text-7xl font-bold ${theme === 'dark' ? 'text-white/10' : 'text-black/10'} mr-16`}>
+                        <span className={`text-6xl md:text-7xl lg:text-7xl font-bold ${theme === 'dark' ? 'text-white/25' : 'text-black/25'} mr-16`}>
                             JAVA · SPRING BOOT · REACT · DOCKER · MYSQL · MONGODB · JWT · SPRING SECURITY · VITE · TAILWIND ·
                         </span>
                     </div>
