@@ -18,7 +18,7 @@ import { SiSpring, SiMysql, SiMongodb, SiJavascript, SiTailwindcss } from 'react
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
 
 export default function Home() {
-    const [theme, setTheme] = useState('dark')
+    const [theme, setTheme] = useState('light')
     const [activeTab, setActiveTab] = useState('all')
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
