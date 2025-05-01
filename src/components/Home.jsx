@@ -1193,7 +1193,7 @@ export default function Home() {
                     </div>
                     <div className="mt-26 text-center">
                         <a
-                            href="https://medium.com/@me.knishant"
+                            href="https://github.com/K-Nishant-18"
                             className={`text-right inline-block px-8 py-4 ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'} rounded-full font-medium transition-colors duration-300`}
                         >
                             Visit My GitHub
