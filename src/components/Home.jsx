@@ -1188,6 +1188,14 @@ export default function Home() {
                             <div className={`absolute top-0 right-0 w-12 h-12 ${theme === 'dark' ? 'border-gray-700' : 'border-gray-300'} border-b-2 border-r-2`}></div>
                         </div>
                     </div>
+                    <div className="mt-26 text-center">
+                        <a
+                            href="https://medium.com/@me.knishant"
+                            className={`text-right inline-block px-8 py-4 ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'} rounded-full font-medium transition-colors duration-300`}
+                        >
+                            Visit My GitHub
+                        </a>
+                    </div>
                 </div>
             </section>
 
