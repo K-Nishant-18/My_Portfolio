@@ -246,7 +246,8 @@ export default function Home() {
             category: "web",
             image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
             impact: "Enhanced security 50% with JWT; increased engagement 20% with responsive UI; reduced latency 35%",
-            link: "#"
+            link: "https://github.com/K-Nishant-18/Collegia",
+            liveLink: "https://collegia.vercel.app/home"
         },
 
         {
@@ -256,7 +257,8 @@ export default function Home() {
             category: "web",
             image: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
             impact: "Boosted security 30% with JWT; improved API response time 25%; enhanced performance 40% via caching",
-            link: "#"
+            link: "https://github.com/K-Nishant-18/Cultural-circuit",
+            liveLink:"https://cultural-circuit.vercel.app/"
         },
         {
             title: "SkillBloom+",
@@ -265,7 +267,8 @@ export default function Home() {
             category: "web",
             image: "https://images.unsplash.com/photo-1616400619175-5beda3a17896?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             impact: "Empowered learners to bridge the gap between theory and practice, increasing project submission rates by 30% and user engagement by 25%.",
-            link: "#"
+            link: "https://github.com/K-Nishant-18/SkillBloom",
+            liveLink:"https://skill-bloom-kappa.vercel.app/"
         },
 
     ]
@@ -1310,7 +1313,7 @@ export default function Home() {
                                                 </div>
                                                 <div>
                                                     <a
-                                                        href={project.link}
+                                                        href={project.liveLink}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                         className={`inline-flex items-center px-4 py-2 ${theme === "dark"
@@ -1766,10 +1769,10 @@ export default function Home() {
                             I'm available for freelance work and open to new opportunities.
                         </p>
                         <a
-                            href="https://github.com/K-Nishant-18"
+                            href="#"
                             className={`text-right inline-block px-8 py-4 ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-800'} rounded-full font-medium transition-colors duration-300`}
                         >
-                            Visit my GitHub
+                           Contact Me
                         </a>
                     </div>
                 </div>
