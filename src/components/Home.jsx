@@ -1513,7 +1513,7 @@ export default function Home() {
                         {/* Pic-4 (Bottom Left, Medium) */}
                         <div
                             ref={el => (window['pic4'] = el)}
-                            className="magic-hover-container absolute bottom-0 left-150 w-[30%] md:w-[25%] lg:w-[33%] z-35 group"
+                            className="magic-hover-container absolute bottom-0 left-50 md:left-150 w-[30%] md:w-[25%] lg:w-[33%] z-35 group"
                             data-scroll
                             data-scroll-speed="1.1"
                         >
@@ -1532,7 +1532,7 @@ export default function Home() {
                         {/* Pic-5 (Bottom Right, Small) */}
                         <div
                             ref={el => (window['pic5'] = el)}
-                            className="magic-hover-container absolute bottom-50 right-0 w-[20%] md:w-[15%] lg:w-[28%] z-30 group"
+                            className="magic-hover-container absolute bottom-50 right-0 w-[50%] md:w-[15%] lg:w-[28%] z-30 group"
                             data-scroll
                             data-scroll-speed="1.3"
                         >
